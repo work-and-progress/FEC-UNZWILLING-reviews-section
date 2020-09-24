@@ -4,7 +4,8 @@
   "description": "UNZWILLING reviews section",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -d --watch"
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
