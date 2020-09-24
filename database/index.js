@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/UNZWILLING', { useNewUrlParser: true, useUnifiedTopology: true });
 
+const dummy = require('mongoose-dummy'); // added
+
 const db = mongoose.connection;
 
 db.on('error',
@@ -28,6 +30,35 @@ let reviewSchema = mongoose.Schema({
 });
 
 let Review = mongoose.model('Review', reviewSchema);
+
+let save = (reviews) => {
+  var savePromises = []; // empty array, and we will be pushing all the async actions into an array
+
+  reviews.forEach(review => {
+    let filter = {review_id: review.id};
+
+    savePromises.push(
+      Review.findOneAndUpdate(filter, review, {
+        new: true,
+        upsert: true
+      })
+      .catch(err => {
+        console.error(err);
+      })
+    )
+  })
+
+  return Promise.all(savePromises);
+}
+
+let fetch = () => {
+  return Review.find().sort('review_id').limit(25);
+}
+
+let randomObj = dummy(Review, {}) // this works, but it's not saving to the DB at all
+
+console.log(randomObj);
+
 /*----------------------------------------------------*/
 // db.reviews.find().pretty() to view data
 // db.reviews.deleteMany({}) to drop all data
@@ -51,6 +82,7 @@ let Review = mongoose.model('Review', reviewSchema);
 //   helpful_no: 2,
 //   original_post_location: 'nowhere'
 // });
+
 
 // test.save(function(err) {
 //   if (err) {
