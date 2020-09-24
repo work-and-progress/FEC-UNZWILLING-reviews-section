@@ -33,10 +33,8 @@ let Review = mongoose.model('Review', reviewSchema);
 
 let save = (reviews) => {
   var savePromises = []; // empty array, and we will be pushing all the async actions into an array
-
   reviews.forEach(review => {
     let filter = {review_id: review.id};
-
     savePromises.push(
       Review.findOneAndUpdate(filter, review, {
         new: true,
@@ -47,13 +45,14 @@ let save = (reviews) => {
       })
     )
   })
-
   return Promise.all(savePromises);
 }
 
 let fetch = () => {
   return Review.find().sort('review_id').limit(25);
 }
+
+/*----------------------------------------------------*/
 
 let randomObj = dummy(Review, {}) // this works, but it's not saving to the DB at all
 
@@ -89,3 +88,23 @@ console.log(randomObj);
 //     return handleError(err);
 //   }
 // });
+
+
+/*
+{
+  "review_id": "Number",
+  "product_id": "Number",
+  "review_content": "String",
+  "review_title": "String",
+  "user_id": "Number",
+  "review_date": { type: Date, default: Date.now },
+  "quality_rating": "Number",
+  "value_rating": "Number",
+  "frequency_of_use": "String",
+  "star_rating": "Number",
+  "review_recommended": "Boolean",
+  "helpful_yes": "Number",
+  "helpful_no": "Number",
+  "original_post_location": "String"
+}
+*/
