@@ -1,0 +1,30 @@
+{
+  "name": "fec-unzwilling-reviews-section",
+  "version": "1.0.0",
+  "description": "UNZWILLING reviews section",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seeds-of-Change/FEC-UNZWILLING-reviews-section.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Seeds-of-Change/FEC-UNZWILLING-reviews-section/issues"
+  },
+  "homepage": "https://github.com/Seeds-of-Change/FEC-UNZWILLING-reviews-section#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.6",
+    "mongoose-dummy": "^1.0.8",
+    "nodemon": "^2.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "webpack": "^4.44.2"
+  }
+}
