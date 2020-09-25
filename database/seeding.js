@@ -1,5 +1,5 @@
-const database = require('./index.js');
 const faker = require('faker');
+var db = require('./index.js');
 
 let seeding = () => {
   // creating 100 entries into our database, all of them are called seedling
@@ -19,12 +19,11 @@ let seeding = () => {
       value_rating: faker.random.number({ 'min': 1, 'max': 5 }),
       star_rating: faker.random.number({ 'min': 1, 'max': 5 }),
       helpful_yes: faker.random.number({ 'min': 1, 'max': 1000 }),
-      helpful_no: faker.random.number({ 'min': 1, 'max': 1000 })
+      helpful_no: faker.random.number({ 'min': 1, 'max': 500})
     };
     hugeSeedingArray.push(seedling);
   }
-  console.log(hugeSeedingArray);
-  database.save(hugeSeedingArray);
+  db.save(hugeSeedingArray);
 }
 
 /* ----------------------------------------------------

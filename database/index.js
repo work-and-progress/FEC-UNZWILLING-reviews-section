@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/UNZWILLING', { useNewUrlParser: true, useUnifiedTopology: true });
-const faker = require('faker');
 const db = mongoose.connection;
-const seed = require('./seeding.js');
-
 /*----------------------------------------------------*/
 db.on('error',
   console.error.bind(console, 'MongoDB connection error:')
@@ -11,10 +8,6 @@ db.on('error',
 db.once('open', function() {
   console.log("🎊 Mongoose is connected to server! 🎊")
 });
-
-seed.seeding();
-
-
 /*----------------------------------------------------*/
 let reviewSchema = mongoose.Schema({
   review_id: Number, // how to make this into an Id
@@ -35,7 +28,7 @@ let reviewSchema = mongoose.Schema({
 
 let Review = mongoose.model('Review', reviewSchema);
 /*----------------------------------------------------*/
-const save = (reviews) => {
+let save = (reviews) => {
   var savePromises = []; // empty array, and we will be pushing all the async actions into an array
   reviews.forEach(review => {
     let filter = {review_id: review.id};
@@ -56,10 +49,8 @@ const save = (reviews) => {
 let fetch = () => {
   return Review.find().sort('_id').limit(25);
 }
-
-module.exports.save = save;
-
-// module.exports = {
-//   save,
-//   fetch
-// }
+/*----------------------------------------------------*/
+module.exports = {
+  save,
+  fetch
+}
