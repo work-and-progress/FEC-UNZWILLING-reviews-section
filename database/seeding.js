@@ -1,7 +1,15 @@
+/* ----------------------------------------------------
+  db.reviews.find().pretty() to view data
+  db.reviews.deleteMany({}) to drop all data
+  db.dropDatabase(); to drop database
+  db.drop.reviews() ?
+ https://mongoosejs.com/docs/models.html
+*/
+
 const faker = require('faker');
 var db = require('./index.js');
 
-let seeding = () => {
+(function seeding (){
   // creating 100 entries into our database, all of them are called seedling
   var hugeSeedingArray = [];
   for (var i = 1; i < 101; i++) {
@@ -24,14 +32,8 @@ let seeding = () => {
     hugeSeedingArray.push(seedling);
   }
   db.save(hugeSeedingArray);
-}
+})();
+console.log('Seeding complete!')
 
-/* ----------------------------------------------------
-  db.reviews.find().pretty() to view data
-  db.reviews.deleteMany({}) to drop all data
-  db.dropDatabase(); to drop database
-  db.drop.reviews() ?
-  test is working, https://mongoosejs.com/docs/models.html
-/**/
 
-module.exports.seeding = seeding;
+
