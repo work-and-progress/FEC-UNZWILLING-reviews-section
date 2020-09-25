@@ -1,10 +1,8 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/UNZWILLING', { useNewUrlParser: true, useUnifiedTopology: true });
-
-const db = mongoose.connection;
-
 const faker = require('faker');
-
+/*----------------------------------------------------*/
+const db = mongoose.connection;
 
 db.on('error',
   console.error.bind(console, 'MongoDB connection error:')
@@ -52,69 +50,55 @@ let save = (reviews) => {
 let fetch = () => {
   return Review.find().sort('review_id').limit(25);
 }
-
-/*----------------------------------------------------*/
-
-// var randomID = faker.unique();
-// console.log(randomID)
-
 /*----------------------------------------------------*/
 // db.reviews.find().pretty() to view data
 // db.reviews.deleteMany({}) to drop all data
 // db.dropDatabase(); to drop database
 // test is working, https://mongoosejs.com/docs/models.html
 
-
-const test = new Review ({
-  review_id: faker.random.number({
-    'min': 10000,
-    'max': 90000
-  }),
-
-  product_id: faker.random.number({
-    'min': 1000,
-    'max': 1099
-  }),
-  user_id: faker.random.number({
-    'min': 10000,
-    'max': 90000
-  }),
-
-
-  review_content: faker.lorem.paragraph(),
-  review_title: faker.lorem.sentence(),
-  review_date: faker.date.recent(),
-  review_recommended: faker.random.boolean(),
-  original_post_location: faker.lorem.words(),
-
-  frequency_of_use: faker.lorem.word(),
-
-  quality_rating: faker.random.number({
-    'min': 1,
-    'max': 5
-  }),
-  value_rating: faker.random.number({
-    'min': 1,
-    'max': 5
-  }),
-  star_rating: faker.random.number({
-    'min': 1,
-    'max': 5
-  }),
-
-  helpful_yes: faker.random.number({
-    'min': 1,
-    'max': 5
-  }),
-  helpful_no: faker.random.number({
-    'min': 1,
-    'max': 5
-  })
-});
+// for (var i = 1; i < 101; i++) {
+//   const test = new Review ({
+//     product_id: i,
+//     review_id: faker.random.number({
+//       'min': 1,
+//       'max': 100
+//     }),
+//     user_id: faker.random.number({
+//       'min': 1,
+//       'max': 100
+//     }),
+//     review_content: faker.lorem.paragraph(),
+//     review_title: faker.lorem.sentence(),
+//     review_date: faker.date.recent(),
+//     review_recommended: faker.random.boolean(),
+//     original_post_location: faker.lorem.words(),
+//     frequency_of_use: faker.lorem.word(),
+//     quality_rating: faker.random.number({
+//       'min': 1,
+//       'max': 5
+//     }),
+//     value_rating: faker.random.number({
+//       'min': 1,
+//       'max': 5
+//     }),
+//     star_rating: faker.random.number({
+//       'min': 1,
+//       'max': 5
+//     }),
+//     helpful_yes: faker.random.number({
+//       'min': 1,
+//       'max': 5
+//     }),
+//     helpful_no: faker.random.number({
+//       'min': 1,
+//       'max': 5
+//     })
+//   });
 
 
-test.save(function(err) {
-  if (err) {
-    console.log(err);
-  }
-});
+//   test.save(function(err) {
+//     if (err) {
+//       console.log(err);
+//     }
+//   });
+// }
