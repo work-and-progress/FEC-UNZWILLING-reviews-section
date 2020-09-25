@@ -31,7 +31,7 @@ let Review = mongoose.model('Review', reviewSchema);
 let save = (reviews) => {
   var savePromises = []; // empty array, and we will be pushing all the async actions into an array
   reviews.forEach(review => {
-    let filter = {review_id: review.id};
+    let filter = {product_id: review.product_id};
     savePromises.push(
       Review.findOneAndUpdate(filter, review, {
         new: true,
@@ -52,5 +52,6 @@ let fetch = () => {
 /*----------------------------------------------------*/
 module.exports = {
   save,
-  fetch
+  fetch,
+  db
 }

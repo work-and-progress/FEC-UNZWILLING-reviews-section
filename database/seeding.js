@@ -1,13 +1,15 @@
-/* ----------------------------------------------------
+/*
+  https://mongoosejs.com/docs/models.html
   db.reviews.find().pretty() to view data
   db.reviews.deleteMany({}) to drop all data
   db.dropDatabase(); to drop database
-  db.drop.reviews() ?
- https://mongoosejs.com/docs/models.html
+  db.drop.reviews()
+  ----------------------------------------------------
 */
 
 const faker = require('faker');
-var db = require('./index.js');
+var database = require('./index.js');
+//const mongoose = require('mongoose');
 
 (function seeding (){
   // creating 100 entries into our database, all of them are called seedling
@@ -31,9 +33,13 @@ var db = require('./index.js');
     };
     hugeSeedingArray.push(seedling);
   }
-  db.save(hugeSeedingArray);
+  database.save(hugeSeedingArray)
+  .then(() => {
+    console.log('Seeding complete!');
+    database.db.close();
+  });
 })();
-console.log('Seeding complete!')
+
 
 
 
