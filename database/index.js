@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/UNZWILLING', { useNewUrlParser: true, useUnifiedTopology: true });
 
-const dummy = require('mongoose-dummy'); // added
-
 const db = mongoose.connection;
+
+const faker = require('faker');
+
 
 db.on('error',
   console.error.bind(console, 'MongoDB connection error:')
@@ -54,9 +55,8 @@ let fetch = () => {
 
 /*----------------------------------------------------*/
 
-let randomObj = dummy(Review, {}) // this works, but it's not saving to the DB at all
-
-console.log(randomObj);
+// var randomID = faker.unique();
+// console.log(randomID)
 
 /*----------------------------------------------------*/
 // db.reviews.find().pretty() to view data
@@ -65,46 +65,56 @@ console.log(randomObj);
 // test is working, https://mongoosejs.com/docs/models.html
 
 
-// const test = new Review ({
-//   review_id: 1,
-//   product_id: 1,
-//   review_content: 'hello',
-//   review_title: 'i hate my wife',
-//   user_id: 1,
-//   review_date: '2002-12-09',
-//   quality_rating: 2,
-//   value_rating: 2,
-//   frequency_of_use: 'none',
-//   star_rating: 1,
-//   review_recommended: true,
-//   helpful_yes: 2,
-//   helpful_no: 2,
-//   original_post_location: 'nowhere'
-// });
+const test = new Review ({
+  review_id: faker.random.number({
+    'min': 10000,
+    'max': 90000
+  }),
+
+  product_id: faker.random.number({
+    'min': 1000,
+    'max': 1099
+  }),
+  user_id: faker.random.number({
+    'min': 10000,
+    'max': 90000
+  }),
 
 
-// test.save(function(err) {
-//   if (err) {
-//     return handleError(err);
-//   }
-// });
+  review_content: faker.lorem.paragraph(),
+  review_title: faker.lorem.sentence(),
+  review_date: faker.date.recent(),
+  review_recommended: faker.random.boolean(),
+  original_post_location: faker.lorem.words(),
+
+  frequency_of_use: faker.lorem.word(),
+
+  quality_rating: faker.random.number({
+    'min': 1,
+    'max': 5
+  }),
+  value_rating: faker.random.number({
+    'min': 1,
+    'max': 5
+  }),
+  star_rating: faker.random.number({
+    'min': 1,
+    'max': 5
+  }),
+
+  helpful_yes: faker.random.number({
+    'min': 1,
+    'max': 5
+  }),
+  helpful_no: faker.random.number({
+    'min': 1,
+    'max': 5
+  })
+});
 
 
-/*
-{
-  "review_id": "Number",
-  "product_id": "Number",
-  "review_content": "String",
-  "review_title": "String",
-  "user_id": "Number",
-  "review_date": { type: Date, default: Date.now },
-  "quality_rating": "Number",
-  "value_rating": "Number",
-  "frequency_of_use": "String",
-  "star_rating": "Number",
-  "review_recommended": "Boolean",
-  "helpful_yes": "Number",
-  "helpful_no": "Number",
-  "original_post_location": "String"
-}
-*/
+test.save(function(err) {
+  if (err) {
+    console.log(err);
+  }
+});
