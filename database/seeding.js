@@ -4,6 +4,7 @@
   db.reviews.deleteMany({}) to drop all data
   db.dropDatabase(); to drop database
   db.drop.reviews()
+  db.reviews.findOne({product_id: 1})
   ----------------------------------------------------
 */
 
@@ -17,7 +18,8 @@ var database = require('./index.js');
   for (var i = 1; i < 101; i++) {
     var seedling = {
       product_id: i,
-      reviews: []
+      reviews: [],
+      aggregate_star_rating: null
     };
 
     var totalStarsForOneProduct = 0;
@@ -49,7 +51,7 @@ var database = require('./index.js');
   }
   database.save(hugeSeedingArray)
   .then(() => {
-    console.log('database/seeding.js: Seeding complete!');
+    console.log('database/seeding.js: Seeding complete! Bye bye 😙');
     database.db.close();
   });
 })();

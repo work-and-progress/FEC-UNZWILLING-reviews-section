@@ -10,13 +10,26 @@ app.listen(port, () => {
 /*----------------------------------------------*/
 
 app.get('/reviews', (req, res) => {
-  database.fetch((err, results) => {
+  database.fetchReviews((err, results) => {
     if (err) {
-      console.log('failed')
       res.status(404).send(err);
     } else {
-      console.log(results);
       res.status(200).send(results);
     }
   });
+})
+
+// get review by product id
+app.get('/review', (req, res) => {
+  console.log('Got your request! Query is ', req.query)
+  var productId = req.query.product_id;
+  database.fetchByProductId(productId)
+    .then(product => {
+      if(!product) {
+        res.status(400).send(`error finding product with Product ID: ${productId}`);
+      } else {
+        res.status(200).send(product);
+      }
+
+    })
 })
