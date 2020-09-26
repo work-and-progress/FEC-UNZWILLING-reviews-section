@@ -9,23 +9,32 @@ db.once('open', function() {
   console.log('database/index.js: Mongoose is connected to server!')
 });
 /*----------------------------------------------------*/
-let reviewSchema = mongoose.Schema({
-  review_id: Number, // how to make this into an Id
-  product_id: Number,
-  review_content: String,
-  review_title: String,
-  user_id: Number,
-  review_date: { type: Date, default: Date.now },
-  quality_rating: Number,
-  value_rating: Number,
-  frequency_of_use: String,
-  star_rating: Number,
-  // aggregate star rating
 
-  review_recommended: Boolean,
-  helpful_yes: Number,
-  helpful_no: Number,
-  original_post_location: String
+
+let childReview = mongoose.Schema(
+  {
+    review_id: Number, // how to make this into an Id
+    review_content: String,
+    review_title: String,
+    user_id: Number,
+    review_date: { type: Date, default: Date.now },
+    quality_rating: Number,
+    value_rating: Number,
+    frequency_of_use: String,
+    star_rating: Number,
+
+    // aggregate star rating
+
+    review_recommended: Boolean,
+    helpful_yes: Number,
+    helpful_no: Number,
+    original_post_location: String
+  }
+)
+
+let reviewSchema = mongoose.Schema({
+  product_id: Number,
+  reviews: [childReview]
 });
 
 let Review = mongoose.model('Review', reviewSchema);
@@ -51,7 +60,7 @@ let save = (reviews) => {
 async function fetch(callback){
   console.log('fetch invoked')
   Review.find(null, null, {
-    limit: 10
+    limit: 1
 
   }, (error, docs) => {
     if(error) {
@@ -64,5 +73,6 @@ async function fetch(callback){
 /*----------------------------------------------------*/
 module.exports = {
   save,
-  fetch
+  fetch,
+  db
 }
