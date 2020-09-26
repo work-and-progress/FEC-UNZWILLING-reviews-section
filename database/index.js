@@ -52,6 +52,7 @@ async function fetch(callback){
   console.log('fetch invoked')
   Review.find(null, null, {
     limit: 25
+
   }, (error, docs) => {
     if(error) {
       callback(error)
@@ -63,6 +64,5 @@ async function fetch(callback){
 /*----------------------------------------------------*/
 module.exports = {
   save,
-  fetch,
-  db
+  fetch
 }
