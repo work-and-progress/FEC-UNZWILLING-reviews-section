@@ -51,7 +51,7 @@ let save = (reviews) => {
 async function fetch(callback){
   console.log('fetch invoked')
   Review.find(null, null, {
-    limit: 25
+    limit: 10
 
   }, (error, docs) => {
     if(error) {

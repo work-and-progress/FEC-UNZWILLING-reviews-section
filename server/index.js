@@ -1,6 +1,5 @@
 const express = require('express');
 const database = require('../database/index.js');
-const seed = require('../database/seeding.js');
 
 const app = express();
 const port = 3000;
