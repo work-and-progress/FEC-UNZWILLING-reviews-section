@@ -20,10 +20,11 @@ var database = require('./index.js');
       reviews: []
     };
 
+    var totalStarsForOneProduct = 0;
     var randomNumberOfReviewsPerProduct = faker.random.number({ 'min': 1, 'max': 25 });
-      for (var j = 1; j < randomNumberOfReviewsPerProduct; j++) {
+      for (var j = 0; j < randomNumberOfReviewsPerProduct; j++) {
         var oneReview = {
-          review_id: j,
+          review_id: j+1,
           user_id: faker.random.number({ 'min': 10000, 'max': 90000}),
           review_content: faker.lorem.paragraph(),
           review_title: faker.lorem.sentence(),
@@ -37,8 +38,13 @@ var database = require('./index.js');
           helpful_yes: faker.random.number({ 'min': 1, 'max': 1000 }),
           helpful_no: faker.random.number({ 'min': 1, 'max': 500})
         }
+        totalStarsForOneProduct += oneReview.star_rating;
         seedling.reviews.push(oneReview);
       }
+
+    var unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
+    seedling.aggregate_star_rating = Math.round(unroundedAverageStar * 2) / 2;
+
     hugeSeedingArray.push(seedling);
   }
   database.save(hugeSeedingArray)

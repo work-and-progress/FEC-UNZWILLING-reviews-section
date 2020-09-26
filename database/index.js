@@ -22,9 +22,6 @@ let childReview = mongoose.Schema(
     value_rating: Number,
     frequency_of_use: String,
     star_rating: Number,
-
-    // aggregate star rating
-
     review_recommended: Boolean,
     helpful_yes: Number,
     helpful_no: Number,
@@ -34,6 +31,7 @@ let childReview = mongoose.Schema(
 
 let reviewSchema = mongoose.Schema({
   product_id: Number,
+  aggregate_star_rating: Number,
   reviews: [childReview]
 });
 
@@ -60,7 +58,7 @@ let save = (reviews) => {
 async function fetch(callback){
   console.log('fetch invoked')
   Review.find(null, null, {
-    limit: 1
+    limit: 10
 
   }, (error, docs) => {
     if(error) {
