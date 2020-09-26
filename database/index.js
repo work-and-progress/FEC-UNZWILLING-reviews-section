@@ -3,10 +3,10 @@ mongoose.connect('mongodb://localhost/UNZWILLING', { useNewUrlParser: true, useU
 const db = mongoose.connection;
 /*----------------------------------------------------*/
 db.on('error',
-  console.error.bind(console, 'MongoDB connection error:')
+  console.error.bind(console, 'database/index.js: MongoDB connection error:')
 );
 db.once('open', function() {
-  console.log('Mongoose is connected to server!')
+  console.log('database/index.js: Mongoose is connected to server!')
 });
 /*----------------------------------------------------*/
 let reviewSchema = mongoose.Schema({
@@ -20,6 +20,8 @@ let reviewSchema = mongoose.Schema({
   value_rating: Number,
   frequency_of_use: String,
   star_rating: Number,
+  // aggregate star rating
+
   review_recommended: Boolean,
   helpful_yes: Number,
   helpful_no: Number,
@@ -46,8 +48,17 @@ let save = (reviews) => {
 }
 
 // fetch 25 things
-let fetch = () => {
-  return Review.find().sort('_id').limit(25);
+async function fetch(callback){
+  console.log('fetch invoked')
+  Review.find(null, null, {
+    limit: 25
+  }, (error, docs) => {
+    if(error) {
+      callback(error)
+    } else {
+      callback(null, docs);
+    }
+  })
 }
 /*----------------------------------------------------*/
 module.exports = {

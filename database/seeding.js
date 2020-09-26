@@ -35,7 +35,7 @@ var database = require('./index.js');
   }
   database.save(hugeSeedingArray)
   .then(() => {
-    console.log('Seeding complete!');
+    console.log('database/seeding.js: Seeding complete!');
     database.db.close();
   });
 })();
