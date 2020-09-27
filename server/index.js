@@ -5,7 +5,8 @@ const app = express();
 const port = 3000;
 
 app.listen(port, () => {
-  console.log(`Karin's app listening at http://localhost:${port}`)
+  // eslint-disable-next-line no-console
+  console.log(`Karin's app listening at http://localhost:${port}`);
 });
 /*----------------------------------------------*/
 
@@ -17,19 +18,19 @@ app.get('/reviews', (req, res) => {
       res.status(200).send(results);
     }
   });
-})
+});
 
 // get review by product id
-app.get('/review', (req, res) => {
-  console.log('Got your request! Query is ', req.query)
-  var productId = req.query.product_id;
+app.get('/review/:productId', (req, res) => {
+  // eslint-disable-next-line no-console
+  console.log('Got your request! Query is ', req.params);
+  const { productId } = req.params;
   database.fetchByProductId(productId)
-    .then(product => {
-      if(!product) {
+    .then((product) => {
+      if (!product) {
         res.status(400).send(`error finding product with Product ID: ${productId}`);
       } else {
         res.status(200).send(product);
       }
-
-    })
-})
+    });
+});
