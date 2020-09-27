@@ -7,9 +7,10 @@ db.on('error',
   // eslint-disable-next-line no-console
   console.error.bind(console, 'database/index.js: MongoDB connection error'));
 
-db.once('open',
+db.once('open', () => {
   // eslint-disable-next-line no-console
-  console.log('database/index.js: Mongoose is connected to server!'));
+  console.log('database/index.js: Mongoose is connected to server!');
+});
 /*----------------------------------------------------*/
 const childReview = mongoose.Schema({
   review_id: Number, // how to make this into an Id
