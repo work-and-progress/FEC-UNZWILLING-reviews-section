@@ -3,27 +3,33 @@ mongoose.connect('mongodb://localhost/UNZWILLING', { useNewUrlParser: true, useU
 const db = mongoose.connection;
 /*----------------------------------------------------*/
 db.on('error',
-  console.error.bind(console, 'MongoDB connection error:')
+  console.error.bind(console, 'database/index.js: MongoDB connection error')
 );
 db.once('open', function() {
-  console.log('Mongoose is connected to server!')
+  console.log('database/index.js: Mongoose is connected to server!')
 });
 /*----------------------------------------------------*/
+let childReview = mongoose.Schema({
+    review_id: Number, // how to make this into an Id
+    review_content: String,
+    review_title: String,
+    user_id: Number,
+    review_date: { type: Date, default: Date.now },
+    quality_rating: Number,
+    value_rating: Number,
+    frequency_of_use: String,
+    star_rating: Number,
+    review_recommended: Boolean,
+    helpful_yes: Number,
+    helpful_no: Number,
+    original_post_location: String
+  }
+);
+
 let reviewSchema = mongoose.Schema({
-  review_id: Number, // how to make this into an Id
   product_id: Number,
-  review_content: String,
-  review_title: String,
-  user_id: Number,
-  review_date: { type: Date, default: Date.now },
-  quality_rating: Number,
-  value_rating: Number,
-  frequency_of_use: String,
-  star_rating: Number,
-  review_recommended: Boolean,
-  helpful_yes: Number,
-  helpful_no: Number,
-  original_post_location: String
+  aggregate_star_rating: Number,
+  reviews: [childReview]
 });
 
 let Review = mongoose.model('Review', reviewSchema);
@@ -45,13 +51,31 @@ let save = (reviews) => {
   return Promise.all(savePromises);
 }
 
-// fetch 25 things
-let fetch = () => {
-  return Review.find().sort('_id').limit(25);
+
+let fetchReviews = (callback) => {
+  console.log('fetchReviews invoked! Serving you 10 reviews 😀');
+  Review.find(null, null, {
+    limit: 10
+
+  }, (error, docs) => {
+    if(error) {
+      callback(error)
+    } else {
+      callback(null, docs);
+    }
+  })
 }
+
+
+let fetchByProductId = (productID) => {
+  console.log('fetchByProductId invoked! Param is ', productID);
+  return Review.findOne({product_id: productID});
+}
+
 /*----------------------------------------------------*/
 module.exports = {
   save,
-  fetch,
+  fetchReviews,
+  fetchByProductId,
   db
 }
