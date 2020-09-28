@@ -2,7 +2,8 @@ import React from 'react';
 
 const MostHelpfulReviews = () => (
   <div className="inline-block">
-    <h6>MostHelpfulReviews </h6>
+    <span>Most Helpful Favorable Review&nbsp;&nbsp;</span>
+    <span>Most Helpful Critical Review</span>
   </div>
 );
 
