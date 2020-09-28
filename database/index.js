@@ -14,6 +14,7 @@ db.once('open', () => {
 /*----------------------------------------------------*/
 const childReview = mongoose.Schema({
   review_id: Number, // how to make this into an Id
+  review_username: String,
   review_content: String,
   review_title: String,
   user_id: Number,
@@ -25,12 +26,14 @@ const childReview = mongoose.Schema({
   review_recommended: Boolean,
   helpful_yes: Number,
   helpful_no: Number,
-  original_post_location: String,
 });
 
 const reviewSchema = mongoose.Schema({
   product_id: Number,
+  total_number_reviews: Number,
   aggregate_star_rating: Number,
+  aggregate_quality_rating: Number,
+  aggregate_value_rating: Number,
   reviews: [childReview],
 });
 

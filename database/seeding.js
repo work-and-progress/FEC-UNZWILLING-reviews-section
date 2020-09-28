@@ -18,21 +18,30 @@ const database = require('./index.js');
   for (let i = 1; i < 101; i += 1) {
     const seedling = {
       product_id: i,
-      reviews: [],
+      total_number_reviews: null,
       aggregate_star_rating: null,
+      aggregate_quality_rating: null,
+      aggregate_value_rating: null,
+      reviews: [],
     };
 
     let totalStarsForOneProduct = 0;
+    let totalQualityForOneProduct = 0;
+    let totalValueForOneProduct = 0;
+
+    let oneStarReview = 0;
+    let twoStarReview = 0;
+
     const randomNumberOfReviewsPerProduct = faker.random.number({ min: 1, max: 25 });
     for (let j = 0; j < randomNumberOfReviewsPerProduct; j += 1) {
       const oneReview = {
         review_id: j + 1,
+        review_username: faker.internet.userName(),
         user_id: faker.random.number({ min: 10000, max: 90000 }),
         review_content: faker.lorem.paragraph(),
         review_title: faker.lorem.sentence(),
         review_date: faker.date.recent(),
         review_recommended: faker.random.boolean(),
-        original_post_location: faker.lorem.words(),
         frequency_of_use: faker.lorem.word(),
         quality_rating: faker.random.number({ min: 1, max: 5 }),
         value_rating: faker.random.number({ min: 1, max: 5 }),
@@ -40,12 +49,28 @@ const database = require('./index.js');
         helpful_yes: faker.random.number({ min: 1, max: 1000 }),
         helpful_no: faker.random.number({ min: 1, max: 500 }),
       };
+      if (oneReview.star_rating === 1) {
+        oneStarReview += 1;
+      } else if (oneReview.star_rating === 2) {
+        twoStarReview += 1;
+      }
       totalStarsForOneProduct += oneReview.star_rating;
+      totalQualityForOneProduct += oneReview.quality_rating;
+      totalValueForOneProduct += oneReview.value_rating;
+
       seedling.reviews.push(oneReview);
     }
 
     const unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.aggregate_star_rating = Math.round(unroundedAverageStar * 2) / 2;
+
+    const unroundedAverageQuality = totalQualityForOneProduct / randomNumberOfReviewsPerProduct;
+    seedling.aggregate_quality_rating = Math.round(unroundedAverageQuality * 2) / 2;
+
+    const unroundedAverageValue = totalValueForOneProduct / randomNumberOfReviewsPerProduct;
+    seedling.aggregate_value_rating = Math.round(unroundedAverageValue * 2) / 2;
+
+    seedling.total_number_reviews = randomNumberOfReviewsPerProduct;
 
     hugeSeedingArray.push(seedling);
   }

@@ -1,36 +1,43 @@
+/* eslint-disable no-console */
 import React from 'react';
-import ReviewOverview from './ReviewOverview.jsx';
-import MostHelpfulReviews from './MostHelpfulReviews.jsx';
-import SortAndProgress from './SortAndProgress.jsx';
-import IndividualReview from './IndividualReview.jsx';
-import NextPageAndProgress from './NextPageAndProgress.jsx';
-
 import axios from 'axios';
+
+import ReviewOverview from './ReviewOverview';
+import MostHelpfulReviews from './MostHelpfulReviews';
+import SortAndProgress from './SortAndProgress';
+import IndividualReview from './IndividualReview';
+import NextPageAndProgress from './NextPageAndProgress';
+
+/*--------------------------------*/
 
 export const dataReducer = (state, action) => {
   if (action.type === 'SET_ERROR') {
-    return { ...state, list: [], error: true };
+    return { ...state, oneItem: [], error: true };
   }
-  if (action.type === 'SET_LIST') {
-    return { ...state, list: action.list, error: null };
+  if (action.type === 'SET_oneItem') {
+    return { ...state, oneItem: action.oneItem, error: null };
   }
   throw new Error();
 };
 
+/*--------------------------------*/
+
 const initialData = {
-  list: [],
+  oneItem: {},
   error: null,
 };
 
 const App = () => {
-  const [counter, setCounter] = React.useState(0);
+  // const [counter, setCounter] = React.useState(0);
   const [data, dispatch] = React.useReducer(dataReducer, initialData);
 
+  // Similar to componentDidMount and componentDidUpdate:
   React.useEffect(() => {
     axios
-      .get('http://hn.algolia.com/api/v1/search?query=react')
-      .then(response => {
-        dispatch({ type: 'SET_LIST', list: response.data.hits });
+      .get('http://localhost:3000/review/1')
+      .then((response) => {
+        console.log(response.data);
+        dispatch({ type: 'SET_oneItem', oneItem: response.data });
       })
       .catch(() => {
         dispatch({ type: 'SET_ERROR' });
@@ -39,50 +46,44 @@ const App = () => {
 
   return (
     <div>
-      <h1>My Counter</h1>
-      <Counter counter={counter} />
-      <button
+      {/* <Counter counter={counter} /> */}
+      <span
+        className="hover-hand"
         type="button"
-        onClick={() => setCounter(counter + 1)}
+        // onClick=
       >
-        Increment
-      </button>
-      <button
+        Reviews &nbsp;&nbsp;
+      </span>
+      <span
+        className="hover-hand"
         type="button"
-        onClick={() => setCounter(counter - 1)}
+        // onClick=
       >
-        Decrement
-      </button>
-      <h2>My Async Data</h2>
+        Questions
+      </span>
+
+      <h5>Data from db:</h5>
       {data.error && <div className="error">Error</div>}
-      <ul>
-        {data.list.map(item => (
-          <li key={item.objectID}>{item.title}</li>
-        ))}
-      </ul>
+      <p>
+        Product ID:
+        {data.oneItem.product_id}
+      </p>
+      <p>
+        Aggregate star rating:
+        {data.oneItem.aggregate_star_rating}
+      </p>
+      <p>
+        Total number of reviews:
+        {data.oneItem.total_number_reviews}
+      </p>
     </div>
   );
 };
 
-export const Counter = ({ counter }) => (
-  <div>
-    <p>{counter}</p>
-  </div>
-);
-
-export default App;
-// const App = () => (
+// export const Counter = ({ counter }) => (
 //   <div>
-//     <div className="inline-block">
-//       <span>Reviews&nbsp;&nbsp;</span>
-//       <span>Questions</span>
-//     </div>
-//     <div>
-//       <ReviewOverview />
-//       <MostHelpfulReviews />
-//       <SortAndProgress />
-//       <IndividualReview />
-//       <NextPageAndProgress />
-//     </div>
+//     <p>{counter}</p>
 //   </div>
 // );
+
+export default App;
