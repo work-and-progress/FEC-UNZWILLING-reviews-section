@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewOverview = () => (
-  <div>
+  <div className="inline-block">
     <h6>ReviewOverview </h6>
   </div>
 );

@@ -7,14 +7,17 @@ import NextPageAndProgress from './NextPageAndProgress.jsx';
 
 const App = () => (
   <div>
-    <span>Reviews&nbsp;&nbsp;</span>
-    <span>Questions</span>
-
-    <ReviewOverview />
-    <MostHelpfulReviews />
-    <SortAndProgress />
-    <IndividualReview />
-    <NextPageAndProgress />
+    <div className="inline-block">
+      <span>Reviews&nbsp;&nbsp;</span>
+      <span>Questions</span>
+    </div>
+    <div>
+      <ReviewOverview />
+      <MostHelpfulReviews />
+      <SortAndProgress />
+      <IndividualReview />
+      <NextPageAndProgress />
+    </div>
   </div>
 );
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MostHelpfulReviews = () => (
-  <div>
+  <div className="inline-block">
     <h6>MostHelpfulReviews </h6>
   </div>
 );

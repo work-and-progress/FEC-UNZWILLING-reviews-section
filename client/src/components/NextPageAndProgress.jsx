@@ -1,7 +1,7 @@
 import React from 'react';
 
 const NextPageAndProgress = () => (
-  <div>
+  <div className="inline-block">
     <h6>NextPageAndProgress </h6>
   </div>
 );
