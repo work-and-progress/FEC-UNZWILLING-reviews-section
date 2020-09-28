@@ -1,4 +1,4 @@
 node_modules
-client/dist/bundle.js
+client/dist/main.bundle.js
 config.js
 node_modules

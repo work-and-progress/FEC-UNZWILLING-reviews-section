@@ -4,7 +4,9 @@
   "description": "UNZWILLING reviews section",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack -d --watch --open",
+
+    "start": "webpack-dev-server --open",
     "server-dev": "nodemon server/index.js",
     "seed": "node database/seeding.js"
   },
@@ -26,8 +28,10 @@
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.6",
     "nodemon": "^2.0.4",
+    "path": "^0.12.7",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

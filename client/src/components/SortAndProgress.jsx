@@ -2,7 +2,7 @@ import React from 'react';
 
 const SortAndProgress = () => (
   <div className="inline-block">
-    <h6>SortAndProgress</h6>
+    <span>0 out of 0 reviews</span>
   </div>
 );
 
