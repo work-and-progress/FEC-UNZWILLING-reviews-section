@@ -1,11 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './components/App.jsx';
 
-var App = () => {
-  return (
-    <div>
-      <h1>App.jsx is rendering</h1>
-    </div>
-  )
-}
 ReactDOM.render(<App />, document.getElementById('app'));
