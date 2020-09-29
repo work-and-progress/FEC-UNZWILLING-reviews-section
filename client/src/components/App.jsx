@@ -2,13 +2,13 @@
 import React from 'react';
 import axios from 'axios';
 
-import IndividualReview from './ReviewContent/IndividualReview';
+import ContentItem from './ReviewContent/ContentItem';
 
-import ReviewOverview from './SectionSummary/ReviewOverview';
-import MostHelpfulReviews from './SectionSummary/MostHelpfulReviews';
+import Overview from './ReviewSummary/Overview';
+import MostHelpful from './ReviewSummary/MostHelpful';
 
-import PaginationAndSort from './Pagination/PaginationAndSort';
-import PaginationAndNextPage from './Pagination/PaginationAndNextPage';
+import PaginationAndSort from './ReviewPagination/PaginationAndSort';
+import PaginationAndNextPage from './ReviewPagination/PaginationAndNextPage';
 /*--------------------------------*/
 class App extends React.Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class App extends React.Component {
           <span className="hover-hand">Questions</span>
         </div>
         <div>
-          <ReviewOverview
+          <Overview
             numberOfFiveStarReviews={aggregate_five_star_review}
             numberOfFourStarReviews={aggregate_four_star_review}
             numberOfThreeStarReviews={aggregate_three_star_review}
@@ -66,7 +66,7 @@ class App extends React.Component {
             averageQualityRating={aggregate_quality_rating}
             averageStarRating={aggregate_star_rating}
           />
-          <MostHelpfulReviews
+          <MostHelpful
             reviewList={reviews}
             mostHelpfulFavorable={most_helpful_favorable}
             mostHelpfulCritical={most_helpful_critical}
@@ -75,7 +75,7 @@ class App extends React.Component {
             totalNumberReviews={total_number_reviews}
           />
           {reviews && reviews.map((review) => (
-            <IndividualReview
+            <ContentItem
               review={review}
               key={review._id}
             />
