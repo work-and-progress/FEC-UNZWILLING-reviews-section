@@ -1,16 +1,18 @@
-/* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
 
-import ContentItem from './ReviewContent/ContentItem';
-
+// Review Summary folder
 import Overview from './ReviewSummary/Overview';
 import MostHelpful from './ReviewSummary/MostHelpful';
 
+// Pagination folder
 import PaginationAndSort from './ReviewPagination/PaginationAndSort';
 import PaginationAndNextPage from './ReviewPagination/PaginationAndNextPage';
+
+// Review Content folder
+import ContentItem from './ReviewContent/ContentItem';
 /*--------------------------------*/
-class App extends React.Component {
+const App = class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,6 +20,7 @@ class App extends React.Component {
     };
   }
 
+  /*--------------------------------*/
   componentDidMount() {
     this.getReviews();
   }
@@ -33,22 +36,27 @@ class App extends React.Component {
         console.log(error);
       });
   }
+  /*--------------------------------*/
+  // https://www.tutorialspoint.com/reactjs/reactjs_props_validation.htm
 
+
+  /*--------------------------------*/
   render() {
     const {
-      aggregate_five_star_review,
-      aggregate_four_star_review,
-      aggregate_three_star_review,
-      aggregate_two_star_review,
-      aggregate_one_star_review,
-      aggregate_value_rating,
-      aggregate_quality_rating,
-      aggregate_star_rating,
-      total_number_reviews,
+      aggregateFiveStarReview,
+      aggregateFourStarReview,
+      aggregateThreeStarReview,
+      aggregateTwoStarReview,
+      aggregateOneStarReview,
+      averageValueRating,
+      averageQualityRating,
+      averageStarRating,
+      mostHelpfulCritical,
+      mostHelpfulFavorable,
+      totalNumberReviews,
       reviews,
-      most_helpful_critical,
-      most_helpful_favorable,
     } = this.state.oneItem;
+
     return (
       <div className="container">
         <div className="block">
@@ -57,36 +65,36 @@ class App extends React.Component {
         </div>
         <div>
           <Overview
-            numberOfFiveStarReviews={aggregate_five_star_review}
-            numberOfFourStarReviews={aggregate_four_star_review}
-            numberOfThreeStarReviews={aggregate_three_star_review}
-            numberOfTwoStarReviews={aggregate_two_star_review}
-            numberOfOneStarReviews={aggregate_one_star_review}
-            averageValueRating={aggregate_value_rating}
-            averageQualityRating={aggregate_quality_rating}
-            averageStarRating={aggregate_star_rating}
+            numberOfFiveStarReviews={aggregateFiveStarReview}
+            numberOfFourStarReviews={aggregateFourStarReview}
+            numberOfThreeStarReviews={aggregateThreeStarReview}
+            numberOfTwoStarReviews={aggregateTwoStarReview}
+            numberOfOneStarReviews={aggregateOneStarReview}
+            averageValueRating={averageValueRating}
+            averageQualityRating={averageQualityRating}
+            averageStarRating={averageStarRating}
           />
           <MostHelpful
             reviewList={reviews}
-            mostHelpfulFavorable={most_helpful_favorable}
-            mostHelpfulCritical={most_helpful_critical}
+            mostHelpfulFavorable={mostHelpfulCritical}
+            mostHelpfulCritical={mostHelpfulFavorable}
           />
           <PaginationAndSort
-            totalNumberReviews={total_number_reviews}
+            totalNumberReviews={totalNumberReviews}
           />
           {reviews && reviews.map((review) => (
             <ContentItem
               review={review}
-              key={review._id}
+              key={review.reviewId}
             />
           ))}
           <PaginationAndNextPage
-            totalNumberReviews={total_number_reviews}
+            totalNumberReviews={totalNumberReviews}
           />
         </div>
       </div>
     );
   }
-}
+};
 
 export default App;

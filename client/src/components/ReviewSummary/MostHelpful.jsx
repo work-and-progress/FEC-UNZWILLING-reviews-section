@@ -14,30 +14,30 @@ const MostHelpfulReviews = ({ reviewList, mostHelpfulFavorable, mostHelpfulCriti
         <p>Most Helpful Favorable Review</p>
         <p>
           Star Rating:
-          {favorableObject && favorableObject.star_rating}
+          {favorableObject && favorableObject.starRating}
         </p>
         <span>
           Username:
-          {favorableObject && favorableObject.review_username}
+          {favorableObject && favorableObject.reviewUsername}
           &nbsp;&nbsp;
         </span>
         <span>
           Date Posted:
-          {favorableObject && favorableObject.review_date}
+          {favorableObject && favorableObject.reviewDate}
           months ago
         </span>
         <p>
           Review title:
-          {favorableObject && favorableObject.review_title}
+          {favorableObject && favorableObject.reviewTitle}
         </p>
         <p>
           Review content:
-          {favorableObject && favorableObject.review_content}
+          {favorableObject && favorableObject.reviewContent}
         </p>
         <p>
-          {favorableObject && favorableObject.helpful_yes}
+          {favorableObject && favorableObject.helpfulYes}
           of
-          {favorableObject && favorableObject.helpful_yes}
+          {favorableObject && favorableObject.helpfulYes}
           people found this helpful
         </p>
         <p>See more 4 and 5 star reviews</p>
@@ -47,30 +47,30 @@ const MostHelpfulReviews = ({ reviewList, mostHelpfulFavorable, mostHelpfulCriti
       <p>Most Helpful Critical Review</p>
         <p>
           Star Rating:
-          {criticalObject && criticalObject.star_rating}
+          {criticalObject && criticalObject.starRating}
         </p>
         <span>
           Username:
-          {criticalObject && criticalObject.review_username}
+          {criticalObject && criticalObject.reviewUsername}
           &nbsp;&nbsp;
         </span>
         <span>
           Date Posted:
-          {criticalObject && criticalObject.review_date}
+          {criticalObject && criticalObject.reviewDate}
           months ago
         </span>
         <p>
           Review title:
-          {criticalObject && criticalObject.review_title}
+          {criticalObject && criticalObject.reviewTitle}
         </p>
         <p>
           Review content:
-          {criticalObject && criticalObject.review_content}
+          {criticalObject && criticalObject.reviewContent}
         </p>
         <p>
-          {criticalObject && criticalObject.helpful_yes}
+          {criticalObject && criticalObject.helpfulYes}
           of
-          {criticalObject && criticalObject.helpful_yes}
+          {criticalObject && criticalObject.helpfulYes}
           people found this helpful
         </p>
         <p>See more 1, 2, and 3 star reviews</p>

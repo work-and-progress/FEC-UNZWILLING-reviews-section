@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CSSModules from 'react-css-modules';
+import styles from './ReviewSummary.module.css';
 
-const ReviewOverview = (props) => {
-  ReviewOverview.propTypes = {
+
+const Overview = (props) => {
+  Overview.propTypes = {
     numberOfFiveStarReviews: PropTypes.number,
   };
-  ReviewOverview.defaultProps = {
+  Overview.defaultProps = {
     numberOfFiveStarReviews: 0,
   };
   const {
@@ -18,6 +21,7 @@ const ReviewOverview = (props) => {
     averageQualityRating,
     averageValueRating,
   } = props;
+
   return (
     <div className="block">
       <div className="inline-block">
@@ -65,4 +69,4 @@ const ReviewOverview = (props) => {
   );
 };
 
-export default ReviewOverview;
+export default Overview;

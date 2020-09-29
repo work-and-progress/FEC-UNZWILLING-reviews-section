@@ -4,11 +4,11 @@ const database = require('../database/index.js');
 const app = express();
 const port = 3000;
 
+const path = require("path");
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
 const cors = require('cors');
 app.use(cors());
-
-// const path = require("path");
-// app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.listen(port, () => {
   // eslint-disable-next-line no-console

@@ -13,34 +13,37 @@ db.once('open', () => {
 });
 /*----------------------------------------------------*/
 const childReview = mongoose.Schema({
-  review_id: Number, // how to make this into an Id
-  review_username: String,
-  review_content: String,
-  review_title: String,
-  user_id: Number,
-  review_date: Number,
-  quality_rating: Number,
-  value_rating: Number,
-  frequency_of_use: String,
-  star_rating: Number,
-  review_recommended: Boolean,
-  helpful_yes: Number,
-  helpful_no: Number,
+  reviewId: Number, // how to make this into an Id
+  reviewUsername: String,
+  reviewContent: String,
+  reviewTitle: String,
+  userId: Number,
+  reviewDate: Number,
+  qualityRating: Number,
+  valueRating: Number,
+  frequencyOfUse: String,
+  starRating: Number,
+  reviewRecommended: Boolean,
+  helpfulYes: Number,
+  helpfulNo: Number,
 });
 
 const reviewSchema = mongoose.Schema({
-  product_id: Number,
-  total_number_reviews: Number,
-  aggregate_star_rating: Number,
-  aggregate_quality_rating: Number,
-  aggregate_value_rating: Number,
-  aggregate_one_star_review: Number,
-  aggregate_two_star_review: Number,
-  aggregate_three_star_review: Number,
-  aggregate_four_star_review: Number,
-  aggregate_five_star_review: Number,
-  most_helpful_favorable: Number, // id number of review
-  most_helpful_critical: Number, // id number of review
+  productId: Number,
+  totalNumberReviews: Number,
+
+  averageStarRating: Number,
+  averageQualityRating: Number,
+  averageValueRating: Number,
+
+  aggregateOneStarReview: Number,
+  aggregateTwoStarReview: Number,
+  aggregateThreeStarReview: Number,
+  aggregateFourStarReview: Number,
+  aggregateFiveStarReview: Number,
+
+  mostHelpfulFavorable: Number, // id number of review
+  mostHelpfulCritical: Number, // id number of review
   reviews: [childReview],
 });
 
@@ -49,7 +52,7 @@ const Review = mongoose.model('Review', reviewSchema);
 const save = (reviews) => {
   const savePromises = []; // empty array, we'll be pushing all the async actions into an array
   reviews.forEach((review) => {
-    const filter = { product_id: review.product_id };
+    const filter = { productId: review.productId };
     savePromises.push(
       Review.findOneAndUpdate(filter, review, {
         new: true,
@@ -78,7 +81,7 @@ const fetchReviews = (callback) => {
   });
 };
 
-const fetchByProductId = (productID) => Review.findOne({ product_id: productID });
+const fetchByProductId = (productID) => Review.findOne({ productId: productID });
 // console.log('fetchByProductId invoked! Param is ', productID);
 
 /*----------------------------------------------------*/

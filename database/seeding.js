@@ -17,18 +17,21 @@ const database = require('./index.js');
   const hugeSeedingArray = [];
   for (let i = 1; i < 101; i += 1) {
     const seedling = {
-      product_id: i,
-      total_number_reviews: null,
-      aggregate_star_rating: null,
-      aggregate_quality_rating: null,
-      aggregate_value_rating: null,
-      aggregate_one_star_review: null,
-      aggregate_two_star_review: null,
-      aggregate_three_star_review: null,
-      aggregate_four_star_review: null,
-      aggregate_five_star_review: null,
-      most_helpful_favorable: 0,
-      most_helpful_critical: 0,
+      productId: i,
+      totalNumberReviews: null,
+
+      averageStarRating: null,
+      averageQualityRating: null,
+      averageValueRating: null,
+
+      aggregateOneStarReview: null,
+      aggregateTwoStarReview: null,
+      aggregateThreeStarReview: null,
+      aggregateFourStarReview: null,
+      aggregateFiveStarReview: null,
+
+      mostHelpfulFavorable: 0,
+      mostHelpfulCritical: 0,
       reviews: [],
     };
     let totalStarsForOneProduct = 0;
@@ -45,62 +48,63 @@ const database = require('./index.js');
     const arrayForMostCritical = [];
     for (let j = 0; j < randomNumberOfReviewsPerProduct; j += 1) {
       const oneReview = {
-        review_id: j + 1,
-        review_username: faker.internet.userName(),
-        user_id: faker.random.number({ min: 10000, max: 90000 }),
-        review_content: faker.lorem.paragraph(),
-        review_title: faker.company.bsAdjective().toUpperCase(),
-        review_recommended: faker.random.boolean(),
-        quality_rating: faker.random.number({ min: 1, max: 5 }),
-        value_rating: faker.random.number({ min: 1, max: 5 }),
-        star_rating: faker.random.number({ min: 1, max: 5 }),
-        helpful_yes: faker.random.number({ min: 1, max: 50 }),
-        helpful_no: faker.random.number({ min: 1, max: 50 }),
-        frequency_of_use: null,
-        review_date: null,
+        reviewId: j + 1,
+        reviewUsername: faker.internet.userName(),
+        userId: faker.random.number({ min: 10000, max: 90000 }),
+        reviewContent: faker.lorem.paragraph(),
+        reviewTitle: faker.company.bsAdjective().toUpperCase(),
+        reviewRecommended: faker.random.boolean(),
+        qualityRating: faker.random.number({ min: 1, max: 5 }),
+        valueRating: faker.random.number({ min: 1, max: 5 }),
+        starRating: faker.random.number({ min: 1, max: 5 }),
+        helpfulYes: faker.random.number({ min: 1, max: 50 }),
+        helpfulNo: faker.random.number({ min: 1, max: 50 }),
+
+        frequencyOfUse: null,
+        reviewDate: null,
       };
       /*--------------------------------*/
       // eslint-disable-next-line max-len
-      if (oneReview.star_rating === 1 || oneReview.star_rating === 2 || oneReview.star_rating === 3) {
+      if (oneReview.starRating === 1 || oneReview.starRating === 2 || oneReview.starRating === 3) {
         arrayForMostCritical.push({
-          starRating: oneReview.star_rating,
-          helpfulScore: oneReview.helpful_yes,
-          reviewID: oneReview.review_id,
+          starRating: oneReview.starRating,
+          helpfulScore: oneReview.helpfulYes,
+          reviewID: oneReview.reviewId,
         });
       } else {
         arrayForMostFavorable.push({
-          starRating: oneReview.star_rating,
-          helpfulScore: oneReview.helpful_yes,
-          reviewID: oneReview.review_id,
+          starRating: oneReview.starRating,
+          helpfulScore: oneReview.helpfulYes,
+          reviewID: oneReview.reviewId,
         });
       }
       /*--------------------------------*/
       const randomNumberForFrequencyOfUse = faker.random.number({ min: 0, max: 5 });
       const frequencyOfUseOptions = ['Daily', 'A few times per week', 'Once per week', 'Monthly', 'A few times per year', 'Other'];
       for (let k = 0; k < frequencyOfUseOptions.length; k += 1) {
-        oneReview.frequency_of_use = frequencyOfUseOptions[randomNumberForFrequencyOfUse];
+        oneReview.frequencyOfUse = frequencyOfUseOptions[randomNumberForFrequencyOfUse];
       }
       /*--------------------------------*/
       const randomDate = faker.date.past();
       const dateNow = Date.now();
       const diff = new Date(dateNow - randomDate);
-      oneReview.review_date = diff.getUTCMonth();
+      oneReview.reviewDate = diff.getUTCMonth();
       /*--------------------------------*/
-      if (oneReview.star_rating === 1) {
+      if (oneReview.starRating === 1) {
         oneStarReview += 1;
-      } else if (oneReview.star_rating === 2) {
+      } else if (oneReview.starRating === 2) {
         twoStarReview += 1;
-      } else if (oneReview.star_rating === 3) {
+      } else if (oneReview.starRating === 3) {
         threeStarReview += 1;
-      } else if (oneReview.star_rating === 4) {
+      } else if (oneReview.starRating === 4) {
         fourStarReview += 1;
       } else {
         fiveStarReview += 1;
       }
       /*--------------------------------*/
-      totalStarsForOneProduct += oneReview.star_rating;
-      totalQualityForOneProduct += oneReview.quality_rating;
-      totalValueForOneProduct += oneReview.value_rating;
+      totalStarsForOneProduct += oneReview.starRating;
+      totalQualityForOneProduct += oneReview.qualityRating;
+      totalValueForOneProduct += oneReview.valueRating;
       /*--------------------------------*/
       // push one review into the array of reviews associated with one Product ID
       seedling.reviews.push(oneReview);
@@ -127,8 +131,8 @@ const database = require('./index.js');
     console.log('mostHelpfulFavorable: ', mostHelpfulFavorable);
     console.log('mostHelpfulCritical: ', mostHelpfulCritical);
     console.log('---------------')
-    seedling.most_helpful_favorable = mostHelpfulFavorable.reviewID;
-    seedling.most_helpful_critical = mostHelpfulCritical.reviewID;
+    seedling.mostHelpfulFavorable = mostHelpfulFavorable.reviewID;
+    seedling.mostHelpfulCritical = mostHelpfulCritical.reviewID;
 
     // console.log('most favorable ', arrayForMostFavorable);
     // eslint-disable-next-line max-len
@@ -140,30 +144,30 @@ const database = require('./index.js');
 
     /*--------------------------------*/
     // total one star reviews
-    seedling.aggregate_one_star_review = oneStarReview;
+    seedling.aggregateOneStarReview = oneStarReview;
     // total two star reviews
-    seedling.aggregate_two_star_review = twoStarReview;
+    seedling.aggregateTwoStarReview = twoStarReview;
     // total three star reviews
-    seedling.aggregate_three_star_review = threeStarReview;
+    seedling.aggregateThreeStarReview = threeStarReview;
     // total four star reviews
-    seedling.aggregate_four_star_review = fourStarReview;
+    seedling.aggregateFourStarReview = fourStarReview;
     // total four star reviews
-    seedling.aggregate_five_star_review = fiveStarReview;
+    seedling.aggregateFiveStarReview = fiveStarReview;
     /*--------------------------------*/
     // Average Star rating
     const unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
-    seedling.aggregate_star_rating = Math.round(unroundedAverageStar * 2) / 2;
+    seedling.averageStarRating = Math.round(unroundedAverageStar * 2) / 2;
 
     // Average Quality rating
     const unroundedAverageQuality = totalQualityForOneProduct / randomNumberOfReviewsPerProduct;
-    seedling.aggregate_quality_rating = Math.round(unroundedAverageQuality * 2) / 2;
+    seedling.averageQualityRating = Math.round(unroundedAverageQuality * 2) / 2;
 
     // Average Value rating
     const unroundedAverageValue = totalValueForOneProduct / randomNumberOfReviewsPerProduct;
-    seedling.aggregate_value_rating = Math.round(unroundedAverageValue * 2) / 2;
+    seedling.averageValueRating = Math.round(unroundedAverageValue * 2) / 2;
     /*--------------------------------*/
     // Total number of reviews
-    seedling.total_number_reviews = randomNumberOfReviewsPerProduct;
+    seedling.totalNumberReviews = randomNumberOfReviewsPerProduct;
     /*--------------------------------*/
     // push into huge array
     hugeSeedingArray.push(seedling);
