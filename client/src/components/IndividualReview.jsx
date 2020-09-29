@@ -1,7 +1,7 @@
 import React from 'react';
 
 const IndividualReview = () => (
-  <div className="inline-block">
+  <div className="block">
     <span>username</span>
     <br></br>
     <span>Review title</span>

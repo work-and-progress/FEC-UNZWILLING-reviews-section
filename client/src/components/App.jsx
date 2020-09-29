@@ -5,7 +5,7 @@ import axios from 'axios';
 import ReviewOverview from './ReviewOverview';
 import MostHelpfulReviews from './MostHelpfulReviews';
 import SortAndProgress from './SortAndProgress';
-import IndividualReview from './IndividualReview';
+import Reviews from './Reviews';
 import NextPageAndProgress from './NextPageAndProgress';
 
 /*--------------------------------*/
@@ -35,17 +35,36 @@ class App extends React.Component {
   }
 
   render() {
+    const {
+      aggregate_five_star_review,
+      aggregate_four_star_review,
+      aggregate_three_star_review,
+      aggregate_two_star_review,
+      aggregate_one_star_review,
+      aggregate_value_rating,
+      aggregate_quality_rating,
+      aggregate_star_rating
+    } = this.state.oneItem;
     return (
-      <div>
-        <div className="inline-block">
+      <div className="container">
+        <div className="block">
           <span className="hover-hand">Reviews&nbsp;&nbsp;</span>
           <span className="hover-hand">Questions</span>
         </div>
         <div>
-          <ReviewOverview />
+          <ReviewOverview
+            numberOfFiveStarReviews={aggregate_five_star_review}
+            numberOfFourStarReviews={aggregate_four_star_review}
+            numberOfThreeStarReviews={aggregate_three_star_review}
+            numberOfTwoStarReviews={aggregate_two_star_review}
+            numberOfOneStarReviews={aggregate_one_star_review}
+            averageValueRating={aggregate_value_rating}
+            averageQualityRating={aggregate_quality_rating}
+            averageStarRating={aggregate_star_rating}
+          />
           <MostHelpfulReviews />
           <SortAndProgress />
-          <IndividualReview />
+          <Reviews />
           <NextPageAndProgress />
         </div>
       </div>
