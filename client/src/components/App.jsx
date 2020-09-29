@@ -45,6 +45,8 @@ class App extends React.Component {
       aggregate_star_rating,
       total_number_reviews,
       reviews,
+      most_helpful_critical,
+      most_helpful_favorable,
     } = this.state.oneItem;
     return (
       <div className="container">
@@ -63,7 +65,11 @@ class App extends React.Component {
             averageQualityRating={aggregate_quality_rating}
             averageStarRating={aggregate_star_rating}
           />
-          <MostHelpfulReviews />
+          <MostHelpfulReviews
+            reviewList={reviews}
+            mostHelpfulFavorable={most_helpful_favorable}
+            mostHelpfulCritical={most_helpful_critical}
+          />
           <SortAndProgress
             totalNumberReviews={total_number_reviews}
           />

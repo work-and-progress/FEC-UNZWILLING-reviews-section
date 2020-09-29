@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import IndividualReview from './IndividualReview';
 
 const Reviews = ({ reviewList }) => {
-  console.log('reviews props', reviewList);
+  //console.log('reviews props', reviewList);
   Reviews.propTypes = {
     reviewList: PropTypes.array,
   };

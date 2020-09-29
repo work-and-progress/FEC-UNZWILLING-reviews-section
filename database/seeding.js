@@ -27,6 +27,8 @@ const database = require('./index.js');
       aggregate_three_star_review: null,
       aggregate_four_star_review: null,
       aggregate_five_star_review: null,
+      most_helpful_favorable: 0,
+      most_helpful_critical: 0,
       reviews: [],
     };
     let totalStarsForOneProduct = 0;
@@ -39,13 +41,15 @@ const database = require('./index.js');
     let fiveStarReview = 0;
     /*--------------------------------*/
     const randomNumberOfReviewsPerProduct = faker.random.number({ min: 1, max: 25 });
+    const arrayForMostFavorable = [];
+    const arrayForMostCritical = [];
     for (let j = 0; j < randomNumberOfReviewsPerProduct; j += 1) {
       const oneReview = {
         review_id: j + 1,
         review_username: faker.internet.userName(),
         user_id: faker.random.number({ min: 10000, max: 90000 }),
         review_content: faker.lorem.paragraph(),
-        review_title: faker.lorem.sentence(),
+        review_title: faker.company.bsAdjective().toUpperCase(),
         review_recommended: faker.random.boolean(),
         quality_rating: faker.random.number({ min: 1, max: 5 }),
         value_rating: faker.random.number({ min: 1, max: 5 }),
@@ -55,6 +59,21 @@ const database = require('./index.js');
         frequency_of_use: null,
         review_date: null,
       };
+      /*--------------------------------*/
+      // eslint-disable-next-line max-len
+      if (oneReview.star_rating === 1 || oneReview.star_rating === 2 || oneReview.star_rating === 3) {
+        arrayForMostCritical.push({
+          starRating: oneReview.star_rating,
+          helpfulScore: oneReview.helpful_yes,
+          reviewID: oneReview.review_id,
+        });
+      } else {
+        arrayForMostFavorable.push({
+          starRating: oneReview.star_rating,
+          helpfulScore: oneReview.helpful_yes,
+          reviewID: oneReview.review_id,
+        });
+      }
       /*--------------------------------*/
       const randomNumberForFrequencyOfUse = faker.random.number({ min: 0, max: 5 });
       const frequencyOfUseOptions = ['Daily', 'A few times per week', 'Once per week', 'Monthly', 'A few times per year', 'Other'];
@@ -86,6 +105,36 @@ const database = require('./index.js');
       // push one review into the array of reviews associated with one Product ID
       seedling.reviews.push(oneReview);
     } // END OF FOR LOOP
+    /*--------------------------------*/
+    // sort this the array by star rating and helpful score values in ascending
+    // order prioritizing on the star rating value
+    // https://stackoverflow.com/questions/4576714/sort-by-two-values-prioritizing-on-one-of-them
+    // eslint-disable-next-line max-len
+    arrayForMostFavorable.sort((a, b) => a.helpfulScore - b.helpfulScore || a.starRating - b.starRating);
+    // eslint-disable-next-line max-len
+    arrayForMostCritical.sort((a, b) => a.helpfulScore - b.helpfulScore || a.starRating - b.starRating);
+    // honestly not sure how they sort it...
+
+    const mostHelpfulFavorable = arrayForMostFavorable[arrayForMostFavorable.length - 1]
+    || {
+      reviewID: 0,
+    };
+    const mostHelpfulCritical = arrayForMostCritical[arrayForMostCritical.length - 1]
+    || {
+      reviewID: 0,
+    };
+
+    seedling.most_helpful_favorable = mostHelpfulFavorable.reviewID;
+    seedling.most_helpful_critical = mostHelpfulCritical.reviewID;
+
+    // console.log('most favorable ', arrayForMostFavorable);
+    // eslint-disable-next-line max-len
+    // console.log(' winner most favorable: ', arrayForMostFavorable[arrayForMostFavorable.length - 1])
+    // console.log(' id of WINNER IS: ', mostHelpfulFavorable.reviewID || 0);
+    // console.log('--------------------')
+    // console.log('most critical ', arrayForMostCritical);
+    // console.log(' winner most critical: ', arrayForMostCritical[arrayForMostCritical.length - 1])
+
     /*--------------------------------*/
     // total one star reviews
     seedling.aggregate_one_star_review = oneStarReview;

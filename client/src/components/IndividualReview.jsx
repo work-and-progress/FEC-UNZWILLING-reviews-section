@@ -1,7 +1,6 @@
 import React from 'react';
 
 const IndividualReview = ({review}) => {
-  console.log('props in indiv review', review)
   return (
     <div className="block">
       <div className="inline-block">
