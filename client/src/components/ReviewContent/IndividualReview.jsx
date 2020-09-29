@@ -1,7 +1,6 @@
 import React from 'react';
 
-const IndividualReview = ({review}) => {
-  return (
+const IndividualReview = ({review}) => (
     <div className="block">
       <div className="inline-block">
         <span>Star Rating: {review.star_rating}&nbsp;&nbsp;</span>
@@ -24,6 +23,5 @@ const IndividualReview = ({review}) => {
       </div>
   </div>
   );
-};
 
 export default IndividualReview;

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const NextPageAndProgress = ({ totalNumberReviews }) => (
+const PaginationAndSort = ({ totalNumberReviews }) => (
   <div className="block">
     <span>{totalNumberReviews} out of {totalNumberReviews} reviews</span>
   </div>
 );
 
-export default NextPageAndProgress;
+export default PaginationAndSort;

@@ -1,14 +1,12 @@
 import React from 'react';
 
 const MostHelpfulReviews = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) => {
-  const helpfulFavorable = mostHelpfulFavorable;
+  // turn into an index of an array, whereas mostHelpfulFavorable is an ID, which begins at 1
+  const helpfulFavorable = mostHelpfulFavorable - 1;
   const favorableObject = reviewList && reviewList[helpfulFavorable];
-  console.log('favorable object ', favorableObject);
 
-  const helpfulCritical = mostHelpfulCritical;
+  const helpfulCritical = mostHelpfulCritical - 1;
   const criticalObject = reviewList && reviewList[helpfulCritical];
-  console.log('critical object ', criticalObject);
-
 
   return (
     <div className="block">
@@ -80,7 +78,6 @@ const MostHelpfulReviews = ({ reviewList, mostHelpfulFavorable, mostHelpfulCriti
 
     </div>
   );
-
 };
 
 export default MostHelpfulReviews;

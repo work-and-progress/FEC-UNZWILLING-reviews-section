@@ -2,11 +2,13 @@
 import React from 'react';
 import axios from 'axios';
 
-import ReviewOverview from './ReviewOverview';
-import MostHelpfulReviews from './MostHelpfulReviews';
-import SortAndProgress from './SortAndProgress';
-import Reviews from './Reviews';
-import NextPageAndProgress from './NextPageAndProgress';
+import IndividualReview from './ReviewContent/IndividualReview';
+
+import ReviewOverview from './SectionSummary/ReviewOverview';
+import MostHelpfulReviews from './SectionSummary/MostHelpfulReviews';
+
+import PaginationAndSort from './Pagination/PaginationAndSort';
+import PaginationAndNextPage from './Pagination/PaginationAndNextPage';
 /*--------------------------------*/
 class App extends React.Component {
   constructor(props) {
@@ -17,16 +19,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getTodos();
+    this.getReviews();
   }
 
-  getTodos() {
+  getReviews() {
     axios.get('http://localhost:3000/review/1')
       .then((response) => {
         this.setState({
           oneItem: response.data,
         });
-        console.log('ONEITEM IS ', this.state.oneItem);
       })
       .catch((error) => {
         console.log(error);
@@ -70,13 +71,16 @@ class App extends React.Component {
             mostHelpfulFavorable={most_helpful_favorable}
             mostHelpfulCritical={most_helpful_critical}
           />
-          <SortAndProgress
+          <PaginationAndSort
             totalNumberReviews={total_number_reviews}
           />
-          <Reviews
-            reviewList={reviews}
-          />
-          <NextPageAndProgress
+          {reviews && reviews.map((review) => (
+            <IndividualReview
+              review={review}
+              key={review._id}
+            />
+          ))}
+          <PaginationAndNextPage
             totalNumberReviews={total_number_reviews}
           />
         </div>
