@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SortAndProgress = () => (
+const SortAndProgress = ({ totalNumberReviews }) => (
   <div className="block">
-    <span>0 out of 0 reviews, Sort</span>
+    <span>{totalNumberReviews} out of {totalNumberReviews} reviews</span>
   </div>
 );
 

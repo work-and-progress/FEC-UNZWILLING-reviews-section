@@ -7,7 +7,6 @@ import MostHelpfulReviews from './MostHelpfulReviews';
 import SortAndProgress from './SortAndProgress';
 import Reviews from './Reviews';
 import NextPageAndProgress from './NextPageAndProgress';
-
 /*--------------------------------*/
 class App extends React.Component {
   constructor(props) {
@@ -43,7 +42,9 @@ class App extends React.Component {
       aggregate_one_star_review,
       aggregate_value_rating,
       aggregate_quality_rating,
-      aggregate_star_rating
+      aggregate_star_rating,
+      total_number_reviews,
+      reviews,
     } = this.state.oneItem;
     return (
       <div className="container">
@@ -63,9 +64,15 @@ class App extends React.Component {
             averageStarRating={aggregate_star_rating}
           />
           <MostHelpfulReviews />
-          <SortAndProgress />
-          <Reviews />
-          <NextPageAndProgress />
+          <SortAndProgress
+            totalNumberReviews={total_number_reviews}
+          />
+          <Reviews
+            reviewList={reviews}
+          />
+          <NextPageAndProgress
+            totalNumberReviews={total_number_reviews}
+          />
         </div>
       </div>
     );

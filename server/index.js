@@ -29,7 +29,7 @@ app.get('/reviews', (req, res) => {
 // get review by product id
 app.get('/review/:productId', (req, res) => {
   // eslint-disable-next-line no-console
-  console.log('Got your request! Query is ', req.params);
+  // console.log('Got your request! Query is ', req.params);
   const { productId } = req.params;
   database.fetchByProductId(productId)
     .then((product) => {

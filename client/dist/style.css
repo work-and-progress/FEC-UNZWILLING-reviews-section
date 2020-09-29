@@ -9,10 +9,20 @@
   white-space: normal;
 }
 
+.inline-block-100 {
+  display: inline-block;
+  width: 100%;
+  white-space: normal;
+}
+
+
 .hover-hand {
   cursor: pointer;
 }
 
 .container {
   white-space: nowrap;
+}
+.overflow {
+  text-overflow: ellipsis;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const NextPageAndProgress = () => (
+const NextPageAndProgress = ({ totalNumberReviews }) => (
   <div className="block">
-    <span>0 out of 0 reviews, Next Page</span>
+    <span>{totalNumberReviews} out of {totalNumberReviews} reviews</span>
   </div>
 );
 
