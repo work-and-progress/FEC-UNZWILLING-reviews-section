@@ -124,6 +124,9 @@ const database = require('./index.js');
       reviewID: 0,
     };
 
+    console.log('mostHelpfulFavorable: ', mostHelpfulFavorable);
+    console.log('mostHelpfulCritical: ', mostHelpfulCritical);
+    console.log('---------------')
     seedling.most_helpful_favorable = mostHelpfulFavorable.reviewID;
     seedling.most_helpful_critical = mostHelpfulCritical.reviewID;
 
