@@ -7,7 +7,7 @@ const IndividualReview = ({review}) => {
       <div className="inline-block">
         <span>Star Rating: {review.star_rating}&nbsp;&nbsp;</span>
         <span>Username: {review.review_username}&nbsp;&nbsp;</span>
-        <span>Date Posted: {review.review_date}</span>
+        <span>Date Posted: {review.review_date} months ago</span>
         <p>Review title: {review.review_title}</p>
         <span>
           Review content: {review.review_content}

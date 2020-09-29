@@ -18,7 +18,7 @@ const childReview = mongoose.Schema({
   review_content: String,
   review_title: String,
   user_id: Number,
-  review_date: { type: Date, default: Date.now },
+  review_date: Number,
   quality_rating: Number,
   value_rating: Number,
   frequency_of_use: String,

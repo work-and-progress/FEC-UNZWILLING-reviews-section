@@ -46,15 +46,26 @@ const database = require('./index.js');
         user_id: faker.random.number({ min: 10000, max: 90000 }),
         review_content: faker.lorem.paragraph(),
         review_title: faker.lorem.sentence(),
-        review_date: faker.date.recent(),
         review_recommended: faker.random.boolean(),
-        frequency_of_use: faker.lorem.word(),
         quality_rating: faker.random.number({ min: 1, max: 5 }),
         value_rating: faker.random.number({ min: 1, max: 5 }),
         star_rating: faker.random.number({ min: 1, max: 5 }),
-        helpful_yes: faker.random.number({ min: 1, max: 1000 }),
-        helpful_no: faker.random.number({ min: 1, max: 500 }),
+        helpful_yes: faker.random.number({ min: 1, max: 50 }),
+        helpful_no: faker.random.number({ min: 1, max: 50 }),
+        frequency_of_use: null,
+        review_date: null,
       };
+      /*--------------------------------*/
+      const randomNumberForFrequencyOfUse = faker.random.number({ min: 0, max: 5 });
+      const frequencyOfUseOptions = ['Daily', 'A few times per week', 'Once per week', 'Monthly', 'A few times per year', 'Other'];
+      for (let k = 0; k < frequencyOfUseOptions.length; k += 1) {
+        oneReview.frequency_of_use = frequencyOfUseOptions[randomNumberForFrequencyOfUse];
+      }
+      /*--------------------------------*/
+      const randomDate = faker.date.past();
+      const dateNow = Date.now();
+      const diff = new Date(dateNow - randomDate);
+      oneReview.review_date = diff.getUTCMonth();
       /*--------------------------------*/
       if (oneReview.star_rating === 1) {
         oneStarReview += 1;
@@ -71,27 +82,38 @@ const database = require('./index.js');
       totalStarsForOneProduct += oneReview.star_rating;
       totalQualityForOneProduct += oneReview.quality_rating;
       totalValueForOneProduct += oneReview.value_rating;
-
+      /*--------------------------------*/
+      // push one review into the array of reviews associated with one Product ID
       seedling.reviews.push(oneReview);
-    }
+    } // END OF FOR LOOP
     /*--------------------------------*/
+    // total one star reviews
     seedling.aggregate_one_star_review = oneStarReview;
+    // total two star reviews
     seedling.aggregate_two_star_review = twoStarReview;
+    // total three star reviews
     seedling.aggregate_three_star_review = threeStarReview;
+    // total four star reviews
     seedling.aggregate_four_star_review = fourStarReview;
+    // total four star reviews
     seedling.aggregate_five_star_review = fiveStarReview;
-
+    /*--------------------------------*/
+    // Average Star rating
     const unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.aggregate_star_rating = Math.round(unroundedAverageStar * 2) / 2;
 
+    // Average Quality rating
     const unroundedAverageQuality = totalQualityForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.aggregate_quality_rating = Math.round(unroundedAverageQuality * 2) / 2;
 
+    // Average Value rating
     const unroundedAverageValue = totalValueForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.aggregate_value_rating = Math.round(unroundedAverageValue * 2) / 2;
-
+    /*--------------------------------*/
+    // Total number of reviews
     seedling.total_number_reviews = randomNumberOfReviewsPerProduct;
-
+    /*--------------------------------*/
+    // push into huge array
     hugeSeedingArray.push(seedling);
   }
   database.save(hugeSeedingArray)
