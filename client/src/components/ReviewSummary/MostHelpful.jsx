@@ -1,7 +1,51 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const MostHelpfulReviews = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) => {
+const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) => {
   // turn into an index of an array, whereas mostHelpfulFavorable is an ID, which begins at 1
+
+  MostHelpful.propTypes = {
+    mostHelpfulFavorable: PropTypes.number,
+    mostHelpfulCritical: PropTypes.number,
+    reviewList: PropTypes.arrayOf(
+      PropTypes.shape({
+        reviewId: PropTypes.number,
+        reviewUsername: PropTypes.string,
+        reviewContent: PropTypes.string,
+        reviewTitle: PropTypes.string,
+        userId: PropTypes.number,
+        reviewDate: PropTypes.number,
+        qualityRating: PropTypes.number,
+        valueRating: PropTypes.number,
+        frequencyOfUse: PropTypes.string,
+        starRating: PropTypes.number,
+        reviewRecommended: PropTypes.boolean,
+        helpfulYes: PropTypes.number,
+        helpfulNo: PropTypes.number,
+      }),
+    ),
+  };
+
+  MostHelpful.defaultProps = {
+    mostHelpfulFavorable: 0,
+    mostHelpfulCritical: 0,
+    reviewList: [{
+      reviewId: 0,
+      reviewUsername: 'default',
+      reviewContent: 'default',
+      reviewTitle: 'default',
+      userId: 0,
+      reviewDate: 0,
+      qualityRating: 0,
+      valueRating: 0,
+      frequencyOfUse: 'default',
+      starRating: 0,
+      reviewRecommended: true,
+      helpfulYes: 0,
+      helpfulNo: 0,
+    }],
+  };
+
   const helpfulFavorable = mostHelpfulFavorable - 1;
   const favorableObject = reviewList && reviewList[helpfulFavorable];
 
@@ -80,4 +124,4 @@ const MostHelpfulReviews = ({ reviewList, mostHelpfulFavorable, mostHelpfulCriti
   );
 };
 
-export default MostHelpfulReviews;
+export default MostHelpful;
