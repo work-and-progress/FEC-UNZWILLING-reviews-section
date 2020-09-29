@@ -7,8 +7,29 @@ module.exports = {
 
   module: {
     rules: [
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.css$/, loader: ['style-loader', 'css-loader']},
+      {
+        test: [/\.jsx$/],
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
+        },
+      },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+        ],
+      },
     ],
   },
   output: {
