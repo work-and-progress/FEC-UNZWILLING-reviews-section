@@ -22,16 +22,22 @@ const database = require('./index.js');
       aggregate_star_rating: null,
       aggregate_quality_rating: null,
       aggregate_value_rating: null,
+      aggregate_one_star_review: null,
+      aggregate_two_star_review: null,
+      aggregate_three_star_review: null,
+      aggregate_four_star_review: null,
+      aggregate_five_star_review: null,
       reviews: [],
     };
-
     let totalStarsForOneProduct = 0;
     let totalQualityForOneProduct = 0;
     let totalValueForOneProduct = 0;
-
     let oneStarReview = 0;
     let twoStarReview = 0;
-
+    let threeStarReview = 0;
+    let fourStarReview = 0;
+    let fiveStarReview = 0;
+    /*--------------------------------*/
     const randomNumberOfReviewsPerProduct = faker.random.number({ min: 1, max: 25 });
     for (let j = 0; j < randomNumberOfReviewsPerProduct; j += 1) {
       const oneReview = {
@@ -49,17 +55,31 @@ const database = require('./index.js');
         helpful_yes: faker.random.number({ min: 1, max: 1000 }),
         helpful_no: faker.random.number({ min: 1, max: 500 }),
       };
+      /*--------------------------------*/
       if (oneReview.star_rating === 1) {
         oneStarReview += 1;
       } else if (oneReview.star_rating === 2) {
         twoStarReview += 1;
+      } else if (oneReview.star_rating === 3) {
+        threeStarReview += 1;
+      } else if (oneReview.star_rating === 4) {
+        fourStarReview += 1;
+      } else {
+        fiveStarReview += 1;
       }
+      /*--------------------------------*/
       totalStarsForOneProduct += oneReview.star_rating;
       totalQualityForOneProduct += oneReview.quality_rating;
       totalValueForOneProduct += oneReview.value_rating;
 
       seedling.reviews.push(oneReview);
     }
+    /*--------------------------------*/
+    seedling.aggregate_one_star_review = oneStarReview;
+    seedling.aggregate_two_star_review = twoStarReview;
+    seedling.aggregate_three_star_review = threeStarReview;
+    seedling.aggregate_four_star_review = fourStarReview;
+    seedling.aggregate_five_star_review = fiveStarReview;
 
     const unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.aggregate_star_rating = Math.round(unroundedAverageStar * 2) / 2;

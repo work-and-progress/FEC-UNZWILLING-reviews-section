@@ -9,81 +9,48 @@ import IndividualReview from './IndividualReview';
 import NextPageAndProgress from './NextPageAndProgress';
 
 /*--------------------------------*/
-
-export const dataReducer = (state, action) => {
-  if (action.type === 'SET_ERROR') {
-    return { ...state, oneItem: [], error: true };
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      oneItem: {},
+    };
   }
-  if (action.type === 'SET_oneItem') {
-    return { ...state, oneItem: action.oneItem, error: null };
+
+  componentDidMount() {
+    this.getTodos();
   }
-  throw new Error();
-};
 
-/*--------------------------------*/
-
-const initialData = {
-  oneItem: {},
-  error: null,
-};
-
-const App = () => {
-  // const [counter, setCounter] = React.useState(0);
-  const [data, dispatch] = React.useReducer(dataReducer, initialData);
-
-  // Similar to componentDidMount and componentDidUpdate:
-  React.useEffect(() => {
-    axios
-      .get('http://localhost:3000/review/1')
+  getTodos() {
+    axios.get('http://localhost:3000/review/1')
       .then((response) => {
-        console.log(response.data);
-        dispatch({ type: 'SET_oneItem', oneItem: response.data });
+        this.setState({
+          oneItem: response.data,
+        });
+        console.log('ONEITEM IS ', this.state.oneItem);
       })
-      .catch(() => {
-        dispatch({ type: 'SET_ERROR' });
+      .catch((error) => {
+        console.log(error);
       });
-  }, []);
+  }
 
-  return (
-    <div>
-      {/* <Counter counter={counter} /> */}
-      <span
-        className="hover-hand"
-        type="button"
-        // onClick=
-      >
-        Reviews &nbsp;&nbsp;
-      </span>
-      <span
-        className="hover-hand"
-        type="button"
-        // onClick=
-      >
-        Questions
-      </span>
-
-      <h5>Data from db:</h5>
-      {data.error && <div className="error">Error</div>}
-      <p>
-        Product ID:
-        {data.oneItem.product_id}
-      </p>
-      <p>
-        Aggregate star rating:
-        {data.oneItem.aggregate_star_rating}
-      </p>
-      <p>
-        Total number of reviews:
-        {data.oneItem.total_number_reviews}
-      </p>
-    </div>
-  );
-};
-
-// export const Counter = ({ counter }) => (
-//   <div>
-//     <p>{counter}</p>
-//   </div>
-// );
+  render() {
+    return (
+      <div>
+        <div className="inline-block">
+          <span className="hover-hand">Reviews&nbsp;&nbsp;</span>
+          <span className="hover-hand">Questions</span>
+        </div>
+        <div>
+          <ReviewOverview />
+          <MostHelpfulReviews />
+          <SortAndProgress />
+          <IndividualReview />
+          <NextPageAndProgress />
+        </div>
+      </div>
+    );
+  }
+}
 
 export default App;

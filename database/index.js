@@ -34,6 +34,11 @@ const reviewSchema = mongoose.Schema({
   aggregate_star_rating: Number,
   aggregate_quality_rating: Number,
   aggregate_value_rating: Number,
+  aggregate_one_star_review: Number,
+  aggregate_two_star_review: Number,
+  aggregate_three_star_review: Number,
+  aggregate_four_star_review: Number,
+  aggregate_five_star_review: Number,
   reviews: [childReview],
 });
 

@@ -18,11 +18,10 @@ module.exports = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.join(__dirname + '/client/dist')
+    path: path.join(__dirname + '/client/dist'),
   },
   devServer: {
     contentBase: path.join(__dirname, '/client/dist'),
-    proxy: 'http://localhost:3000/',
   },
   resolve: {extensions: ['.js','.jsx']},
 };
