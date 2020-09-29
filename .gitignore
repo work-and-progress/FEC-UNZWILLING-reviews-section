@@ -3,3 +3,4 @@ client/dist/main.bundle.js
 client/dist/bundle.js
 config.js
 node_modules
+coverage/
