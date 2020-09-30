@@ -1,14 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import CSSModules from 'react-css-modules';
-// import styles from './ReviewSummary.module.css';
+import styles from './ReviewSummary.module.css';
 
 const Overview = (props) => {
   Overview.propTypes = {
     numberOfFiveStarReviews: PropTypes.number,
+    numberOfFourStarReviews: PropTypes.number,
+    numberOfThreeStarReviews: PropTypes.number,
+    numberOfTwoStarReviews: PropTypes.number,
+    numberOfOneStarReviews: PropTypes.number,
+    averageValueRating: PropTypes.number,
+    averageQualityRating: PropTypes.number,
+    averageStarRating: PropTypes.number,
   };
   Overview.defaultProps = {
     numberOfFiveStarReviews: 0,
+    numberOfFourStarReviews: 0,
+    numberOfThreeStarReviews: 0,
+    numberOfTwoStarReviews: 0,
+    numberOfOneStarReviews: 0,
+    averageValueRating: 0,
+    averageQualityRating: 0,
+    averageStarRating: 0,
   };
   const {
     numberOfFiveStarReviews,
@@ -22,8 +35,8 @@ const Overview = (props) => {
   } = props;
 
   return (
-    <div className="block">
-      <div className="inline-block">
+    <div className={styles.block}>
+      <div className={styles.inline_block}>
         <h4>Reviews</h4>
         <p>Ratings Snapshot</p>
         <p>Select a row below to filter reviews.</p>
@@ -49,7 +62,7 @@ const Overview = (props) => {
         </p>
       </div>
 
-      <div className="inline-block">
+      <div className={styles.inline_block}>
         <p>Average Customer Ratings</p>
         <p>
           Overall:

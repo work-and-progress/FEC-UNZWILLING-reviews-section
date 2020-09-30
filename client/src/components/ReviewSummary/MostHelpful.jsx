@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './ReviewSummary.module.css';
 
 const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) => {
   // turn into an index of an array, whereas mostHelpfulFavorable is an ID, which begins at 1
@@ -53,8 +54,8 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
   const criticalObject = reviewList && reviewList[helpfulCritical];
 
   return (
-    <div className="block">
-      <div className="inline-block">
+    <div className={styles.block}>
+      <div className={styles.inline_block}>
         <p>Most Helpful Favorable Review</p>
         <p>
           Star Rating:
@@ -87,8 +88,8 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
         <p>See more 4 and 5 star reviews</p>
       </div>
 
-      <div className="inline-block">
-      <p>Most Helpful Critical Review</p>
+      <div className={styles.inline_block}>
+        <p>Most Helpful Critical Review</p>
         <p>
           Star Rating:
           {criticalObject && criticalObject.starRating}

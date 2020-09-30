@@ -3,8 +3,12 @@
   border: 0.5px solid grey;
 }
 
-.inline-block {
+.inline_block {
   display: inline-block;
   width: 50%;
   white-space: normal;
+}
+
+.hover-hand {
+  cursor: pointer;
 }
