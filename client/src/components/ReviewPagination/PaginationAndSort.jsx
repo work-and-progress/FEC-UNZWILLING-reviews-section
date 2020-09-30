@@ -13,12 +13,18 @@ const PaginationAndSort = ({ totalNumberReviews }) => {
 
   return (
     <div className={styles.block}>
+      <br></br>
+      <br></br>
       <span>
         {totalNumberReviews}
         out of
         {totalNumberReviews}
         reviews
       </span>
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   );
 };

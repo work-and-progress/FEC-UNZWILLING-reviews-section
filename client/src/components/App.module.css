@@ -1,8 +1,24 @@
-.container {
+.main_white_container {
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  background-color: rgb(255,255,255);
 }
 
-.block {
+.white_container_with_text {
+  padding: 10%;
+}
+
+.big_grey_container {
+  margin: -8px; /*def a better way to do this*/
+  padding: 10%;
+  background-color: rgb(242,240,238);
+}
+
+.reviews_questions_block {
   display: block;
-  border: 0.5px solid grey;
+}
+
+.horizontal_line {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 20px;
 }

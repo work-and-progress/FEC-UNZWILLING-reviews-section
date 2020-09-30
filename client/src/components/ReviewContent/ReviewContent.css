@@ -1,4 +1,15 @@
 .block {
   display: block;
-  border: 0.5px solid grey;
+}
+.inline_block_bigger {
+  display: inline-block;
+  width: 70%;
+  white-space: normal;
+  vertical-align: middle;
+}
+.inline_block_smaller {
+  display: inline-block;
+  width: 30%;
+  white-space: normal;
+  vertical-align: middle;
 }

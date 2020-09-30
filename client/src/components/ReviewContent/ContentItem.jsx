@@ -16,7 +16,7 @@ const IndividualReview = ({ review }) => {
         valueRating: PropTypes.number,
         frequencyOfUse: PropTypes.string,
         starRating: PropTypes.number,
-        reviewRecommended: PropTypes.boolean,
+        reviewRecommended: PropTypes.bool,
         helpfulYes: PropTypes.number,
         helpfulNo: PropTypes.number,
       }),
@@ -35,32 +35,32 @@ const IndividualReview = ({ review }) => {
       valueRating: 0,
       frequencyOfUse: 'default',
       starRating: 0,
-      reviewRecommended: true,
+      reviewRecommended: false,
       helpfulYes: 0,
       helpfulNo: 0,
     }],
   };
 
+  console.log(review.reviewRecommended)
   return (
     <div className={styles.block}>
-      <div className="inline-block">
+      <div className={styles.inline_block_bigger}>
         <span>
           Star Rating:
           {review.starRating}
           &nbsp;&nbsp;
         </span>
         <span>
-          Username:
           {review.reviewUsername}
           &nbsp;&nbsp;
         </span>
         <span>
-          Date Posted:
+          ·&nbsp;
           {review.reviewDate}
+          &nbsp;
           months ago
         </span>
         <p>
-          Review title:
           {review.reviewTitle}
         </p>
         <span>
@@ -68,14 +68,17 @@ const IndividualReview = ({ review }) => {
           {review.reviewContent}
         </span>
         <p>
-          Frequency of Use:
+          Frequency of Use&nbsp;
           {review.frequencyOfUse}
         </p>
         <p>
           Recommend this Product:
           {review.reviewRecommended}
         </p>
-        <h5>Helpful?</h5>
+        <span>
+          Helpful?
+          &nbsp;&nbsp;
+        </span>
         <span>
           Yes:
           {review.helpfulYes}
@@ -88,7 +91,8 @@ const IndividualReview = ({ review }) => {
         </span>
         <span>Report</span>
       </div>
-      <div className="inline-block">
+
+      <div className={styles.inline_block_smaller}>
         <p>
           QUALITY OF PRODUCT:
           {review.qualityRating}
@@ -98,6 +102,11 @@ const IndividualReview = ({ review }) => {
           {review.valueRating}
         </p>
       </div>
+
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
     </div>
   );
 };

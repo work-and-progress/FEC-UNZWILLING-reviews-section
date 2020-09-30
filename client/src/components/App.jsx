@@ -61,39 +61,45 @@ const App = class extends React.Component {
     } = this.state;
 
     return (
-      <div className={styles.container}>
-        <div className={styles.block}>
-          <span className="hover-hand">Reviews&nbsp;&nbsp;</span>
-          <span className="hover-hand">Questions</span>
-        </div>
-        <div>
-          <Overview
-            numberOfFiveStarReviews={aggregateFiveStarReview}
-            numberOfFourStarReviews={aggregateFourStarReview}
-            numberOfThreeStarReviews={aggregateThreeStarReview}
-            numberOfTwoStarReviews={aggregateTwoStarReview}
-            numberOfOneStarReviews={aggregateOneStarReview}
-            averageValueRating={averageValueRating}
-            averageQualityRating={averageQualityRating}
-            averageStarRating={averageStarRating}
-          />
-          <MostHelpful
-            reviewList={reviews}
-            mostHelpfulFavorable={mostHelpfulCritical}
-            mostHelpfulCritical={mostHelpfulFavorable}
-          />
-          <PaginationAndSort
-            totalNumberReviews={totalNumberReviews}
-          />
-          {reviews && reviews.map((review) => (
-            <ContentItem
-              review={review}
-              key={review.reviewId}
-            />
-          ))}
-          <PaginationAndNextPage
-            totalNumberReviews={totalNumberReviews}
-          />
+      <div className={styles.big_grey_container}>
+        <div className={styles.main_white_container}>
+          <div className={styles.white_container_with_text}>
+            <div className={styles.reviews_questions_block}>
+              <div className={styles.horizontal_line}>
+                <span className="hover-hand">REVIEWS&nbsp;&nbsp;</span>
+                <span className="hover-hand">QUESTIONS</span>
+              </div>
+            </div>
+            <div>
+              <Overview
+                numberOfFiveStarReviews={aggregateFiveStarReview}
+                numberOfFourStarReviews={aggregateFourStarReview}
+                numberOfThreeStarReviews={aggregateThreeStarReview}
+                numberOfTwoStarReviews={aggregateTwoStarReview}
+                numberOfOneStarReviews={aggregateOneStarReview}
+                averageValueRating={averageValueRating}
+                averageQualityRating={averageQualityRating}
+                averageStarRating={averageStarRating}
+              />
+              <MostHelpful
+                reviewList={reviews}
+                mostHelpfulFavorable={mostHelpfulCritical}
+                mostHelpfulCritical={mostHelpfulFavorable}
+              />
+              <PaginationAndSort
+                totalNumberReviews={totalNumberReviews}
+              />
+              {reviews && reviews.map((review) => (
+                <ContentItem
+                  review={review}
+                  key={review.reviewId}
+                />
+              ))}
+              <PaginationAndNextPage
+                totalNumberReviews={totalNumberReviews}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );

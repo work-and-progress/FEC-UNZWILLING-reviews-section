@@ -1,12 +1,10 @@
 .block {
   display: block;
-  border: 0.5px solid grey;
 }
 
 .inline_block {
   display: inline-block;
   width: 50%;
-  white-space: normal;
 }
 
 .hover-hand {

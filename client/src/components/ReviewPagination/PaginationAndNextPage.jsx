@@ -13,6 +13,7 @@ const PaginationAndNextPage = ({ totalNumberReviews }) => {
 
   return (
     <div className={styles.block}>
+      <br></br>
       <span>
         {totalNumberReviews}
         out of
