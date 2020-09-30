@@ -22,3 +22,17 @@
   text-transform: none;
   line-height: 20px;
 }
+
+.button {
+  transition-duration: 0.4s;
+  background-color: rgb(154,154,154); /* Green */
+  color:white;
+  padding-right:10px; /*button size*/
+  padding-left:10px;
+  margin-right: 7px;
+}
+
+.helpful {
+  font-weight: bold;
+  padding-right:7px;
+}

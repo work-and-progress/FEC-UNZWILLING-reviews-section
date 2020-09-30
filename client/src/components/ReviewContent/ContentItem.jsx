@@ -41,13 +41,11 @@ const IndividualReview = ({ review }) => {
     }],
   };
 
-
   return (
     <div className={styles.block}>
       <div className={styles.inline_block_bigger}>
         <span>
-          Star Rating:
-          {review.starRating}
+          {`${review.starRating} stars`}
           &nbsp;&nbsp;
         </span>
         <span>
@@ -75,21 +73,18 @@ const IndividualReview = ({ review }) => {
           Recommend this Product:
           {`${review.reviewRecommended}`}
         </p>
-        <span>
+        <span className={styles.helpful}>
           Helpful?
-          &nbsp;&nbsp;
         </span>
-        <span>
-          Yes:
-          {review.helpfulYes}
-          &nbsp;&nbsp;
+        <span className={styles.button}>
+          {`Yes · ${review.helpfulYes}`}
         </span>
-        <span>
-          No:
-          {review.helpfulNo}
-          &nbsp;&nbsp;
+        <span className={styles.button}>
+          {`No · ${review.helpfulNo}`}
         </span>
-        <span>Report</span>
+        <span className={styles.button}>
+          Report
+        </span>
       </div>
 
       <div className={styles.inline_block_smaller}>
