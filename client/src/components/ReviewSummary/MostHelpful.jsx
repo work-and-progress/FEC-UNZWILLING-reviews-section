@@ -62,21 +62,17 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
           {favorableObject && favorableObject.starRating}
         </p>
         <span>
-          Username:
           {favorableObject && favorableObject.reviewUsername}
           &nbsp;&nbsp;
         </span>
         <span>
-          Date Posted:
           {favorableObject && favorableObject.reviewDate}
           months ago
         </span>
         <p>
-          Review title:
           {favorableObject && favorableObject.reviewTitle}
         </p>
         <p>
-          Review content:
           {favorableObject && favorableObject.reviewContent}
         </p>
         <p>

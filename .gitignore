@@ -4,5 +4,5 @@ client/dist/bundle.js
 config.js
 node_modules
 coverage/
-client/.DS_Store
+**/.DS_Store
 
