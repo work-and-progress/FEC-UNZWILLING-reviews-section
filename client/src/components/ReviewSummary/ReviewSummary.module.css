@@ -4,7 +4,31 @@
 
 .inline_block {
   display: inline-block;
-  width: 50%;
+  width: 49%;
+  padding: 1px;
+  word-wrap: break-word!important;
+  color: #27221d!important;
+  /* padding-top: 0!important;
+  padding-right: 0!important;
+  padding-bottom: 0!important;
+  padding-left: 0!important; */
+  margin-top: 0!important;
+  margin-right: 0!important;
+  margin-bottom: 0!important;
+  margin-left: 0!important;
+  color: #333!important;
+  font-size: 1em!important;
+  line-height: 1.5em!important;
+  font-weight: 400!important;
+  border-bottom-width: 0!important;
+  border-left-width: 0!important;
+  border-right-width: 0!important;
+  border-top-width: 0!important;
+  border-bottom-style: none!important;
+  border-left-style: none!important;
+  border-right-style: none!important;
+  border-top-style: none!important;
+  padding:0px 1px;
 }
 
 .hover-hand {

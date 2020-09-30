@@ -1,10 +1,38 @@
+@font-face {
+  font-family: 'futura_bkbook';
+  src: url('/fonts/futura_book-webfont.woff2') format('woff2'),
+       url('/fonts/futura_book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .main_white_container {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   background-color: rgb(255,255,255);
 }
 
 .white_container_with_text {
   padding: 10%;
+  word-wrap: break-word!important;
+  line-height: 1.5em!important;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+  font-weight: lighter;
+  /* font-family: "futura book"!important; */
+  font-style: normal!important;
+  font-variant: normal!important;
+  text-decoration: none!important;
+  text-transform: none!important;
+  border-bottom-width: 0!important;
+  border-left-width: 0!important;
+  border-right-width: 0!important;
+  border-top-width: 0!important;
+  border-bottom-style: none!important;
+  border-left-style: none!important;
+  border-right-style: none!important;
+  border-top-style: none!important;
+  font-size: 14px!important;
+  font-style: normal!important;
+  text-transform: none!important;
+  line-height: 20px!important;
 }
 
 .big_grey_container {

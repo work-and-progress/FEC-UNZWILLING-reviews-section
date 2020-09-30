@@ -41,7 +41,7 @@ const IndividualReview = ({ review }) => {
     }],
   };
 
-  console.log(review.reviewRecommended)
+
   return (
     <div className={styles.block}>
       <div className={styles.inline_block_bigger}>
@@ -73,7 +73,7 @@ const IndividualReview = ({ review }) => {
         </p>
         <p>
           Recommend this Product:
-          {review.reviewRecommended}
+          {`${review.reviewRecommended}`}
         </p>
         <span>
           Helpful?
