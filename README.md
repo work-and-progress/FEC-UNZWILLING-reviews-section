@@ -2,5 +2,5 @@
 
 ## Basic Rendering
 <img src='design-and-docs/progress1.png'>
-<img src='design-and-docs/progress2.png'>
+<!-- <img src='design-and-docs/progress2.png'> -->
 

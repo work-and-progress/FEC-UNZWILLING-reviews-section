@@ -1,8 +1,52 @@
-.container {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+@font-face {
+  font-family: 'futura_bkbook';
+  src: url('/fonts/futura_book-webfont.woff2') format('woff2'),
+       url('/fonts/futura_book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-.block {
+.main_white_container {
+  background-color: rgb(255,255,255);
+}
+
+.white_container_with_text {
+  padding: 10%;
+  word-wrap: break-word;
+  line-height: 1.5em;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+  font-weight: lighter;
+  /* font-family: "futura book"!; */
+  font-style: normal;
+  font-variant: normal;
+  text-decoration: none;
+  text-transform: none;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-top-style: none;
+  font-size: 14px;
+  font-style: normal;
+  text-transform: none;
+  line-height: 20px;
+}
+
+.big_grey_container {
+  margin: -8px; /*def a better way to do this*/
+  padding: 10%;
+  background-color: rgb(242,240,238);
+}
+
+.reviews_questions_block {
   display: block;
-  border: 0.5px solid grey;
+}
+
+.horizontal_line {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 20px;
 }
