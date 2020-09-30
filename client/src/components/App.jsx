@@ -11,6 +11,8 @@ import PaginationAndNextPage from './ReviewPagination/PaginationAndNextPage';
 
 // Review Content folder
 import ContentItem from './ReviewContent/ContentItem';
+
+import styles from './App.module.css';
 /*--------------------------------*/
 const App = class extends React.Component {
   constructor(props) {
@@ -59,8 +61,8 @@ const App = class extends React.Component {
     } = this.state;
 
     return (
-      <div className="container">
-        <div className="block">
+      <div className={styles.container}>
+        <div className={styles.block}>
           <span className="hover-hand">Reviews&nbsp;&nbsp;</span>
           <span className="hover-hand">Questions</span>
         </div>
