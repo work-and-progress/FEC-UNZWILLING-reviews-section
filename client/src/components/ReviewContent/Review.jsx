@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewContent.css';
 
-const IndividualReview = ({ review }) => {
-  IndividualReview.propTypes = {
+const Review = ({ review }) => {
+  Review.propTypes = {
     review: PropTypes.arrayOf(
       PropTypes.shape({
         reviewId: PropTypes.number,
@@ -23,7 +23,7 @@ const IndividualReview = ({ review }) => {
     ),
   };
 
-  IndividualReview.defaultProps = {
+  Review.defaultProps = {
     review: [{
       reviewId: 0,
       reviewUsername: 'default',
@@ -97,13 +97,8 @@ const IndividualReview = ({ review }) => {
           {review.valueRating}
         </p>
       </div>
-
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
     </div>
   );
 };
 
-export default IndividualReview;
+export default Review;

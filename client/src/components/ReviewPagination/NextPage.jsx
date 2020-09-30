@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewPagination.css';
 
-const PaginationAndSort = ({ totalNumberReviews }) => {
-  PaginationAndSort.propTypes = {
+const NextPage = ({ totalNumberReviews }) => {
+  NextPage.propTypes = {
     totalNumberReviews: PropTypes.number,
   };
 
-  PaginationAndSort.defaultProps = {
+  NextPage.defaultProps = {
     totalNumberReviews: 0,
   };
 
@@ -20,4 +20,4 @@ const PaginationAndSort = ({ totalNumberReviews }) => {
   );
 };
 
-export default PaginationAndSort;
+export default NextPage;

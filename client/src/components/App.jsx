@@ -6,13 +6,13 @@ import Overview from './ReviewSummary/Overview';
 import MostHelpful from './ReviewSummary/MostHelpful';
 
 // Pagination folder
-import PaginationAndSort from './ReviewPagination/PaginationAndSort';
-import PaginationAndNextPage from './ReviewPagination/PaginationAndNextPage';
+import Sort from './ReviewPagination/Sort';
+import NextPage from './ReviewPagination/NextPage';
 
 // Review Content folder
-import ContentItem from './ReviewContent/ContentItem';
+import Review from './ReviewContent/Review';
 
-import styles from './App.module.css';
+import styles from './App.css';
 /*--------------------------------*/
 const App = class extends React.Component {
   constructor(props) {
@@ -86,16 +86,16 @@ const App = class extends React.Component {
                 mostHelpfulFavorable={mostHelpfulCritical}
                 mostHelpfulCritical={mostHelpfulFavorable}
               />
-              <PaginationAndSort
+              <Sort
                 totalNumberReviews={totalNumberReviews}
               />
               {reviews && reviews.map((review) => (
-                <ContentItem
+                <Review
                   review={review}
                   key={review.reviewId}
                 />
               ))}
-              <PaginationAndNextPage
+              <NextPage
                 totalNumberReviews={totalNumberReviews}
               />
             </div>
