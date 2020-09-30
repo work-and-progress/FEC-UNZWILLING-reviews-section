@@ -1,7 +1,8 @@
 # FEC-UNZWILLING-reviews-section
 
-## Basic Rendering
+## UI update
 <img src='design-and-docs/progress1.png'>
+<img src='design-and-docs/progress2.png'>
 
 ## File Structure (updated)
 <img src='design-and-docs/file-structure.png'>
