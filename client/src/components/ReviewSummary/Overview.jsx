@@ -38,13 +38,14 @@ const Overview = (props) => {
   } = props;
 
   function renderStars(num) {
-    let stars = Array.apply(null, new Array(5))
-    return stars.map((star, index) =>
+    const stars = Array.apply(null, new Array(5))
+    return stars.map((star, index) => (
       <img
-        style={{width: '30px'}}
-        src={ index < num ? STAR_IMAGE: EMPTY_STAR_IMAGE}
+        alt="star"
+        style={{ width: '20px' }}
+        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
       />
-    )
+    ));
   }
 
   return (
@@ -61,11 +62,6 @@ const Overview = (props) => {
           </p>
           <div className={styles.ratings_content}>
             <p>
-              {`${renderStars(5)}`}
-              {/* <img
-                style={{width: '20px'}}
-                src={STAR_IMAGE}
-              /> */}
               5 ★:
               {numberOfFiveStarReviews}
             </p>
@@ -93,9 +89,10 @@ const Overview = (props) => {
         <div className={styles.inline_block}>
           <p>Average Customer Ratings</p>
           <div className={styles.ratings_content}>
-            <p>
-              Overall:
-              {averageStarRating}
+            <p className={styles.stars}>
+              {`Overall: still a work in progress
+              ${averageStarRating}, rounded  `}
+              {renderStars(3)}
             </p>
             <p>
               Quality of Product:
