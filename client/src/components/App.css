@@ -6,8 +6,12 @@
   font-style: normal;
 }
 
+body {
+  margin: 0px;
+}
+
 .big_grey_container {
-  margin: -8px; /*def a better way to do this*/
+  margin: 0px;
   padding: 10%;
   background-color: rgb(242,240,238);
 }
