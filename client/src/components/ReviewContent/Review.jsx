@@ -98,12 +98,14 @@ const Review = ({ review }) => {
 
       <div className={styles.inline_block_smaller}>
         <p>
-          QUALITY OF PRODUCT:
-          {review && review.qualityRating}
+          QUALITY OF PRODUCT:<br></br>
+          {renderStars(`${review && review.qualityRating}`)}
+          {/* {review && review.qualityRating} */}
         </p>
         <p>
-          VALUE OF PRODUCT:
-          {review && review.valueRating}
+          VALUE OF PRODUCT:<br></br>
+          {renderStars(`${review && review.valueRating}`)}
+          {/* {review && review.valueRating} */}
         </p>
       </div>
 
