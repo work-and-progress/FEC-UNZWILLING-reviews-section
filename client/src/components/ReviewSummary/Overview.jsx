@@ -37,19 +37,22 @@ const Overview = (props) => {
   } = props;
 
   function renderStars(num) {
-    let stars = Array.apply(null, new Array(5))
-    return stars.map((star, index) =>
+    const stars = Array.apply(null, new Array(5));
+    return stars.map((star, index) => (
       <img
+        alt={`${'sorry no star img found'}`}
         style={{width: '30px'}}
         src={ index < num ? STAR_IMAGE: EMPTY_STAR_IMAGE}
       />
+    )
     );
   }
 
   function altRenderStars(num) {
-    let stars = []
-    for(let i = 0; i < 5; i++) {
+    let stars = [];
+    for (let i = 0; i < 5; i++) {
       stars.push(<img
+      alt={`${'sorry no star img found'}`}
       style={{width: '30px'}}
       src={ i < num ? STAR_IMAGE: EMPTY_STAR_IMAGE}
     />)
