@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /*
   https://mongoosejs.com/docs/models.html
   db.reviews.find().pretty() to view data
@@ -144,15 +145,22 @@ const database = require('./index.js');
 
     /*--------------------------------*/
     // total one star reviews
-    seedling.aggregateOneStarReview = oneStarReview;
+
+    // MAKE THIS A PERCENTAGE
+    const percentageForOneStar = Math.round((oneStarReview / randomNumberOfReviewsPerProduct) * 100);
+    seedling.aggregateOneStarReview = percentageForOneStar;
     // total two star reviews
-    seedling.aggregateTwoStarReview = twoStarReview;
+    const percentageForTwoStar = Math.round((twoStarReview / randomNumberOfReviewsPerProduct) * 100);
+    seedling.aggregateTwoStarReview = percentageForTwoStar;
     // total three star reviews
-    seedling.aggregateThreeStarReview = threeStarReview;
+    const percentageForThreeStar = Math.round((threeStarReview / randomNumberOfReviewsPerProduct) * 100);
+    seedling.aggregateThreeStarReview = percentageForThreeStar;
     // total four star reviews
-    seedling.aggregateFourStarReview = fourStarReview;
+    const percentageForFourStar = Math.round((fourStarReview / randomNumberOfReviewsPerProduct) * 100);
+    seedling.aggregateFourStarReview = percentageForFourStar;
     // total four star reviews
-    seedling.aggregateFiveStarReview = fiveStarReview;
+    const percentageForFiveStar = Math.round((fiveStarReview / randomNumberOfReviewsPerProduct) * 100);
+    seedling.aggregateFiveStarReview = percentageForFiveStar;
     /*--------------------------------*/
     // Average Star rating
     const unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
