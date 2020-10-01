@@ -1,0 +1,50 @@
+@font-face {
+  font-family: 'futura_bkbook';
+  src: url('/fonts/futura_book-webfont.woff2') format('woff2'),
+       url('/fonts/futura_book-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.big_grey_container {
+  margin: -8px; /*def a better way to do this*/
+  padding: 10%;
+  background-color: rgb(242,240,238);
+}
+
+.main_white_container {
+  background-color: rgb(255,255,255);
+}
+
+.white_container_with_text {
+  padding-right: 10%;
+  padding-left: 10%;
+  padding-top: 8%;
+  padding-bottom: 5%;
+
+  word-wrap: break-word;
+  line-height: 1.5em;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+  font-weight: lighter;
+  /* font-family: "futura book"!; */
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.reviews_questions_block {
+  display: flex;
+}
+
+.horizontal_line {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  width: 100%
+}
+
+/* margin is the space around an element and padding refers to the space between an element and the content inside it. */
+.reviewHeading {
+  margin-right: 150px;
+}

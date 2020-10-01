@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
-import STAR_IMAGE from '../filled-star.png';
+import STAR_IMAGE from '../filled-star.jpg';
 import EMPTY_STAR_IMAGE from '../empty-star.png';
 
 const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) => {
@@ -60,7 +60,7 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
     return stars.map((star, index) => (
       <img
         alt="star"
-        style={{ width: '20px' }}
+        style={{ width: '15px' }}
         src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
       />
     ));

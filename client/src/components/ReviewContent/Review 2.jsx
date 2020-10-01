@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewContent.css';
-import STAR_IMAGE from '../filled-star.jpg';
-import EMPTY_STAR_IMAGE from '../empty-star.png';
 
 const Review = ({ review }) => {
   Review.propTypes = {
@@ -43,56 +41,46 @@ const Review = ({ review }) => {
     }],
   };
 
-  function renderStars(num) {
-    const stars = Array.apply(null, new Array(5))
-    return stars.map((star, index) => (
-      <img
-        alt="star"
-        style={{ width: '15px' }}
-        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
-      />
-    ));
-  }
-
-  function recommendationStringify (bool) {
-    // function that will turn boolean into string
-  }
-
   return (
     <div className={styles.block}>
       <div className={styles.inline_block_bigger}>
-        <span className={styles.tabs}>
-          {renderStars(`${review && review.starRating}`)}
-          {/* {`${review && review.starRating} stars`} */}
-        </span>
-        <span className={styles.tabs}>
-          {review && review.reviewUsername}
+        <span>
+          {`${review.starRating} stars`}
+          &nbsp;&nbsp;
         </span>
         <span>
-          {`${review && review.reviewDate} months ago`}
+          {review.reviewUsername}
+          &nbsp;&nbsp;
+        </span>
+        <span>
+          ·&nbsp;
+          {review.reviewDate}
+          &nbsp;
+          months ago
         </span>
         <p>
-          {review && review.reviewTitle}
+          {review.reviewTitle}
         </p>
         <span>
-          {review && review.reviewContent}
+          Review content:
+          {review.reviewContent}
         </span>
         <p>
           Frequency of Use&nbsp;
-          {review && review.frequencyOfUse}
+          {review.frequencyOfUse}
         </p>
         <p>
           Recommend this Product:
-          {`${review && review.reviewRecommended}`}
+          {`${review.reviewRecommended}`}
         </p>
         <span className={styles.helpful}>
           Helpful?
         </span>
         <span className={styles.button}>
-          {`Yes · ${review && review.helpfulYes}`}
+          {`Yes · ${review.helpfulYes}`}
         </span>
         <span className={styles.button}>
-          {`No · ${review && review.helpfulNo}`}
+          {`No · ${review.helpfulNo}`}
         </span>
         <span className={styles.button}>
           Report
@@ -101,17 +89,14 @@ const Review = ({ review }) => {
 
       <div className={styles.inline_block_smaller}>
         <p>
-          QUALITY OF PRODUCT:<br></br>
-          {renderStars(`${review && review.qualityRating}`)}
-          {/* {review && review.qualityRating} */}
+          QUALITY OF PRODUCT:
+          {review.qualityRating}
         </p>
         <p>
-          VALUE OF PRODUCT:<br></br>
-          {renderStars(`${review && review.valueRating}`)}
-          {/* {review && review.valueRating} */}
+          VALUE OF PRODUCT:
+          {review.valueRating}
         </p>
       </div>
-
     </div>
   );
 };

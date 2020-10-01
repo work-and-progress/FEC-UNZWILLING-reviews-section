@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
 
-import STAR_IMAGE from '../filled-star.png';
+import STAR_IMAGE from '../filled-star.jpg';
 import EMPTY_STAR_IMAGE from '../empty-star.png';
+
+import GREY_BAR from '../grey.jpg';
+import YELLOW_BAR from '../yellow.png';
 
 const Overview = (props) => {
   Overview.propTypes = {
@@ -42,8 +45,19 @@ const Overview = (props) => {
     return stars.map((star, index) => (
       <img
         alt="star"
-        style={{ width: '20px' }}
+        style={{ width: '15px' }}
         src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
+      />
+    ));
+  }
+
+  function renderBars(num) {
+    const stars = Array.apply(null, new Array(10))
+    return stars.map((star, index) => (
+      <img
+        alt="bar"
+        style={{ width: '10px' }}
+        src={index < num ? YELLOW_BAR : GREY_BAR}
       />
     ));
   }
@@ -62,23 +76,28 @@ const Overview = (props) => {
           </p>
           <div className={styles.ratings_content}>
             <p>
-              5 ★:
+              5 ★&nbsp;
+              {renderBars(`${numberOfFiveStarReviews}`)}&nbsp;&nbsp;
               {numberOfFiveStarReviews}
             </p>
             <p>
-              4 ★:
+              4 ★&nbsp;
+              {renderBars(`${numberOfFourStarReviews}`)}&nbsp;&nbsp;
               {numberOfFourStarReviews}
             </p>
             <p>
-              3 ★:
+              3 ★&nbsp;
+              {renderBars(`${numberOfThreeStarReviews}`)}&nbsp;&nbsp;
               {numberOfThreeStarReviews}
             </p>
             <p>
-              2 ★:
+              2 ★&nbsp;
+              {renderBars(`${numberOfTwoStarReviews}`)}&nbsp;&nbsp;
               {numberOfTwoStarReviews}
             </p>
             <p>
-              1 ★:
+              1 ★&nbsp;
+              {renderBars(`${numberOfOneStarReviews}`)}&nbsp;&nbsp;
               {numberOfOneStarReviews}
             </p>
 
