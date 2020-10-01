@@ -45,42 +45,42 @@ const Review = ({ review }) => {
     <div className={styles.block}>
       <div className={styles.inline_block_bigger}>
         <span>
-          {`${review.starRating} stars`}
+          {`${review && review.starRating} stars`}
           &nbsp;&nbsp;
         </span>
         <span>
-          {review.reviewUsername}
+          {review && review.reviewUsername}
           &nbsp;&nbsp;
         </span>
         <span>
           ·&nbsp;
-          {review.reviewDate}
+          {review && review.reviewDate}
           &nbsp;
           months ago
         </span>
         <p>
-          {review.reviewTitle}
+          {review && review.reviewTitle}
         </p>
         <span>
           Review content:
-          {review.reviewContent}
+          {review && review.reviewContent}
         </span>
         <p>
           Frequency of Use&nbsp;
-          {review.frequencyOfUse}
+          {review && review.frequencyOfUse}
         </p>
         <p>
           Recommend this Product:
-          {`${review.reviewRecommended}`}
+          {`${review && review.reviewRecommended}`}
         </p>
         <span className={styles.helpful}>
           Helpful?
         </span>
         <span className={styles.button}>
-          {`Yes · ${review.helpfulYes}`}
+          {`Yes · ${review && review.helpfulYes}`}
         </span>
         <span className={styles.button}>
-          {`No · ${review.helpfulNo}`}
+          {`No · ${review && review.helpfulNo}`}
         </span>
         <span className={styles.button}>
           Report
@@ -90,11 +90,11 @@ const Review = ({ review }) => {
       <div className={styles.inline_block_smaller}>
         <p>
           QUALITY OF PRODUCT:
-          {review.qualityRating}
+          {review && review.qualityRating}
         </p>
         <p>
           VALUE OF PRODUCT:
-          {review.valueRating}
+          {review && review.valueRating}
         </p>
       </div>
     </div>
