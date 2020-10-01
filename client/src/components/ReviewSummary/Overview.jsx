@@ -52,11 +52,11 @@ const Overview = (props) => {
   }
 
   function renderBars(num) {
-    const stars = Array.apply(null, new Array(10))
+    const stars = Array.apply(null, new Array(100))
     return stars.map((star, index) => (
       <img
         alt="bar"
-        style={{ width: '10px' }}
+        style={{ width: '2px' }}
         src={index < num ? YELLOW_BAR : GREY_BAR}
       />
     ));
@@ -77,28 +77,30 @@ const Overview = (props) => {
           <div className={styles.ratings_content}>
             <p>
               5 ★&nbsp;
-              {renderBars(`${numberOfFiveStarReviews}`)}&nbsp;&nbsp;
-              {numberOfFiveStarReviews}
+              {renderBars(`${numberOfFiveStarReviews}`)}&nbsp;
+              {`${numberOfFiveStarReviews} %`}
             </p>
             <p>
               4 ★&nbsp;
-              {renderBars(`${numberOfFourStarReviews}`)}&nbsp;&nbsp;
-              {numberOfFourStarReviews}
+              {renderBars(`${numberOfFourStarReviews}`)}&nbsp;
+              {`${numberOfFourStarReviews} %`}
             </p>
             <p>
               3 ★&nbsp;
-              {renderBars(`${numberOfThreeStarReviews}`)}&nbsp;&nbsp;
-              {numberOfThreeStarReviews}
+              {renderBars(`${numberOfThreeStarReviews}`)}&nbsp;
+              {`${numberOfThreeStarReviews} %`}
+
             </p>
             <p>
               2 ★&nbsp;
-              {renderBars(`${numberOfTwoStarReviews}`)}&nbsp;&nbsp;
-              {numberOfTwoStarReviews}
+              {renderBars(`${numberOfTwoStarReviews}`)}&nbsp;
+              {`${numberOfTwoStarReviews} %`}
+
             </p>
             <p>
               1 ★&nbsp;
-              {renderBars(`${numberOfOneStarReviews}`)}&nbsp;&nbsp;
-              {numberOfOneStarReviews}
+              {renderBars(`${numberOfOneStarReviews}`)}&nbsp;
+              {`${numberOfOneStarReviews} %`}
             </p>
 
           </div>
@@ -109,17 +111,13 @@ const Overview = (props) => {
           <p>Average Customer Ratings</p>
           <div className={styles.ratings_content}>
             <p className={styles.stars}>
-              {`Overall: still a work in progress
-              ${averageStarRating}, rounded  `}
-              {renderStars(3)}
+              {`Overall: ${averageStarRating}`}
             </p>
             <p>
-              Quality of Product:
-              {averageQualityRating}
+              {`Quality of Product: ${averageQualityRating}`}
             </p>
             <p>
-              Value of Product:
-              {averageValueRating}
+              {`Value of Product: ${averageValueRating}`}
             </p>
           </div>
         </div>
