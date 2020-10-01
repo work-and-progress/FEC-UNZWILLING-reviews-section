@@ -156,15 +156,15 @@ const database = require('./index.js');
     /*--------------------------------*/
     // Average Star rating
     const unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
-    seedling.averageStarRating = Math.round(unroundedAverageStar * 2) / 2;
+    seedling.averageStarRating = Math.round(unroundedAverageStar * 10) / 10;
 
     // Average Quality rating
     const unroundedAverageQuality = totalQualityForOneProduct / randomNumberOfReviewsPerProduct;
-    seedling.averageQualityRating = Math.round(unroundedAverageQuality * 2) / 2;
+    seedling.averageQualityRating = Math.round(unroundedAverageQuality * 10) / 10;
 
     // Average Value rating
     const unroundedAverageValue = totalValueForOneProduct / randomNumberOfReviewsPerProduct;
-    seedling.averageValueRating = Math.round(unroundedAverageValue * 2) / 2;
+    seedling.averageValueRating = Math.round(unroundedAverageValue * 10) / 10;
     /*--------------------------------*/
     // Total number of reviews
     seedling.totalNumberReviews = randomNumberOfReviewsPerProduct;
