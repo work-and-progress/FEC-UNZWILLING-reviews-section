@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewContent.css';
 
-const IndividualReview = ({ review }) => {
-  IndividualReview.propTypes = {
+const Review = ({ review }) => {
+  Review.propTypes = {
     review: PropTypes.arrayOf(
       PropTypes.shape({
         reviewId: PropTypes.number,
@@ -23,7 +23,7 @@ const IndividualReview = ({ review }) => {
     ),
   };
 
-  IndividualReview.defaultProps = {
+  Review.defaultProps = {
     review: [{
       reviewId: 0,
       reviewUsername: 'default',
@@ -41,74 +41,64 @@ const IndividualReview = ({ review }) => {
     }],
   };
 
-
   return (
     <div className={styles.block}>
       <div className={styles.inline_block_bigger}>
         <span>
-          Star Rating:
-          {review.starRating}
+          {`${review && review.starRating} stars`}
           &nbsp;&nbsp;
         </span>
         <span>
-          {review.reviewUsername}
+          {review && review.reviewUsername}
           &nbsp;&nbsp;
         </span>
         <span>
           ·&nbsp;
-          {review.reviewDate}
+          {review && review.reviewDate}
           &nbsp;
           months ago
         </span>
         <p>
-          {review.reviewTitle}
+          {review && review.reviewTitle}
         </p>
         <span>
           Review content:
-          {review.reviewContent}
+          {review && review.reviewContent}
         </span>
         <p>
           Frequency of Use&nbsp;
-          {review.frequencyOfUse}
+          {review && review.frequencyOfUse}
         </p>
         <p>
           Recommend this Product:
-          {`${review.reviewRecommended}`}
+          {`${review && review.reviewRecommended}`}
         </p>
-        <span>
+        <span className={styles.helpful}>
           Helpful?
-          &nbsp;&nbsp;
         </span>
-        <span>
-          Yes:
-          {review.helpfulYes}
-          &nbsp;&nbsp;
+        <span className={styles.button}>
+          {`Yes · ${review && review.helpfulYes}`}
         </span>
-        <span>
-          No:
-          {review.helpfulNo}
-          &nbsp;&nbsp;
+        <span className={styles.button}>
+          {`No · ${review && review.helpfulNo}`}
         </span>
-        <span>Report</span>
+        <span className={styles.button}>
+          Report
+        </span>
       </div>
 
       <div className={styles.inline_block_smaller}>
         <p>
           QUALITY OF PRODUCT:
-          {review.qualityRating}
+          {review && review.qualityRating}
         </p>
         <p>
           VALUE OF PRODUCT:
-          {review.valueRating}
+          {review && review.valueRating}
         </p>
       </div>
-
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
     </div>
   );
 };
 
-export default IndividualReview;
+export default Review;

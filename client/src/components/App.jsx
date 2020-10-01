@@ -6,13 +6,13 @@ import Overview from './ReviewSummary/Overview';
 import MostHelpful from './ReviewSummary/MostHelpful';
 
 // Pagination folder
-import PaginationAndSort from './ReviewPagination/PaginationAndSort';
-import PaginationAndNextPage from './ReviewPagination/PaginationAndNextPage';
+import Sort from './ReviewPagination/Sort';
+import NextPage from './ReviewPagination/NextPage';
 
 // Review Content folder
-import ContentItem from './ReviewContent/ContentItem';
+import Review from './ReviewContent/Review';
 
-import styles from './App.module.css';
+import styles from './App.css';
 /*--------------------------------*/
 const App = class extends React.Component {
   constructor(props) {
@@ -66,8 +66,8 @@ const App = class extends React.Component {
           <div className={styles.white_container_with_text}>
             <div className={styles.reviews_questions_block}>
               <div className={styles.horizontal_line}>
-                <span className="hover-hand">REVIEWS&nbsp;&nbsp;</span>
-                <span className="hover-hand">QUESTIONS</span>
+                <span className={styles.reviewHeading}>REVIEWS</span>
+                <span>QUESTIONS</span>
               </div>
             </div>
             <div>
@@ -86,16 +86,16 @@ const App = class extends React.Component {
                 mostHelpfulFavorable={mostHelpfulCritical}
                 mostHelpfulCritical={mostHelpfulFavorable}
               />
-              <PaginationAndSort
+              <Sort
                 totalNumberReviews={totalNumberReviews}
               />
               {reviews && reviews.map((review) => (
-                <ContentItem
+                <Review
                   review={review}
                   key={review.reviewId}
                 />
               ))}
-              <PaginationAndNextPage
+              <NextPage
                 totalNumberReviews={totalNumberReviews}
               />
             </div>

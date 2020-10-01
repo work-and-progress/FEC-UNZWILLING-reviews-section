@@ -2,26 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewPagination.css';
 
-const PaginationAndNextPage = ({ totalNumberReviews }) => {
-  PaginationAndNextPage.propTypes = {
+const NextPage = ({ totalNumberReviews }) => {
+  NextPage.propTypes = {
     totalNumberReviews: PropTypes.number,
   };
 
-  PaginationAndNextPage.defaultProps = {
+  NextPage.defaultProps = {
     totalNumberReviews: 0,
   };
 
   return (
     <div className={styles.block}>
-      <br></br>
       <span>
-        {totalNumberReviews}
-        out of
-        {totalNumberReviews}
-        reviews
+        {`${totalNumberReviews}-${totalNumberReviews} of  ${totalNumberReviews} reviews`}
       </span>
     </div>
   );
 };
 
-export default PaginationAndNextPage;
+export default NextPage;

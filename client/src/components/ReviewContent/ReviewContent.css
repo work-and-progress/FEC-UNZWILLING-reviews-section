@@ -1,20 +1,38 @@
 .block {
-  display: block;
+  display: flex;
+  /* align-items: center; */
 }
 .inline_block_bigger {
-  display: inline-block;
-  width: 70%;
+  flex: 1;
+  flex: 70%;
+  padding-top: 0px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  padding-left: 0px;
   white-space: normal;
   vertical-align: middle;
-
 }
 .inline_block_smaller {
-  display: inline-block;
-  width: 30%;
+  flex: 30%;
+  padding-right: 20px;
+  text-align: right;
   white-space: normal;
-  vertical-align: middle;
   font-size: 14px;
   font-style: normal;
   text-transform: none;
   line-height: 20px;
+}
+
+.button {
+  transition-duration: 0.4s;
+  background-color: rgb(154,154,154); /* Green */
+  color:white;
+  padding-right:10px; /*button size*/
+  padding-left:10px;
+  margin-right: 7px;
+}
+
+.helpful {
+  font-weight: bold;
+  padding-right:7px;
 }

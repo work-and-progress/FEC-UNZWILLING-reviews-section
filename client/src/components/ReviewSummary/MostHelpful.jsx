@@ -58,32 +58,24 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
       <div className={styles.inline_block}>
         <p>Most Helpful Favorable Review</p>
         <p>
-          Star Rating:
-          {favorableObject && favorableObject.starRating}
+          {`${favorableObject && favorableObject.starRating} stars`}
         </p>
         <span>
-          Username:
           {favorableObject && favorableObject.reviewUsername}
           &nbsp;&nbsp;
         </span>
         <span>
-          Date Posted:
           {favorableObject && favorableObject.reviewDate}
           months ago
         </span>
         <p>
-          Review title:
           {favorableObject && favorableObject.reviewTitle}
         </p>
         <p>
-          Review content:
           {favorableObject && favorableObject.reviewContent}
         </p>
         <p>
-          {favorableObject && favorableObject.helpfulYes}
-          of
-          {favorableObject && favorableObject.helpfulYes}
-          people found this helpful
+          {`${favorableObject && favorableObject.helpfulYes} of ${favorableObject && favorableObject.helpfulYes} people found this helpful`}
         </p>
         <p>See more 4 and 5 star reviews</p>
       </div>
@@ -91,32 +83,24 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
       <div className={styles.inline_block}>
         <p>Most Helpful Critical Review</p>
         <p>
-          Star Rating:
-          {criticalObject && criticalObject.starRating}
+          {`${criticalObject && criticalObject.starRating} stars`}
         </p>
         <span>
-          Username:
           {criticalObject && criticalObject.reviewUsername}
           &nbsp;&nbsp;
         </span>
         <span>
-          Date Posted:
           {criticalObject && criticalObject.reviewDate}
           months ago
         </span>
         <p>
-          Review title:
           {criticalObject && criticalObject.reviewTitle}
         </p>
         <p>
-          Review content:
           {criticalObject && criticalObject.reviewContent}
         </p>
         <p>
-          {criticalObject && criticalObject.helpfulYes}
-          of
-          {criticalObject && criticalObject.helpfulYes}
-          people found this helpful
+          {`${criticalObject && criticalObject.helpfulYes} of ${criticalObject && criticalObject.helpfulYes} people found this helpful`}
         </p>
         <p>See more 1, 2, and 3 star reviews</p>
       </div>
