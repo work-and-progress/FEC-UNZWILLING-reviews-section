@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
 
-import STAR_IMAGE from './filled-star.png';
-import EMPTY_STAR_IMAGE from './empty-star.png';
+import STAR_IMAGE from '../filled-star.png';
+import EMPTY_STAR_IMAGE from '../empty-star.png';
 
 const Overview = (props) => {
   Overview.propTypes = {

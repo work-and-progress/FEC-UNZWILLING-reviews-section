@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewContent.css';
+import STAR_IMAGE from '../filled-star.png';
+import EMPTY_STAR_IMAGE from '../empty-star.png';
 
 const Review = ({ review }) => {
   Review.propTypes = {
@@ -41,11 +43,23 @@ const Review = ({ review }) => {
     }],
   };
 
+  function renderStars(num) {
+    const stars = Array.apply(null, new Array(5))
+    return stars.map((star, index) => (
+      <img
+        alt="star"
+        style={{ width: '20px' }}
+        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
+      />
+    ));
+  }
+
   return (
     <div className={styles.block}>
       <div className={styles.inline_block_bigger}>
         <span className={styles.tabs}>
-          {`${review && review.starRating} stars`}
+          {renderStars(`${review && review.starRating}`)}
+          {/* {`${review && review.starRating} stars`} */}
         </span>
         <span className={styles.tabs}>
           {review && review.reviewUsername}

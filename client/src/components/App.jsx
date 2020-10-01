@@ -38,8 +38,18 @@ const App = class extends React.Component {
         console.log(error);
       });
   }
+
   /*--------------------------------*/
-  // https://www.tutorialspoint.com/reactjs/reactjs_props_validation.htm
+  // renderStars(num) {
+  //   const stars = Array.apply(null, new Array(5))
+  //   return stars.map((star, index) => (
+  //     <img
+  //       alt="star"
+  //       style={{ width: '20px' }}
+  //       src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
+  //     />
+  //   ));
+  // }
 
   /*--------------------------------*/
   render() {
