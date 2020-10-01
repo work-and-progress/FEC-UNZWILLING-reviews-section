@@ -7,9 +7,6 @@ const port = 3000;
 const path = require("path");
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-const cors = require('cors');
-app.use(cors());
-
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Karin's app listening at http://localhost:${port}`);

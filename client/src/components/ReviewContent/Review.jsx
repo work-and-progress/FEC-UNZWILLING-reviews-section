@@ -44,19 +44,14 @@ const Review = ({ review }) => {
   return (
     <div className={styles.block}>
       <div className={styles.inline_block_bigger}>
-        <span>
+        <span className={styles.tabs}>
           {`${review && review.starRating} stars`}
-          &nbsp;&nbsp;
         </span>
-        <span>
+        <span className={styles.tabs}>
           {review && review.reviewUsername}
-          &nbsp;&nbsp;
         </span>
         <span>
-          ·&nbsp;
-          {review && review.reviewDate}
-          &nbsp;
-          months ago
+          {`${review && review.reviewDate} months ago`}
         </span>
         <p>
           {review && review.reviewTitle}
@@ -97,6 +92,7 @@ const Review = ({ review }) => {
           {review && review.valueRating}
         </p>
       </div>
+
     </div>
   );
 };

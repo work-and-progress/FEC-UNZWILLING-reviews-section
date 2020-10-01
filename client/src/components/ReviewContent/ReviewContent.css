@@ -15,12 +15,12 @@
 .inline_block_smaller {
   flex: 30%;
   padding-right: 20px;
-  text-align: right;
   white-space: normal;
   font-size: 14px;
   font-style: normal;
   text-transform: none;
   line-height: 20px;
+  padding-top:60px;
 }
 
 .button {
@@ -35,4 +35,8 @@
 .helpful {
   font-weight: bold;
   padding-right:7px;
+}
+
+.tabs {
+  padding-right:10px;
 }

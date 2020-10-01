@@ -35,32 +35,37 @@ const Overview = (props) => {
   } = props;
 
   return (
+    <div>
+      <h4 className={styles.header}>
+        Reviews
+    </h4>
     <div className={styles.block}>
-      <div className={styles.inline_block}>
-        <h4>Reviews</h4>
-        <p>Ratings Snapshot</p>
-        <p>Select a row below to filter reviews.</p>
-        <p>
-          5 ★:
-          {numberOfFiveStarReviews}
-        </p>
-        <p>
-          4 ★:
-          {numberOfFourStarReviews}
-        </p>
-        <p>
-          3 ★:
-          {numberOfThreeStarReviews}
-        </p>
-        <p>
-          2 ★:
-          {numberOfTwoStarReviews}
-        </p>
-        <p>
-          1 ★:
-          {numberOfOneStarReviews}
-        </p>
-      </div>
+        <div className={styles.inline_block}>
+          <p>Ratings Snapshot</p>
+          <p>Select a row below to filter reviews.</p>
+          <p>
+            5 ★:
+            {numberOfFiveStarReviews}
+          </p>
+          <p>
+            4 ★:
+            {numberOfFourStarReviews}
+          </p>
+          <p>
+            3 ★:
+            {numberOfThreeStarReviews}
+          </p>
+          <p>
+            2 ★:
+            {numberOfTwoStarReviews}
+          </p>
+          <p>
+            1 ★:
+            {numberOfOneStarReviews}
+          </p>
+        </div>
+
+
 
       <div className={styles.inline_block}>
         <p>Average Customer Ratings</p>
@@ -78,6 +83,8 @@ const Overview = (props) => {
         </p>
       </div>
     </div>
+    </div>
+
   );
 };
 
