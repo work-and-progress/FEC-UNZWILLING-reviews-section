@@ -135,10 +135,10 @@ const Overview = (props) => {
                 <div className={styles.emptyStars}/>
                 <div
                   className={styles.fullUnit}
-                  style={{ width: `${averageStarRating}` }}
+                  style={{ width: `${((averageStarRating * 100) / 5)}%` }}
                 />
               </div>
-            {` ${(averageStarRating / 10)}`}
+            {` ${(averageStarRating)}`}
           </div>
 
           <div className={styles.new_rating}>
@@ -147,10 +147,10 @@ const Overview = (props) => {
                 <div className={styles.emptyFiveBar}/>
                 <div
                   className={styles.fullFiveBar}
-                  style={{ width: `${averageQualityRating}` }}
+                  style={{ width: `${((averageQualityRating / 5) * 100)}%` }}
                 />
               </div>
-            {` ${(averageQualityRating / 10)}`}
+            {` ${averageQualityRating}`}
           </div>
 
           <div className={styles.new_rating}>
@@ -159,10 +159,10 @@ const Overview = (props) => {
                 <div className={styles.emptyFiveBar}/>
                 <div
                   className={styles.fullFiveBar}
-                  style={{ width: `${averageValueRating}` }}
+                  style={{ width: `${((averageValueRating / 5) * 100)}%` }}
                 />
               </div>
-            {` ${(averageValueRating / 10)}`}
+            {` ${averageValueRating}`}
           </div>
         </div>
       </div>
