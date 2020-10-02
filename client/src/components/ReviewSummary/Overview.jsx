@@ -34,18 +34,6 @@ const Overview = (props) => {
     averageValueRating,
   } = props;
 
-  // ▎
-  function renderBars(num) {
-    const stars = Array.apply(null, new Array(100))
-    return stars.map((star, index) => (
-      <img
-        alt="bar"
-        style={{ width: '2px' }}
-        src={index < num ? YELLOW_BAR : GREY_BAR}
-      />
-    ));
-  }
-
   return (
     <div>
       <h4 className={styles.header}>
@@ -68,7 +56,7 @@ const Overview = (props) => {
                   <div className={styles.emptyBar}/>
                   <div
                     className={styles.fullBar}
-                    style={{ width: `${numberOfFiveStarReviews}` }}
+                    style={{ width: `${numberOfFiveStarReviews}%` }}
                   />
                 </div>
               {` ${numberOfFiveStarReviews}%`}
@@ -80,7 +68,7 @@ const Overview = (props) => {
                   <div className={styles.emptyBar}/>
                   <div
                     className={styles.fullBar}
-                    style={{ width: `${numberOfFourStarReviews}` }}
+                    style={{ width: `${numberOfFourStarReviews}%` }}
                   />
                 </div>
               {` ${numberOfFourStarReviews}%`}
@@ -92,7 +80,7 @@ const Overview = (props) => {
                   <div className={styles.emptyBar}/>
                   <div
                     className={styles.fullBar}
-                    style={{ width: `${numberOfThreeStarReviews}` }}
+                    style={{ width: `${numberOfThreeStarReviews}%` }}
                   />
                 </div>
               {` ${numberOfThreeStarReviews}%`}
@@ -104,7 +92,7 @@ const Overview = (props) => {
                   <div className={styles.emptyBar}/>
                   <div
                     className={styles.fullBar}
-                    style={{ width: `${numberOfTwoStarReviews}` }}
+                    style={{ width: `${numberOfTwoStarReviews}%` }}
                   />
                 </div>
               {` ${numberOfTwoStarReviews}%`}
@@ -116,7 +104,7 @@ const Overview = (props) => {
                   <div className={styles.emptyBar}/>
                   <div
                     className={styles.fullBar}
-                    style={{ width: `${numberOfOneStarReviews}` }}
+                    style={{ width: `${numberOfOneStarReviews}%` }}
                   />
                 </div>
               {` ${numberOfOneStarReviews}%`}
