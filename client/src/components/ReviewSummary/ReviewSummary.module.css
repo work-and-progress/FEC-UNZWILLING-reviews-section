@@ -6,9 +6,7 @@
   padding-left: 5px;
 }
 
-.ratings_content {
-  padding-left: 12px;
-}
+
 /* https://www.w3schools.com/css/css_padding.asp */
 .inline_block {
   flex: 50%;
@@ -24,4 +22,34 @@
 
 .hover-hand {
   cursor: pointer;
+}
+
+.star_ratings_css {
+  padding-left: 12px;
+  unicode-bidi: bidi-override;
+  color: #c5c5c5;
+  font-size: 25px;
+  height: 25px;
+  width: 75px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0;
+  text-shadow: 0px 1px 0 #a2a2a2;
+}
+
+.star_ratings_css_top {
+  color: #e7711b;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.star_ratings_css_bottom {
+  padding: 0;
+  display: block;
+  z-index: 0;
 }

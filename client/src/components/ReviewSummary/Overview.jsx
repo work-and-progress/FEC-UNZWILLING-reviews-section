@@ -83,24 +83,24 @@ const Overview = (props) => {
             <p>
               4 ★&nbsp;
               {renderBars(`${numberOfFourStarReviews}`)}&nbsp;
-              {`${numberOfFourStarReviews} %`}
+              {`${numberOfFourStarReviews}%`}
             </p>
             <p>
               3 ★&nbsp;
               {renderBars(`${numberOfThreeStarReviews}`)}&nbsp;
-              {`${numberOfThreeStarReviews} %`}
+              {`${numberOfThreeStarReviews}%`}
 
             </p>
             <p>
               2 ★&nbsp;
               {renderBars(`${numberOfTwoStarReviews}`)}&nbsp;
-              {`${numberOfTwoStarReviews} %`}
+              {`${numberOfTwoStarReviews}%`}
 
             </p>
             <p>
               1 ★&nbsp;
               {renderBars(`${numberOfOneStarReviews}`)}&nbsp;
-              {`${numberOfOneStarReviews} %`}
+              {`${numberOfOneStarReviews}%`}
             </p>
 
           </div>
@@ -109,10 +109,32 @@ const Overview = (props) => {
 
         <div className={styles.inline_block}>
           <p>Average Customer Ratings</p>
+
           <div className={styles.ratings_content}>
-            <p className={styles.stars}>
-              {`Overall: ${averageStarRating}`}
-            </p>
+            <p>{`Overall: ${averageStarRating}`}</p>
+            <div className={styles.star_ratings_css}>
+              <div
+                className={styles.star_ratings_css_top}
+                style={{ width: `${averageStarRating}%` }}
+              >
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+              <div
+                className={styles.star_ratings_css_bottom}
+              >
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+              </div>
+            </div>
+
+
             <p>
               {`Quality of Product: ${averageQualityRating}`}
             </p>
