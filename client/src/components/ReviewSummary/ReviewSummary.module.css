@@ -1,8 +1,11 @@
 .block {
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
+
+.sub_heading {
+  padding-left: 5px;
+}
+
 
 /* https://www.w3schools.com/css/css_padding.asp */
 .inline_block {
@@ -10,7 +13,7 @@
   padding-top: 0px;
   padding-right: 20px;
   padding-bottom: 0px;
-  padding-left: 0px;
+  padding-left: 10px;
   word-wrap: break-word;
   color: #27221d;
   font-size: 1em;
@@ -19,4 +22,32 @@
 
 .hover-hand {
   cursor: pointer;
+}
+
+
+/*-------------------- Average Star Rating --------------------*/
+.ratings {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: #b1b1b1;
+  overflow: hidden;
+}
+.fullStars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #fde16d;
+}
+.emptyStars:before, .fullStars:before {
+  content:"\2605\2605\2605\2605\2605";
+  font-size: 15px;
+}
+.emptyStars:before {
+  -webkit-text-stroke: 1px #b1b1b1;
+}
+.fullStars:before {
+  -webkit-text-stroke: 1px #fde16d;
 }

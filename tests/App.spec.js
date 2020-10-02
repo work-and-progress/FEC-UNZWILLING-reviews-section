@@ -37,7 +37,7 @@ describe('App', () => {
   });
 
   describe('getReviews', () => {
-    it('fetches successfully data from /review/:productId API', async () => {
+    it('fetches mock data from /review/:productId API', async () => {
       const data = {
         aggregateFiveStarReview: 3,
         aggregateFourStarReview: 2,
@@ -72,6 +72,7 @@ describe('App', () => {
         _id: '123sdfq',
       };
 
+      // https://jestjs.io/docs/en/mock-function-api#mockfnmockimplementationoncefn
       axios.get.mockImplementationOnce(() => Promise.resolve(data));
 
       await expect(getReviews('react')).resolves.toEqual(data);

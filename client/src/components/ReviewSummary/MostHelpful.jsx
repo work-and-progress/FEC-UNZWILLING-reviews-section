@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
+import STAR_IMAGE from '../filled-star.jpg';
+import EMPTY_STAR_IMAGE from '../empty-star.png';
 
 const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) => {
   // turn into an index of an array, whereas mostHelpfulFavorable is an ID, which begins at 1
@@ -53,12 +55,23 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
   const helpfulCritical = mostHelpfulCritical - 1;
   const criticalObject = reviewList && reviewList[helpfulCritical];
 
+  function renderStars(num) {
+    const stars = Array.apply(null, new Array(5))
+    return stars.map((star, index) => (
+      <img
+        alt="star"
+        style={{ width: '15px' }}
+        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
+      />
+    ));
+  }
+
   return (
     <div className={styles.block}>
       <div className={styles.inline_block}>
         <p>Most Helpful Favorable Review</p>
         <p>
-          {`${favorableObject && favorableObject.starRating} stars`}
+          {renderStars(`${favorableObject && favorableObject.starRating}`)}
         </p>
         <span>
           {favorableObject && favorableObject.reviewUsername}
@@ -83,7 +96,7 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
       <div className={styles.inline_block}>
         <p>Most Helpful Critical Review</p>
         <p>
-          {`${criticalObject && criticalObject.starRating} stars`}
+          {renderStars(`${criticalObject && criticalObject.starRating}`)}
         </p>
         <span>
           {criticalObject && criticalObject.reviewUsername}

@@ -2,6 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
 
+import STAR_IMAGE from '../filled-star.jpg';
+import EMPTY_STAR_IMAGE from '../empty-star.png';
+
+import GREY_BAR from '../grey.jpg';
+import YELLOW_BAR from '../yellow.png';
+
 const Overview = (props) => {
   Overview.propTypes = {
     numberOfFiveStarReviews: PropTypes.number,
@@ -34,50 +40,118 @@ const Overview = (props) => {
     averageValueRating,
   } = props;
 
-  return (
-    <div className={styles.block}>
-      <div className={styles.inline_block}>
-        <h4>Reviews</h4>
-        <p>Ratings Snapshot</p>
-        <p>Select a row below to filter reviews.</p>
-        <p>
-          5 ★:
-          {numberOfFiveStarReviews}
-        </p>
-        <p>
-          4 ★:
-          {numberOfFourStarReviews}
-        </p>
-        <p>
-          3 ★:
-          {numberOfThreeStarReviews}
-        </p>
-        <p>
-          2 ★:
-          {numberOfTwoStarReviews}
-        </p>
-        <p>
-          1 ★:
-          {numberOfOneStarReviews}
-        </p>
-      </div>
+  function renderStars(num) {
+    const stars = Array.apply(null, new Array(5))
+    return stars.map((star, index) => (
+      <img
+        alt="star"
+        style={{ width: '15px' }}
+        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
+      />
+    ));
+  }
 
-      <div className={styles.inline_block}>
-        <p>Average Customer Ratings</p>
-        <p>
-          Overall:
-          {averageStarRating}
-        </p>
-        <p>
-          Quality of Product:
-          {averageQualityRating}
-        </p>
-        <p>
-          Value of Product:
-          {averageValueRating}
-        </p>
+  function renderBars(num) {
+    const stars = Array.apply(null, new Array(100))
+    return stars.map((star, index) => (
+      <img
+        alt="bar"
+        style={{ width: '2px' }}
+        src={index < num ? YELLOW_BAR : GREY_BAR}
+      />
+    ));
+  }
+
+  return (
+    <div>
+      <h4 className={styles.header}>
+        Reviews
+      </h4>
+      <div className={styles.block}>
+        <div className={styles.inline_block}>
+          <p>Ratings Snapshot</p>
+
+          <p className={styles.select_header}>
+            Select a row below to filter reviews.
+          </p>
+          <div className={styles.ratings_content}>
+            <p>
+              5 ★&nbsp;
+              {renderBars(`${numberOfFiveStarReviews}`)}
+              &nbsp;
+              {`${numberOfFiveStarReviews} %`}
+            </p>
+            <p>
+              4 ★&nbsp;
+              {renderBars(`${numberOfFourStarReviews}`)}
+              &nbsp;
+              {`${numberOfFourStarReviews}%`}
+            </p>
+            <p>
+              3 ★&nbsp;
+              {renderBars(`${numberOfThreeStarReviews}`)}
+              &nbsp;
+              {`${numberOfThreeStarReviews}%`}
+
+            </p>
+            <p>
+              2 ★&nbsp;
+              {renderBars(`${numberOfTwoStarReviews}`)}
+              &nbsp;
+              {`${numberOfTwoStarReviews}%`}
+
+            </p>
+            <p>
+              1 ★&nbsp;
+              {renderBars(`${numberOfOneStarReviews}`)}
+              &nbsp;
+              {`${numberOfOneStarReviews}%`}
+            </p>
+
+          </div>
+
+        </div>
+
+        <div className={styles.inline_block}>
+          <p>Average Customer Ratings</p>
+
+
+
+            <span>Overall: </span>
+            &nbsp;
+            <div className={styles.ratings}>
+              <div className={styles.emptyStars}/>
+              <div
+                className={styles.fullStars}
+                style={{ width: `${averageStarRating}` }}
+              />
+            </div>
+            <br></br>
+
+            <span>Quality of Product: </span>
+            &nbsp;
+            <div className={styles.ratings}>
+              <div className={styles.emptyStars}/>
+              <div
+                className={styles.fullStars}
+                style={{ width: `${averageQualityRating}` }}
+              />
+            </div>
+            <br></br>
+
+            <span>Value of Product: </span>
+            &nbsp;
+            <div className={styles.ratings}>
+              <div className={styles.emptyStars}/>
+              <div
+                className={styles.fullStars}
+                style={{ width: `${averageValueRating}` }}
+              />
+            </div>
+        </div>
       </div>
     </div>
+
   );
 };
 
