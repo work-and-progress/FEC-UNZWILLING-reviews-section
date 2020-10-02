@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './ReviewContent.css';
 import STAR_IMAGE from '../filled-star.jpg';
 import EMPTY_STAR_IMAGE from '../empty-star.png';
+import LOGO from '../unzwilling-logo.png';
 
 const Review = ({ review }) => {
   Review.propTypes = {
@@ -54,16 +55,12 @@ const Review = ({ review }) => {
     ));
   }
 
-  function recommendationStringify (bool) {
-    // function that will turn boolean into string
-  }
-
   return (
     <div className={styles.block}>
       <div className={styles.inline_block_bigger}>
+
         <span className={styles.tabs}>
           {renderStars(`${review && review.starRating}`)}
-          {/* {`${review && review.starRating} stars`} */}
         </span>
         <span className={styles.tabs}>
           {review && review.reviewUsername}
@@ -82,8 +79,7 @@ const Review = ({ review }) => {
           {review && review.frequencyOfUse}
         </p>
         <p>
-          Recommend this Product:
-          {`${review && review.reviewRecommended}`}
+          <p>{review && review.reviewRecommended ? '✔ Yes, I recommend this product.' : '✘ No, I do not recommend this product.'}</p>
         </p>
         <span className={styles.helpful}>
           Helpful?
@@ -103,12 +99,10 @@ const Review = ({ review }) => {
         <p>
           QUALITY OF PRODUCT:<br></br>
           {renderStars(`${review && review.qualityRating}`)}
-          {/* {review && review.qualityRating} */}
         </p>
         <p>
           VALUE OF PRODUCT:<br></br>
           {renderStars(`${review && review.valueRating}`)}
-          {/* {review && review.valueRating} */}
         </p>
       </div>
 

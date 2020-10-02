@@ -6,6 +6,28 @@
   padding-left: 5px;
 }
 
+.logo {
+  float: right;
+  width: 28px;
+}
+
+.header {
+  display: flex;
+  margin-left: auto;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+  margin-top: 50;
+}
+.writeAReview {
+  margin-left: auto;
+
+  background-color: rgb(237,32,42);
+  color:white;
+  padding-right:15px; /*button size*/
+  padding-left:15px;
+  padding-top:5px;
+  padding-bottom:5px;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+}
 
 /* https://www.w3schools.com/css/css_padding.asp */
 .inline_block {

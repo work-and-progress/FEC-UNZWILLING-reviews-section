@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
 import STAR_IMAGE from '../filled-star.jpg';
 import EMPTY_STAR_IMAGE from '../empty-star.png';
+import LOGO from '../unzwilling-logo.png';
 
 const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) => {
   // turn into an index of an array, whereas mostHelpfulFavorable is an ID, which begins at 1
@@ -70,6 +71,7 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
     <div className={styles.block}>
       <div className={styles.inline_block}>
         <p>Most Helpful Favorable Review</p>
+        <img className={styles.logo} src={LOGO} alt="logo" />
         <p>
           {renderStars(`${favorableObject && favorableObject.starRating}`)}
         </p>
@@ -95,6 +97,7 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
 
       <div className={styles.inline_block}>
         <p>Most Helpful Critical Review</p>
+        <img className={styles.logo} src={LOGO} alt="logo" />
         <p>
           {renderStars(`${criticalObject && criticalObject.starRating}`)}
         </p>

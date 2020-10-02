@@ -51,6 +51,7 @@ const Overview = (props) => {
     ));
   }
 
+  // ▃
   function renderBars(num) {
     const stars = Array.apply(null, new Array(100))
     return stars.map((star, index) => (
@@ -66,7 +67,9 @@ const Overview = (props) => {
     <div>
       <h4 className={styles.header}>
         Reviews
+        <span className={styles.writeAReview}> WRITE A REVIEW </span>
       </h4>
+
       <div className={styles.block}>
         <div className={styles.inline_block}>
           <p>Ratings Snapshot</p>
