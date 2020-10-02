@@ -77,29 +77,34 @@ const Overview = (props) => {
           <div className={styles.ratings_content}>
             <p>
               5 ★&nbsp;
-              {renderBars(`${numberOfFiveStarReviews}`)}&nbsp;
+              {renderBars(`${numberOfFiveStarReviews}`)}
+              &nbsp;
               {`${numberOfFiveStarReviews} %`}
             </p>
             <p>
               4 ★&nbsp;
-              {renderBars(`${numberOfFourStarReviews}`)}&nbsp;
+              {renderBars(`${numberOfFourStarReviews}`)}
+              &nbsp;
               {`${numberOfFourStarReviews}%`}
             </p>
             <p>
               3 ★&nbsp;
-              {renderBars(`${numberOfThreeStarReviews}`)}&nbsp;
+              {renderBars(`${numberOfThreeStarReviews}`)}
+              &nbsp;
               {`${numberOfThreeStarReviews}%`}
 
             </p>
             <p>
               2 ★&nbsp;
-              {renderBars(`${numberOfTwoStarReviews}`)}&nbsp;
+              {renderBars(`${numberOfTwoStarReviews}`)}
+              &nbsp;
               {`${numberOfTwoStarReviews}%`}
 
             </p>
             <p>
               1 ★&nbsp;
-              {renderBars(`${numberOfOneStarReviews}`)}&nbsp;
+              {renderBars(`${numberOfOneStarReviews}`)}
+              &nbsp;
               {`${numberOfOneStarReviews}%`}
             </p>
 
@@ -110,38 +115,39 @@ const Overview = (props) => {
         <div className={styles.inline_block}>
           <p>Average Customer Ratings</p>
 
-          <div className={styles.ratings_content}>
-            <p>{`Overall: ${averageStarRating}`}</p>
-            <div className={styles.star_ratings_css}>
+
+
+            <span>Overall: </span>
+            &nbsp;
+            <div className={styles.ratings}>
+              <div className={styles.emptyStars}/>
               <div
-                className={styles.star_ratings_css_top}
-                style={{ width: `${averageStarRating}%` }}
-              >
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-              </div>
-              <div
-                className={styles.star_ratings_css_bottom}
-              >
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-              </div>
+                className={styles.fullStars}
+                style={{ width: `${averageStarRating}` }}
+              />
             </div>
+            <br></br>
 
+            <span>Quality of Product: </span>
+            &nbsp;
+            <div className={styles.ratings}>
+              <div className={styles.emptyStars}/>
+              <div
+                className={styles.fullStars}
+                style={{ width: `${averageQualityRating}` }}
+              />
+            </div>
+            <br></br>
 
-            <p>
-              {`Quality of Product: ${averageQualityRating}`}
-            </p>
-            <p>
-              {`Value of Product: ${averageValueRating}`}
-            </p>
-          </div>
+            <span>Value of Product: </span>
+            &nbsp;
+            <div className={styles.ratings}>
+              <div className={styles.emptyStars}/>
+              <div
+                className={styles.fullStars}
+                style={{ width: `${averageValueRating}` }}
+              />
+            </div>
         </div>
       </div>
     </div>
