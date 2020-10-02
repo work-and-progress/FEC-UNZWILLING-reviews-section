@@ -165,7 +165,6 @@ const database = require('./index.js');
     // Average Star rating
     const unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.averageStarRating = Math.round(unroundedAverageStar * 10);
-
     // Average Quality rating
     const unroundedAverageQuality = totalQualityForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.averageQualityRating = Math.round(unroundedAverageQuality * 10);

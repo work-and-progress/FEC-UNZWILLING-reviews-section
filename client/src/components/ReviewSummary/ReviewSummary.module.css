@@ -70,7 +70,9 @@
 .ratings_content {
   margin-left: 10px;
 }
-/*-------------------- Average Star Rating --------------------*/
+
+
+/*----------------------------------------------------*/
 .ratings {
   position: relative;
   vertical-align: middle;
@@ -78,7 +80,9 @@
   color: #b1b1b1;
   overflow: hidden;
 }
-.fullStars {
+
+/*-------------------- Average Customer Ratings: Overall --------------------*/
+.fullUnit {
   position: absolute;
   left: 0;
   top: 0;
@@ -86,13 +90,53 @@
   overflow: hidden;
   color: #fde16d;
 }
-.emptyStars:before, .fullStars:before {
+.emptyStars:before, .fullUnit:before {
   content:"\2605\2605\2605\2605\2605";
   font-size: 15px;
 }
 .emptyStars:before {
   -webkit-text-stroke: 1px #b1b1b1;
 }
-.fullStars:before {
+.fullUnit:before {
+  -webkit-text-stroke: 1px #fde16d;
+}
+
+/*-------------------- Ratings Snapshot --------------------*/
+.fullBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #fde16d;
+}
+.emptyBar:before, .fullBar:before {
+  content:"▄▄▄▄▄▄▄▄▄▄";
+  font-size: 15px;
+}
+.emptyBar:before {
+  -webkit-text-stroke: 1px #b1b1b1;
+}
+.fullBar:before {
+  -webkit-text-stroke: 1px #fde16d;
+}
+
+/*-------------------- Average Customer Ratings: Quality, Value --------------------*/
+.fullFiveBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #fde16d;
+}
+.emptyFiveBar:before, .fullFiveBar:before {
+  content:"█████";
+  font-size: 15px;
+}
+.emptyFiveBar:before {
+  -webkit-text-stroke: 1px #b1b1b1;
+}
+.fullFiveBar:before {
   -webkit-text-stroke: 1px #fde16d;
 }
