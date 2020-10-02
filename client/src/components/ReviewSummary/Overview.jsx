@@ -116,41 +116,43 @@ const Overview = (props) => {
         </div>
 
         <div className={styles.inline_block}>
-          <p>Average Customer Ratings</p>
+          <p className={styles.av_customer_rating}>Average Customer Ratings</p>
 
+          <div className={styles.new_rating}>
+            <span className={styles.tab}>Overall </span>
+              <div className={styles.ratings}>
+                <div className={styles.emptyStars}/>
+                <div
+                  className={styles.fullStars}
+                  style={{ width: `${averageStarRating}` }}
+                />
+              </div>
+            {` ${averageStarRating}%`}
+          </div>
 
+          <div className={styles.new_rating}>
+            <span className={styles.tab}>Quality of Product </span>
+              <div className={styles.ratings}>
+                <div className={styles.emptyStars}/>
+                <div
+                  className={styles.fullStars}
+                  style={{ width: `${averageQualityRating}` }}
+                />
+              </div>
+            {` ${averageQualityRating}%`}
+          </div>
 
-            <span>Overall: </span>
-            &nbsp;
-            <div className={styles.ratings}>
-              <div className={styles.emptyStars}/>
-              <div
-                className={styles.fullStars}
-                style={{ width: `${averageStarRating}` }}
-              />
-            </div>
-            <br></br>
-
-            <span>Quality of Product: </span>
-            &nbsp;
-            <div className={styles.ratings}>
-              <div className={styles.emptyStars}/>
-              <div
-                className={styles.fullStars}
-                style={{ width: `${averageQualityRating}` }}
-              />
-            </div>
-            <br></br>
-
-            <span>Value of Product: </span>
-            &nbsp;
-            <div className={styles.ratings}>
-              <div className={styles.emptyStars}/>
-              <div
-                className={styles.fullStars}
-                style={{ width: `${averageValueRating}` }}
-              />
-            </div>
+          <div className={styles.new_rating}>
+            <span className={styles.tab}>Value of Product </span>
+              <div className={styles.ratings}>
+                <div className={styles.emptyStars}/>
+                <div
+                  className={styles.fullStars}
+                  style={{ width: `${averageValueRating}` }}
+                />
+              </div>
+            {` ${averageValueRating}%`}
+          </div>
         </div>
       </div>
     </div>

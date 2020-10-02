@@ -6,8 +6,6 @@ import EMPTY_STAR_IMAGE from '../empty-star.png';
 import LOGO from '../unzwilling-logo.png';
 
 const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) => {
-  // turn into an index of an array, whereas mostHelpfulFavorable is an ID, which begins at 1
-
   MostHelpful.propTypes = {
     mostHelpfulFavorable: PropTypes.number,
     mostHelpfulCritical: PropTypes.number,
@@ -90,9 +88,13 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
           {favorableObject && favorableObject.reviewContent}
         </p>
         <p>
-          {`${favorableObject && favorableObject.helpfulYes} of ${favorableObject && favorableObject.helpfulYes} people found this helpful`}
+          {`${(favorableObject && favorableObject.helpfulYes)}
+           of
+            ${(favorableObject && favorableObject.helpfulYes) + (favorableObject && favorableObject.helpfulNo)}
+             people found this helpful`
+          }
         </p>
-        <p>See more 4 and 5 star reviews</p>
+        <p className={styles.see_more}>See more 4 and 5 star reviews</p>
       </div>
 
       <div className={styles.inline_block}>
@@ -116,9 +118,13 @@ const MostHelpful = ({ reviewList, mostHelpfulFavorable, mostHelpfulCritical }) 
           {criticalObject && criticalObject.reviewContent}
         </p>
         <p>
-          {`${criticalObject && criticalObject.helpfulYes} of ${criticalObject && criticalObject.helpfulYes} people found this helpful`}
+          {`${(criticalObject && criticalObject.helpfulYes)}
+             of
+              ${(criticalObject && criticalObject.helpfulYes) + (criticalObject && criticalObject.helpfulNo)}
+               people found this helpful`
+          }
         </p>
-        <p>See more 1, 2, and 3 star reviews</p>
+        <p className={styles.see_more}>See more 1, 2, and 3 star reviews</p>
       </div>
 
     </div>

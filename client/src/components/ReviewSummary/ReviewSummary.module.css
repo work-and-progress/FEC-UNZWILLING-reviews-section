@@ -46,7 +46,30 @@
   cursor: pointer;
 }
 
+.see_more {
+  font-size: 11px;
+}
 
+.tab {
+  padding-right: 7px;
+}
+
+.new_rating {
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.av_customer_rating {
+  padding-bottom: 20px;
+}
+
+.select_header {
+  margin-left: 10px;
+}
+
+.ratings_content {
+  margin-left: 10px;
+}
 /*-------------------- Average Star Rating --------------------*/
 .ratings {
   position: relative;

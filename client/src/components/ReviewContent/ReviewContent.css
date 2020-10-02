@@ -1,46 +1,56 @@
 .block {
   display: flex;
-  /* align-items: center; */
 }
+
+.logo {
+  float: right;
+  width: 28px;
+}
+
 .inline_block_bigger {
-  flex: 1;
   flex: 70%;
+  margin-left: auto;
+  white-space: normal;
+  vertical-align: middle;
   padding-top: 0px;
   padding-right: 20px;
   padding-bottom: 50px;
   padding-left: 0px;
-  white-space: normal;
-  vertical-align: middle;
 }
 
+.quality_value {
+  display: block;
+  padding-bottom: 5px;
+  padding-top: 15px;
+}
 
 .inline_block_smaller {
   flex: 30%;
+  padding-top:40px;
   padding-right: 20px;
   white-space: normal;
   font-size: 14px;
   font-style: normal;
   text-transform: none;
   line-height: 20px;
-  padding-top:60px;
 }
-
-
 
 .button {
   transition-duration: 0.4s;
-  background-color: rgb(154,154,154); /* Green */
+  background-color: rgb(154,154,154);
   color:white;
   padding-right:10px; /*button size*/
   padding-left:10px;
   margin-right: 7px;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
 }
 
 .helpful {
-  font-weight: bold;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
   padding-right:7px;
 }
 
 .tabs {
   padding-right:10px;
 }
+

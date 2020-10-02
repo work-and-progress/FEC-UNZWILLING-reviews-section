@@ -13,8 +13,8 @@ body {
 }
 
 .white_container_with_text {
-  padding-right: 10%;
-  padding-left: 10%;
+  padding-right: 8%;
+  padding-left: 8%;
   padding-top: 8%;
   padding-bottom: 5%;
   word-wrap: break-word;
@@ -29,6 +29,7 @@ body {
 
 .reviews_questions_block {
   display: flex;
+  letter-spacing: 2px;
 }
 
 .horizontal_line {
@@ -42,5 +43,5 @@ body {
 
 /* margin is the space around an element and padding refers to the space between an element and the content inside it. */
 .reviewHeading {
-  margin-right: 150px;
+  margin-right: 130px;
 }
