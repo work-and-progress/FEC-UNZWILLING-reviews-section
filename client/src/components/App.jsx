@@ -23,6 +23,9 @@ const App = class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currentPage: 1,
+      reviewsPerPage: 3,
+
       oneItem: {
         productId: 2,
         totalNumberReviews: 1,
@@ -56,6 +59,7 @@ const App = class extends React.Component {
       },
     };
     this.renderStars = this.renderStars.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   /*--------------------------------*/
@@ -78,6 +82,17 @@ const App = class extends React.Component {
 
   /*--------------------------------*/
   // eslint-disable-next-line class-methods-use-this
+  handleClick(event) {
+    // event.preventDefault();
+    // console.log(event.target)
+    console.log('event.target.id', event.target.id);
+    this.setState({
+      currentPage: Number(event.target.id),
+    });
+  }
+
+  /*--------------------------------*/
+  // eslint-disable-next-line class-methods-use-this
   renderStars(num) {
     const stars = Array(5).fill(5);
     return stars.map((star, index) => (
@@ -92,6 +107,9 @@ const App = class extends React.Component {
   /*--------------------------------*/
   render() {
     const {
+      currentPage,
+      reviewsPerPage,
+
       oneItem: {
         aggregateFiveStarReview,
         aggregateFourStarReview,
@@ -107,6 +125,16 @@ const App = class extends React.Component {
         reviews,
       },
     } = this.state;
+
+    /* -------------------- Pagination Logic -------------------- */
+    const indexOfLastReview = currentPage * reviewsPerPage;
+    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+    const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i += 1) {
+      pageNumbers.push(i);
+    }
 
     return (
       <div className={styles.big_grey_container}>
@@ -138,16 +166,21 @@ const App = class extends React.Component {
               <Sort
                 totalNumberReviews={totalNumberReviews}
               />
-              {reviews.map((review) => (
+              {currentReviews.map((review) => (
                 <Review
                   review={review}
                   key={review.reviewId}
                   renderStars={this.renderStars}
                 />
               ))}
-              <NextPage
-                totalNumberReviews={totalNumberReviews}
-              />
+              {pageNumbers.map((pageNumber) => (
+                <NextPage
+                  totalNumberReviews={totalNumberReviews}
+                  id={pageNumber}
+                  pageNumber={pageNumber}
+                  handleClick={this.handleClick}
+                />
+              ))}
             </div>
           </div>
         </div>

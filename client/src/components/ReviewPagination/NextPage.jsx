@@ -1,21 +1,51 @@
+/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewPagination.css';
 
-const NextPage = ({ totalNumberReviews }) => (
-  <div className={styles.block}>
-    <span>
-      {`${totalNumberReviews}-${totalNumberReviews} of ${totalNumberReviews} reviews`}
-    </span>
-    <button className={styles.next_button} type="button">
-      ►
-    </button>
-    <button className={styles.back_button} type="button">
-      ◄
-    </button>
+class NextPage extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      currentPage: 1,
+    };
+  }
 
-  </div>
-);
+  render() {
+    // console.log('props from nextpage', this.props)
+    const {
+      totalNumberReviews,
+      handleClick,
+      pageNumber,
+      id,
+    } = this.props;
+
+    return (
+      <div>
+        <span  id={id} onClick={handleClick}>{pageNumber}</span>
+
+        {/* <div className={styles.block}>
+          <span>
+            {`${totalNumberReviews}-${totalNumberReviews} of ${totalNumberReviews} reviews`}
+          </span>
+        </div> */}
+
+      </div>
+
+
+
+        // <div className={styles.buttons}>
+        //   <button className={styles.back_button} type="button" onClick={handleClick}>
+        //     ◄
+        //   </button>
+        //   <button className={styles.next_button} type="button" onClick={handleClick}>
+        //     ►
+        //   </button>
+        // </div>
+
+    );
+  }
+}
 
 NextPage.propTypes = {
   totalNumberReviews: PropTypes.number,

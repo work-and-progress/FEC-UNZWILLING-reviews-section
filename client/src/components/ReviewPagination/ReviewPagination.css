@@ -1,6 +1,7 @@
 .block {
+  align-items: center;
+  display: flex;
   border-style: solid;
-  vertical-align: center;
   border-color: lightgrey;
   background-color: lightgrey;
   width: 100%;
@@ -10,9 +11,17 @@
   margin-top: 30px;
 }
 
+.buttons {
+  margin-left: auto;
+  order: 2;
+}
+
 .back_button {
-  float: right;
+  display: inline-block;
+  cursor: pointer;
 }
 .next_button {
-  float: right;
+  display: inline-block;
+  cursor: pointer;
 }
+

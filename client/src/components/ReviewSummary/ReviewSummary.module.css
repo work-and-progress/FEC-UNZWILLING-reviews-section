@@ -31,7 +31,7 @@
 }
 
 .ratings_snapshot {
-  width: 50%;
+  flex: 50%;
   padding-top: 0px;
   padding-right: 20px;
   padding-bottom: 0px;
@@ -42,28 +42,32 @@
   line-height: 1.5em;
 }
 
-.av_customer_rating_heading {
 
-}
 
 .average_customer_ratings {
-  display: flex;
-  flex-direction: row;
-
-  padding-top: 60px;
+  flex: 50%;
+  padding-top: 0px;
+  padding-right: 20px;
   padding-bottom: 0px;
+  padding-left: 10px;
+  word-wrap: break-word;
   color: #27221d;
   font-size: 1em;
   line-height: 1.5em;
 }
 
-
+.ratings_heading {
+  margin-bottom: 45px;
+}
+/*
+.av_customer_rating_heading {
+  grid-area:left;
+}
 
 .av_customer_rating_content {
-  padding-top:15px;
-  padding-left: 20px;
+  grid-area:right;
 
-}
+} */
 
 .see_more {
   font-size: 11px;
