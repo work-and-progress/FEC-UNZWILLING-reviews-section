@@ -126,8 +126,8 @@ const App = class extends React.Component {
               />
               <MostHelpful
                 reviewList={reviews}
-                mostHelpfulFavorable={mostHelpfulCritical}
-                mostHelpfulCritical={mostHelpfulFavorable}
+                mostHelpfulFavorable={mostHelpfulFavorable}
+                mostHelpfulCritical={mostHelpfulCritical}
               />
               <Sort
                 totalNumberReviews={totalNumberReviews}
