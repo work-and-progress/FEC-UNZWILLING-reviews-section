@@ -17,10 +17,10 @@
   font-family: Futura,Trebuchet MS,Arial,sans-serif;
   margin-top: 50;
 }
+
 .writeAReview {
   margin-left: auto;
   cursor: pointer;
-
   background-color: rgb(237,32,42);
   color:white;
   padding-right:15px; /*button size*/
@@ -30,9 +30,8 @@
   font-family: Futura,Trebuchet MS,Arial,sans-serif;
 }
 
-/* https://www.w3schools.com/css/css_padding.asp */
-.inline_block {
-  flex: 50%;
+.ratings_snapshot {
+  width: 50%;
   padding-top: 0px;
   padding-right: 20px;
   padding-bottom: 0px;
@@ -41,6 +40,29 @@
   color: #27221d;
   font-size: 1em;
   line-height: 1.5em;
+}
+
+.av_customer_rating_heading {
+
+}
+
+.average_customer_ratings {
+  display: flex;
+  flex-direction: row;
+
+  padding-top: 60px;
+  padding-bottom: 0px;
+  color: #27221d;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+
+
+.av_customer_rating_content {
+  padding-top:15px;
+  padding-left: 20px;
+
 }
 
 .see_more {
@@ -63,9 +85,7 @@
   padding-left: 10px;
 }
 
-.av_customer_rating {
-  padding-bottom: 20px;
-}
+
 
 .select_header {
   margin-left: 10px;
@@ -75,6 +95,21 @@
   margin-left: 10px;
 }
 
+
+
+.most_helpful_inline_block {
+  width: 50%;
+  flex-direction: row;
+  flex: 1;
+  padding-top: 0px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  word-wrap: break-word;
+  color: #27221d;
+  font-size: 1em;
+  line-height: 1.5em;
+}
 
 /*----------------------------------------------------*/
 .ratings {

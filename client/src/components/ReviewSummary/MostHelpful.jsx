@@ -15,7 +15,7 @@ const MostHelpful = (props) => {
 
   return (
     <div className={styles.block}>
-      <div className={styles.inline_block}>
+      <div className={styles.most_helpful_inline_block}>
         <p>Most Helpful Favorable Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
         <p>{renderStars(`${favorableObject.starRating}`)}</p>
@@ -30,7 +30,7 @@ const MostHelpful = (props) => {
         <p className={styles.see_more}>See more 4 and 5 star reviews</p>
       </div>
 
-      <div className={styles.inline_block}>
+      <div className={styles.most_helpful_inline_block}>
         <p>Most Helpful Critical Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
         <p>{renderStars(`${criticalObject.starRating}`)}</p>
