@@ -43,5 +43,18 @@ body {
 
 /* margin is the space around an element and padding refers to the space between an element and the content inside it. */
 .reviewHeading {
-  margin-right: 130px;
+  cursor: pointer;
+}
+
+.reviewHeading:hover {
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+}
+
+.questionsHeading {
+  margin-left: 130px;
+  cursor: pointer;
+}
+
+.questionsHeading:hover {
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
 }

@@ -19,6 +19,7 @@
 }
 .writeAReview {
   margin-left: auto;
+  cursor: pointer;
 
   background-color: rgb(237,32,42);
   color:white;
@@ -42,17 +43,19 @@
   line-height: 1.5em;
 }
 
-
-.hover-hand {
-  cursor: pointer;
-}
-
 .see_more {
   font-size: 11px;
+  cursor: pointer;
 }
 
 .tab {
   padding-right: 10px;
+}
+
+.username {
+  cursor: pointer;
+  padding-right: 10px;
+
 }
 
 .new_rating {
@@ -132,14 +135,14 @@
   color: #fde16d;
 }
 .emptyFiveBar:before, .fullFiveBar:before {
-  content:"█████";
+  content:"▇▇▇▇▇";
   font-size: 15px;
 }
 .emptyFiveBar:before {
-  /* -webkit-text-stroke: 1px #b1b1b1; */
-  -webkit-text-stroke: 1px #848484;
+  -webkit-text-stroke: 1px #b1b1b1;
+  /* -webkit-text-stroke: 1px #848484; */
 }
 .fullFiveBar:before {
-  /* -webkit-text-stroke: 1px #fde16d; */
-  -webkit-text-stroke: 1px orange;
+  -webkit-text-stroke: 1px #fde16d;
+  /* -webkit-text-stroke: 1px orange; */
 }

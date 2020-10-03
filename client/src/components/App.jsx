@@ -40,7 +40,7 @@ const App = class extends React.Component {
           {
             reviewId: 1, // how to make this into an Id
             reviewUsername: 'karin',
-            reviewContent: 'loves zwilling',
+            reviewContent: 'loves seedlings of change',
             reviewTitle: 'hrsjo1',
             userId: 1,
             reviewDate: 1,
@@ -115,7 +115,7 @@ const App = class extends React.Component {
             <div className={styles.reviews_questions_block}>
               <div className={styles.horizontal_line}>
                 <span className={styles.reviewHeading}>REVIEWS</span>
-                <span>QUESTIONS</span>
+                <span className={styles.questionsHeading}>QUESTIONS</span>
               </div>
             </div>
             <div>

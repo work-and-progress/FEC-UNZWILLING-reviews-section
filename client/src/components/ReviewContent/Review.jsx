@@ -9,8 +9,8 @@ const Review = ({ review, renderStars }) => (
     <div className={styles.block}>
 
       <div className={styles.inline_block_bigger}>
-        <span className={styles.tabs}>{renderStars(`${review.starRating}`)}</span>
-        <span className={styles.tabs}>{review.reviewUsername}</span>
+        <span>{renderStars(`${review.starRating}`)}</span>
+        <span className={styles.username}>{review.reviewUsername}</span>
         <span>{`${review.reviewDate} months ago`}</span>
         <p>{review.reviewTitle}</p>
         <p>{review.reviewContent}</p>

@@ -19,7 +19,7 @@ const MostHelpful = (props) => {
         <p>Most Helpful Favorable Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
         <p>{renderStars(`${favorableObject.starRating}`)}</p>
-        <span className={styles.tab}>{favorableObject.reviewUsername}</span>
+        <span className={styles.username}>{favorableObject.reviewUsername}</span>
         <span>{`${favorableObject.reviewDate} months ago`}</span>
         <p>{favorableObject.reviewTitle}</p>
         <p>{favorableObject.reviewContent}</p>
@@ -34,7 +34,7 @@ const MostHelpful = (props) => {
         <p>Most Helpful Critical Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
         <p>{renderStars(`${criticalObject.starRating}`)}</p>
-        <span className={styles.tab}>{criticalObject.reviewUsername}</span>
+        <span className={styles.username}>{criticalObject.reviewUsername}</span>
         <span>{`${criticalObject.reviewDate} months ago`}</span>
         <p>{criticalObject.reviewTitle}</p>
         <p>{criticalObject.reviewContent}</p>
