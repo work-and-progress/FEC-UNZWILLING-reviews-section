@@ -7,6 +7,13 @@ const NextPage = ({ totalNumberReviews }) => (
     <span>
       {`${totalNumberReviews}-${totalNumberReviews} of ${totalNumberReviews} reviews`}
     </span>
+    <button className={styles.next_button} type="button">
+      ►
+    </button>
+    <button className={styles.back_button} type="button">
+      ◄
+    </button>
+
   </div>
 );
 

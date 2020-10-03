@@ -1,7 +1,6 @@
 .block {
-  align-items: center;
-  display: flex;
   border-style: solid;
+  vertical-align: center;
   border-color: lightgrey;
   background-color: lightgrey;
   width: 100%;
@@ -9,4 +8,11 @@
   padding-left: 10px;
   margin-bottom: 30px;
   margin-top: 30px;
+}
+
+.back_button {
+  float: right;
+}
+.next_button {
+  float: right;
 }
