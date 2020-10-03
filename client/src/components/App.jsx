@@ -13,6 +13,9 @@ import NextPage from './ReviewPagination/NextPage';
 import Review from './ReviewContent/Review';
 
 import styles from './App.css';
+
+import STAR_IMAGE from './img/filled-star.jpg';
+import EMPTY_STAR_IMAGE from './img/empty-star.png';
 /*--------------------------------*/
 const App = class extends React.Component {
   constructor(props) {
@@ -50,6 +53,7 @@ const App = class extends React.Component {
         ],
       },
     };
+    this.renderStars = this.renderStars.bind(this);
   }
 
   /*--------------------------------*/
@@ -73,16 +77,16 @@ const App = class extends React.Component {
   }
 
   /*--------------------------------*/
-  // renderStars(num) {
-  //   const stars = Array.apply(null, new Array(5))
-  //   return stars.map((star, index) => (
-  //     <img
-  //       alt="star"
-  //       style={{ width: '20px' }}
-  //       src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
-  //     />
-  //   ));
-  // }
+  renderStars(num) {
+    const stars = Array(5).fill(5);
+    return stars.map((star, index) => (
+      <img
+        alt="star"
+        style={{ width: '15px' }}
+        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
+      />
+    ));
+  }
 
   /*--------------------------------*/
   render() {
@@ -128,6 +132,7 @@ const App = class extends React.Component {
                 reviewList={reviews}
                 mostHelpfulFavorable={mostHelpfulFavorable}
                 mostHelpfulCritical={mostHelpfulCritical}
+                renderStars={this.renderStars}
               />
               <Sort
                 totalNumberReviews={totalNumberReviews}
@@ -136,6 +141,7 @@ const App = class extends React.Component {
                 <Review
                   review={review}
                   key={review.reviewId}
+                  renderStars={this.renderStars}
                 />
               ))}
               <NextPage

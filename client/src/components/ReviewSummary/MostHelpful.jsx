@@ -10,21 +10,10 @@ const MostHelpful = (props) => {
     reviewList,
     mostHelpfulFavorable,
     mostHelpfulCritical,
+    renderStars,
   } = props;
-
   const favorableObject = reviewList[(mostHelpfulFavorable - 1)];
   const criticalObject = reviewList[(mostHelpfulCritical - 1)];
-
-  function renderStars(num) {
-    const stars = Array(5).fill(5);
-    return stars.map((star, index) => (
-      <img
-        alt="star"
-        style={{ width: '15px' }}
-        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
-      />
-    ));
-  }
 
   return (
     <div className={styles.block}>
@@ -64,6 +53,7 @@ const MostHelpful = (props) => {
 MostHelpful.propTypes = {
   mostHelpfulFavorable: PropTypes.number,
   mostHelpfulCritical: PropTypes.number,
+  renderStars: PropTypes.func,
   reviewList: PropTypes.arrayOf(
     PropTypes.shape({
       reviewId: PropTypes.number,
@@ -86,6 +76,7 @@ MostHelpful.propTypes = {
 MostHelpful.defaultProps = {
   mostHelpfulFavorable: 2,
   mostHelpfulCritical: 2,
+  renderStars: () => '★★★★★',
   reviewList: [{
     reviewId: 2,
     reviewUsername: 'default',
