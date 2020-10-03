@@ -6,7 +6,6 @@ import Overview from './ReviewSummary/Overview';
 import MostHelpful from './ReviewSummary/MostHelpful';
 
 // Pagination folder
-import Sort from './ReviewPagination/Sort';
 import NextPage from './ReviewPagination/NextPage';
 
 // Review Content folder
@@ -24,7 +23,7 @@ const App = class extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      reviewsPerPage: 3,
+      reviewsPerPage: 5,
 
       oneItem: {
         productId: 2,
@@ -60,6 +59,8 @@ const App = class extends React.Component {
     };
     this.renderStars = this.renderStars.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.nextButton = this.nextButton.bind(this);
+    this.backButton = this.backButton.bind(this);
   }
 
   /*--------------------------------*/
@@ -73,6 +74,7 @@ const App = class extends React.Component {
         this.setState({
           oneItem: response.data,
         });
+        console.log(this.state.oneItem)
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
@@ -83,11 +85,22 @@ const App = class extends React.Component {
   /*--------------------------------*/
   // eslint-disable-next-line class-methods-use-this
   handleClick(event) {
-    // event.preventDefault();
-    // console.log(event.target)
-    console.log('event.target.id', event.target.id);
     this.setState({
       currentPage: Number(event.target.id),
+    });
+  }
+
+  nextButton(event) {
+    console.log('click');
+    this.setState({
+      currentPage: this.state.currentPage + 1,
+    });
+  }
+
+  backButton(event) {
+    console.log('click');
+    this.setState({
+      currentPage: this.state.currentPage - 1,
     });
   }
 
@@ -163,9 +176,13 @@ const App = class extends React.Component {
                 mostHelpfulCritical={mostHelpfulCritical}
                 renderStars={this.renderStars}
               />
-              <Sort
-                totalNumberReviews={totalNumberReviews}
-              />
+
+              <div className={styles.pagination}>
+                <span>
+                  {`${indexOfFirstReview + 1}-${indexOfLastReview} of ${totalNumberReviews} reviews`}
+                </span>
+              </div>
+
               {currentReviews.map((review) => (
                 <Review
                   review={review}
@@ -173,14 +190,27 @@ const App = class extends React.Component {
                   renderStars={this.renderStars}
                 />
               ))}
-              {pageNumbers.map((pageNumber) => (
-                <NextPage
-                  totalNumberReviews={totalNumberReviews}
-                  id={pageNumber}
-                  pageNumber={pageNumber}
-                  handleClick={this.handleClick}
-                />
-              ))}
+
+              <div className={styles.pagination}>
+                <span>
+                  {`${indexOfFirstReview + 1}-${indexOfLastReview} of ${totalNumberReviews} reviews`}
+                </span>
+
+                {pageNumbers.map((pageNumber) => (
+                  <NextPage
+                    totalNumberReviews={totalNumberReviews}
+                    id={pageNumber}
+                    pageNumber={pageNumber}
+                    handleClick={this.handleClick}
+                  />
+                ))}
+
+                <div className={styles.pagination_buttons}>
+                  <button onClick={this.backButton} className={styles.back_button} type="button">◄</button>
+                  <button onClick={this.nextButton} className={styles.next_button} type="button">►</button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

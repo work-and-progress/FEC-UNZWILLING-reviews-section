@@ -11,17 +11,9 @@
   margin-top: 30px;
 }
 
-.buttons {
-  margin-left: auto;
-  order: 2;
-}
-
-.back_button {
-  display: inline-block;
+.pagination_numbers {
+  margin-left: 10px;
+  padding-left: 10px;
   cursor: pointer;
+  color: blue;
 }
-.next_button {
-  display: inline-block;
-  cursor: pointer;
-}
-
