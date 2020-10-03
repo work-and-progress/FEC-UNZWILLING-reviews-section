@@ -3,26 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
 
 const Overview = (props) => {
-  Overview.propTypes = {
-    numberOfFiveStarReviews: PropTypes.number,
-    numberOfFourStarReviews: PropTypes.number,
-    numberOfThreeStarReviews: PropTypes.number,
-    numberOfTwoStarReviews: PropTypes.number,
-    numberOfOneStarReviews: PropTypes.number,
-    averageValueRating: PropTypes.number,
-    averageQualityRating: PropTypes.number,
-    averageStarRating: PropTypes.number,
-  };
-  Overview.defaultProps = {
-    numberOfFiveStarReviews: 0,
-    numberOfFourStarReviews: 0,
-    numberOfThreeStarReviews: 0,
-    numberOfTwoStarReviews: 0,
-    numberOfOneStarReviews: 0,
-    averageValueRating: 0,
-    averageQualityRating: 0,
-    averageStarRating: 0,
-  };
+
   const {
     numberOfFiveStarReviews,
     numberOfFourStarReviews,
@@ -157,6 +138,26 @@ const Overview = (props) => {
     </div>
 
   );
+};
+Overview.propTypes = {
+  numberOfFiveStarReviews: PropTypes.number,
+  numberOfFourStarReviews: PropTypes.number,
+  numberOfThreeStarReviews: PropTypes.number,
+  numberOfTwoStarReviews: PropTypes.number,
+  numberOfOneStarReviews: PropTypes.number,
+  averageValueRating: PropTypes.number,
+  averageQualityRating: PropTypes.number,
+  averageStarRating: PropTypes.number,
+};
+Overview.defaultProps = {
+  numberOfFiveStarReviews: 0,
+  numberOfFourStarReviews: 0,
+  numberOfThreeStarReviews: 0,
+  numberOfTwoStarReviews: 0,
+  numberOfOneStarReviews: 0,
+  averageValueRating: 0,
+  averageQualityRating: 0,
+  averageStarRating: 0,
 };
 
 export default Overview;

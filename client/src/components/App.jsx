@@ -18,7 +18,37 @@ const App = class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      oneItem: {},
+      oneItem: {
+        productId: 2,
+        totalNumberReviews: 1,
+        averageStarRating: 1,
+        averageQualityRating: 1,
+        averageValueRating: 1,
+        aggregateOneStarReview: 1,
+        aggregateTwoStarReview: 1,
+        aggregateThreeStarReview: 1,
+        aggregateFourStarReview: 1,
+        aggregateFiveStarReview: 1,
+        mostHelpfulFavorable: 1, // id number of review
+        mostHelpfulCritical: 1, // id number of review
+        reviews: [
+          {
+            reviewId: 1, // how to make this into an Id
+            reviewUsername: null,
+            reviewContent: null,
+            reviewTitle: null,
+            userId: 1,
+            reviewDate: 1,
+            qualityRating: 1,
+            valueRating: 1,
+            frequencyOfUse: null,
+            starRating: null,
+            reviewRecommended: false,
+            helpfulYes: 1,
+            helpfulNo: 1,
+          },
+        ],
+      },
     };
   }
 
@@ -30,9 +60,12 @@ const App = class extends React.Component {
   getReviews() {
     axios.get('http://localhost:3000/review/1')
       .then((response) => {
-        this.setState({
+        this.setState(
+          // () => ({oneItem: response.data})
+          {
           oneItem: response.data,
-        });
+        }
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -99,7 +132,7 @@ const App = class extends React.Component {
               <Sort
                 totalNumberReviews={totalNumberReviews}
               />
-              {reviews && reviews.map((review) => (
+              {reviews.map((review) => (
                 <Review
                   review={review}
                   key={review.reviewId}

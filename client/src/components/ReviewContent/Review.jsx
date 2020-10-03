@@ -62,35 +62,35 @@ const Review = ({ review }) => {
 
         <div className={styles.inline_block_bigger}>
           <span className={styles.tabs}>
-            {renderStars(`${review && review.starRating}`)}
+            {renderStars(`${review.starRating}`)}
           </span>
           <span className={styles.tabs}>
-            {review && review.reviewUsername}
+            {review.reviewUsername}
           </span>
           <span>
-            {`${review && review.reviewDate} months ago`}
+            {`${review.reviewDate} months ago`}
           </span>
           <p>
-            {review && review.reviewTitle}
+            {review.reviewTitle}
           </p>
           <span>
-            {review && review.reviewContent}
+            {review.reviewContent}
           </span>
           <p>
             Frequency of Use&nbsp;
-            {review && review.frequencyOfUse}
+            {review.frequencyOfUse}
           </p>
           <p>
-            <p>{review && review.reviewRecommended ? '✔ Yes, I recommend this product.' : '✘ No, I do not recommend this product.'}</p>
+            <p>{review.reviewRecommended ? '✔ Yes, I recommend this product.' : '✘ No, I do not recommend this product.'}</p>
           </p>
           <span className={styles.helpful}>
             Helpful?
           </span>
           <span className={styles.button}>
-            {`Yes · ${review && review.helpfulYes}`}
+            {`Yes · ${review.helpfulYes}`}
           </span>
           <span className={styles.button}>
-            {`No · ${review && review.helpfulNo}`}
+            {`No · ${review.helpfulNo}`}
           </span>
           <span className={styles.button}>
             Report
@@ -99,9 +99,9 @@ const Review = ({ review }) => {
 
         <div className={styles.inline_block_smaller}>
           <span className={styles.quality_value}>QUALITY OF PRODUCT:</span>
-          {renderStars(`${review && review.qualityRating}`)}
+          {renderStars(`${review.qualityRating}`)}
           <span className={styles.quality_value}>VALUE OF PRODUCT:</span>
-          {renderStars(`${review && review.valueRating}`)}
+          {renderStars(`${review.valueRating}`)}
         </div>
       </div>
     </div>
