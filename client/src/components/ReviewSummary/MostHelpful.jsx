@@ -17,7 +17,8 @@ const MostHelpful = (props) => {
 
   const favorableObject = reviewList[mostHelpfulFavorable - 1];
   const criticalObject = reviewList[mostHelpfulCritical - 1];
-  console.log('favorableObject ', favorableObject );
+  console.log('favorableObject ', favorableObject);
+  console.log('criticalObject', criticalObject);
 
   function renderStars(num) {
     const stars = Array.apply(null, new Array(5))
@@ -65,7 +66,8 @@ const MostHelpful = (props) => {
       <div className={styles.inline_block}>
         <p>Most Helpful Critical Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
-        <p>
+
+        {/* <p>
           {renderStars(`${criticalObject.starRating}`)}
         </p>
         <span>
@@ -88,7 +90,7 @@ const MostHelpful = (props) => {
               ${criticalObject.helpfulYes + criticalObject.helpfulNo}
                people found this helpful`
           }
-        </p>
+        </p> */}
         <p className={styles.see_more}>See more 1, 2, and 3 star reviews</p>
       </div>
 
