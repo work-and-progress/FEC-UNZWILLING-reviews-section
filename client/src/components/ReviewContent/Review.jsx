@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './ReviewContent.css';
 import STAR_IMAGE from '../filled-star.jpg';
 import EMPTY_STAR_IMAGE from '../empty-star.png';
+import LOGO from '../unzwilling-logo.png';
 
 const Review = ({ review }) => {
   Review.propTypes = {
@@ -54,64 +55,55 @@ const Review = ({ review }) => {
     ));
   }
 
-  function recommendationStringify (bool) {
-    // function that will turn boolean into string
-  }
-
   return (
-    <div className={styles.block}>
-      <div className={styles.inline_block_bigger}>
-        <span className={styles.tabs}>
-          {renderStars(`${review && review.starRating}`)}
-          {/* {`${review && review.starRating} stars`} */}
-        </span>
-        <span className={styles.tabs}>
-          {review && review.reviewUsername}
-        </span>
-        <span>
-          {`${review && review.reviewDate} months ago`}
-        </span>
-        <p>
-          {review && review.reviewTitle}
-        </p>
-        <span>
-          {review && review.reviewContent}
-        </span>
-        <p>
-          Frequency of Use&nbsp;
-          {review && review.frequencyOfUse}
-        </p>
-        <p>
-          Recommend this Product:
-          {`${review && review.reviewRecommended}`}
-        </p>
-        <span className={styles.helpful}>
-          Helpful?
-        </span>
-        <span className={styles.button}>
-          {`Yes · ${review && review.helpfulYes}`}
-        </span>
-        <span className={styles.button}>
-          {`No · ${review && review.helpfulNo}`}
-        </span>
-        <span className={styles.button}>
-          Report
-        </span>
-      </div>
+    <div>
+      <img className={styles.logo} src={LOGO} alt="logo"/>
+      <div className={styles.block}>
 
-      <div className={styles.inline_block_smaller}>
-        <p>
-          QUALITY OF PRODUCT:<br></br>
-          {renderStars(`${review && review.qualityRating}`)}
-          {/* {review && review.qualityRating} */}
-        </p>
-        <p>
-          VALUE OF PRODUCT:<br></br>
-          {renderStars(`${review && review.valueRating}`)}
-          {/* {review && review.valueRating} */}
-        </p>
-      </div>
+        <div className={styles.inline_block_bigger}>
+          <span className={styles.tabs}>
+            {renderStars(`${review.starRating}`)}
+          </span>
+          <span className={styles.tabs}>
+            {review.reviewUsername}
+          </span>
+          <span>
+            {`${review.reviewDate} months ago`}
+          </span>
+          <p>
+            {review.reviewTitle}
+          </p>
+          <span>
+            {review.reviewContent}
+          </span>
+          <p>
+            Frequency of Use&nbsp;
+            {review.frequencyOfUse}
+          </p>
+          <p>
+            <p>{review.reviewRecommended ? '✔ Yes, I recommend this product.' : '✘ No, I do not recommend this product.'}</p>
+          </p>
+          <span className={styles.helpful}>
+            Helpful?
+          </span>
+          <span className={styles.button}>
+            {`Yes · ${review.helpfulYes}`}
+          </span>
+          <span className={styles.button}>
+            {`No · ${review.helpfulNo}`}
+          </span>
+          <span className={styles.button}>
+            Report
+          </span>
+        </div>
 
+        <div className={styles.inline_block_smaller}>
+          <span className={styles.quality_value}>QUALITY OF PRODUCT:</span>
+          {renderStars(`${review.qualityRating}`)}
+          <span className={styles.quality_value}>VALUE OF PRODUCT:</span>
+          {renderStars(`${review.valueRating}`)}
+        </div>
+      </div>
     </div>
   );
 };

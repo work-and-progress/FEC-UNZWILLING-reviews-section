@@ -1,8 +1,8 @@
 # FEC-UNZWILLING-reviews-section
 
-## UI update: Stars!!!!
-<img src='design-and-docs/progress1.png'>
-<img src='design-and-docs/progress2.png'>
+## UI update: Buttons, logos, slight tweaks
+<img src='design-and-docs/progress3.png'>
+<img src='design-and-docs/progress4.png'>
 
 ## File Structure (updated)
 <img src='design-and-docs/files.png'>
