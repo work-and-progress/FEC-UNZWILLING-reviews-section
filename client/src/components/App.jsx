@@ -56,8 +56,6 @@ const App = class extends React.Component {
     };
     this.renderStars = this.renderStars.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    // this.nextButton = this.nextButton.bind(this);
-    // this.backButton = this.backButton.bind(this);
   }
 
   /*--------------------------------*/
@@ -93,7 +91,7 @@ const App = class extends React.Component {
       <img
         alt="star"
         style={{ width: '15px' }}
-        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
+        src={(index < num) ? STAR_IMAGE : EMPTY_STAR_IMAGE}
       />
     ));
   }
@@ -121,10 +119,13 @@ const App = class extends React.Component {
     } = this.state;
 
     /* -------------------- Pagination Logic -------------------- */
+    // determining what should be the first and last review on a certain page
     const indexOfLastReview = currentPage * reviewsPerPage;
     const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+    // creating a new array of current reviews for each page
     const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
 
+    // creating a page numbers array, doing some fancy math stuff
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i += 1) {
       pageNumbers.push(i);
@@ -161,8 +162,7 @@ const App = class extends React.Component {
               <div className={styles.pagination}>
                 <span>
                   {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
-                    of ${totalNumberReviews} reviews`
-                  }
+                    of ${totalNumberReviews} reviews`}
                 </span>
                 <div className={styles.pagination_buttons}>
                   <button
@@ -173,6 +173,7 @@ const App = class extends React.Component {
                     }}
                     className={styles.back_button}
                     type="button"
+                    disabled={currentPage === 1}
                   >
                     ◄
                   </button>
@@ -186,6 +187,7 @@ const App = class extends React.Component {
                     }}
                     className={styles.next_button}
                     type="button"
+                    disabled={currentPage === pageNumbers.length}
                   >
                     ►
                   </button>
@@ -203,8 +205,7 @@ const App = class extends React.Component {
               <div className={styles.pagination}>
                 <span>
                   {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
-                    of ${totalNumberReviews} reviews`
-                  }
+                    of ${totalNumberReviews} reviews`}
                 </span>
 
                 <div className={styles.pagination_buttons}>
@@ -216,6 +217,7 @@ const App = class extends React.Component {
                     }}
                     className={styles.back_button}
                     type="button"
+                    disabled={currentPage === 1}
                   >
                     ◄
                   </button>
@@ -229,6 +231,7 @@ const App = class extends React.Component {
                     }}
                     className={styles.next_button}
                     type="button"
+                    disabled={currentPage === pageNumbers.length}
                   >
                     ►
                   </button>
