@@ -67,7 +67,7 @@ const MostHelpful = (props) => {
         <p>Most Helpful Critical Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
 
-        {/* <p>
+        <p>
           {renderStars(`${criticalObject.starRating}`)}
         </p>
         <span>
@@ -90,53 +90,53 @@ const MostHelpful = (props) => {
               ${criticalObject.helpfulYes + criticalObject.helpfulNo}
                people found this helpful`
           }
-        </p> */}
+        </p>
         <p className={styles.see_more}>See more 1, 2, and 3 star reviews</p>
       </div>
 
     </div>
   );
 };
-MostHelpful.propTypes = {
-  mostHelpfulFavorable: PropTypes.number,
-  mostHelpfulCritical: PropTypes.number,
-  reviewList: PropTypes.arrayOf(
-    PropTypes.shape({
-      reviewId: PropTypes.number,
-      reviewUsername: PropTypes.string,
-      reviewContent: PropTypes.string,
-      reviewTitle: PropTypes.string,
-      userId: PropTypes.number,
-      reviewDate: PropTypes.number,
-      qualityRating: PropTypes.number,
-      valueRating: PropTypes.number,
-      frequencyOfUse: PropTypes.string,
-      starRating: PropTypes.number,
-      reviewRecommended: PropTypes.boolean,
-      helpfulYes: PropTypes.number,
-      helpfulNo: PropTypes.number,
-    }),
-  ),
-};
+// MostHelpful.propTypes = {
+//   mostHelpfulFavorable: PropTypes.number,
+//   mostHelpfulCritical: PropTypes.number,
+//   reviewList: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       reviewId: PropTypes.number,
+//       reviewUsername: PropTypes.string,
+//       reviewContent: PropTypes.string,
+//       reviewTitle: PropTypes.string,
+//       userId: PropTypes.number,
+//       reviewDate: PropTypes.number,
+//       qualityRating: PropTypes.number,
+//       valueRating: PropTypes.number,
+//       frequencyOfUse: PropTypes.string,
+//       starRating: PropTypes.number,
+//       reviewRecommended: PropTypes.boolean,
+//       helpfulYes: PropTypes.number,
+//       helpfulNo: PropTypes.number,
+//     }),
+//   ),
+// };
 
-MostHelpful.defaultProps = {
-  mostHelpfulFavorable: 2,
-  mostHelpfulCritical: 2,
-  reviewList: [{
-    reviewId: 2,
-    reviewUsername: 'default',
-    reviewContent: 'default',
-    reviewTitle: 'default',
-    userId: 2,
-    reviewDate: 2,
-    qualityRating: 2,
-    valueRating: 2,
-    frequencyOfUse: 'default',
-    starRating: 2,
-    reviewRecommended: false,
-    helpfulYes: 2,
-    helpfulNo: 2,
-  }],
-};
+// MostHelpful.defaultProps = {
+//   mostHelpfulFavorable: 2,
+//   mostHelpfulCritical: 2,
+//   reviewList: [{
+//     reviewId: 2,
+//     reviewUsername: 'default',
+//     reviewContent: 'default',
+//     reviewTitle: 'default',
+//     userId: 2,
+//     reviewDate: 2,
+//     qualityRating: 2,
+//     valueRating: 2,
+//     frequencyOfUse: 'default',
+//     starRating: 2,
+//     reviewRecommended: false,
+//     helpfulYes: 2,
+//     helpfulNo: 2,
+//   }],
+// };
 
 export default MostHelpful;

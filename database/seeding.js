@@ -19,17 +19,17 @@ const database = require('./index.js');
   for (let i = 1; i < 101; i += 1) {
     const seedling = {
       productId: i,
-      totalNumberReviews: null,
+      totalNumberReviews: 0,
 
-      averageStarRating: null,
-      averageQualityRating: null,
-      averageValueRating: null,
+      averageStarRating: 1,
+      averageQualityRating: 1,
+      averageValueRating: 1,
 
-      aggregateOneStarReview: null,
-      aggregateTwoStarReview: null,
-      aggregateThreeStarReview: null,
-      aggregateFourStarReview: null,
-      aggregateFiveStarReview: null,
+      aggregateOneStarReview: 1,
+      aggregateTwoStarReview: 1,
+      aggregateThreeStarReview: 1,
+      aggregateFourStarReview: 1,
+      aggregateFiveStarReview: 1,
 
       mostHelpfulFavorable: 0,
       mostHelpfulCritical: 0,
@@ -165,7 +165,7 @@ const database = require('./index.js');
     // Average Star rating
     const unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.averageStarRating = Math.round(unroundedAverageStar * 10) / 10;
-    console.log('seedling.averageStarRating', seedling.averageStarRating)
+
     // Average Quality rating
     const unroundedAverageQuality = totalQualityForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.averageQualityRating = Math.round(unroundedAverageQuality * 10) / 10;

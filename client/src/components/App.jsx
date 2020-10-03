@@ -34,15 +34,15 @@ const App = class extends React.Component {
         reviews: [
           {
             reviewId: 1, // how to make this into an Id
-            reviewUsername: null,
-            reviewContent: null,
-            reviewTitle: null,
+            reviewUsername: 'karin',
+            reviewContent: 'loves zwilling',
+            reviewTitle: 'hrsjo1',
             userId: 1,
             reviewDate: 1,
             qualityRating: 1,
             valueRating: 1,
-            frequencyOfUse: null,
-            starRating: null,
+            frequencyOfUse: 'everyday',
+            starRating: 5,
             reviewRecommended: false,
             helpfulYes: 1,
             helpfulNo: 1,
