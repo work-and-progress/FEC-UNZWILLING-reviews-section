@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
 
 const Overview = (props) => {
-
   const {
     numberOfFiveStarReviews,
     numberOfFourStarReviews,

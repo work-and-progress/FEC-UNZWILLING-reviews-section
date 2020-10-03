@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.tabs {
+  padding-right:10px;
+}
+
 .logo {
   float: right;
   width: 28px;
@@ -50,7 +54,5 @@
   padding-right:7px;
 }
 
-.tabs {
-  padding-right:10px;
-}
+
 

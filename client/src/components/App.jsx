@@ -12,7 +12,12 @@ import NextPage from './ReviewPagination/NextPage';
 // Review Content folder
 import Review from './ReviewContent/Review';
 
+// css
 import styles from './App.css';
+
+// images
+import STAR_IMAGE from './img/filled-star.jpg';
+import EMPTY_STAR_IMAGE from './img/empty-star.png';
 /*--------------------------------*/
 const App = class extends React.Component {
   constructor(props) {
@@ -34,15 +39,15 @@ const App = class extends React.Component {
         reviews: [
           {
             reviewId: 1, // how to make this into an Id
-            reviewUsername: null,
-            reviewContent: null,
-            reviewTitle: null,
+            reviewUsername: 'karin',
+            reviewContent: 'loves zwilling',
+            reviewTitle: 'hrsjo1',
             userId: 1,
             reviewDate: 1,
             qualityRating: 1,
             valueRating: 1,
-            frequencyOfUse: null,
-            starRating: null,
+            frequencyOfUse: 'everyday',
+            starRating: 5,
             reviewRecommended: false,
             helpfulYes: 1,
             helpfulNo: 1,
@@ -50,6 +55,7 @@ const App = class extends React.Component {
         ],
       },
     };
+    this.renderStars = this.renderStars.bind(this);
   }
 
   /*--------------------------------*/
@@ -60,29 +66,28 @@ const App = class extends React.Component {
   getReviews() {
     axios.get('http://localhost:3000/review/1')
       .then((response) => {
-        this.setState(
-          // () => ({oneItem: response.data})
-          {
+        this.setState({
           oneItem: response.data,
-        }
-        );
+        });
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error);
       });
   }
 
   /*--------------------------------*/
-  // renderStars(num) {
-  //   const stars = Array.apply(null, new Array(5))
-  //   return stars.map((star, index) => (
-  //     <img
-  //       alt="star"
-  //       style={{ width: '20px' }}
-  //       src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
-  //     />
-  //   ));
-  // }
+  // eslint-disable-next-line class-methods-use-this
+  renderStars(num) {
+    const stars = Array(5).fill(5);
+    return stars.map((star, index) => (
+      <img
+        alt="star"
+        style={{ width: '15px' }}
+        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
+      />
+    ));
+  }
 
   /*--------------------------------*/
   render() {
@@ -126,8 +131,9 @@ const App = class extends React.Component {
               />
               <MostHelpful
                 reviewList={reviews}
-                mostHelpfulFavorable={mostHelpfulCritical}
-                mostHelpfulCritical={mostHelpfulFavorable}
+                mostHelpfulFavorable={mostHelpfulFavorable}
+                mostHelpfulCritical={mostHelpfulCritical}
+                renderStars={this.renderStars}
               />
               <Sort
                 totalNumberReviews={totalNumberReviews}
@@ -136,6 +142,7 @@ const App = class extends React.Component {
                 <Review
                   review={review}
                   key={review.reviewId}
+                  renderStars={this.renderStars}
                 />
               ))}
               <NextPage

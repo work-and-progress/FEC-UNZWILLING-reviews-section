@@ -1,63 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
-import STAR_IMAGE from '../filled-star.jpg';
-import EMPTY_STAR_IMAGE from '../empty-star.png';
-import LOGO from '../unzwilling-logo.png';
+import LOGO from '../img/unzwilling-logo.png';
 
 const MostHelpful = (props) => {
   const {
     reviewList,
     mostHelpfulFavorable,
     mostHelpfulCritical,
+    renderStars,
   } = props;
-  // console.log('reviewList', reviewList);
-  // console.log('mostHelpfulFavorable', mostHelpfulFavorable)
-  // console.log('mostHelpfulCritical', mostHelpfulCritical)
-
-  const favorableObject = reviewList[mostHelpfulFavorable - 1];
-  const criticalObject = reviewList[mostHelpfulCritical - 1];
-  console.log('favorableObject ', favorableObject );
-
-  function renderStars(num) {
-    const stars = Array.apply(null, new Array(5))
-    return stars.map((star, index) => (
-      <img
-        alt="star"
-        style={{ width: '15px' }}
-        src={index < num ? STAR_IMAGE : EMPTY_STAR_IMAGE}
-      />
-    ));
-  }
+  const favorableObject = reviewList[(mostHelpfulFavorable - 1)];
+  const criticalObject = reviewList[(mostHelpfulCritical - 1)];
 
   return (
     <div className={styles.block}>
       <div className={styles.inline_block}>
         <p>Most Helpful Favorable Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
+        <p>{renderStars(`${favorableObject.starRating}`)}</p>
+        <span className={styles.tab}>{favorableObject.reviewUsername}</span>
+        <span>{`${favorableObject.reviewDate} months ago`}</span>
+        <p>{favorableObject.reviewTitle}</p>
+        <p>{favorableObject.reviewContent}</p>
         <p>
-          {renderStars(`${favorableObject.starRating}`)}
-        </p>
-        <span>
-          {favorableObject.reviewUsername}
-          &nbsp;&nbsp;
-        </span>
-        <span>
-          {favorableObject.reviewDate}
-          months ago
-        </span>
-        <p>
-          {favorableObject.reviewTitle}
-        </p>
-        <p>
-          {favorableObject.reviewContent}
-        </p>
-        <p>
-          {`${favorableObject.helpfulYes}
-           of
-            ${favorableObject.helpfulYes + favorableObject.helpfulNo}
-             people found this helpful`
-          }
+          {`${favorableObject.helpfulYes} of
+            ${favorableObject.helpfulYes + favorableObject.helpfulNo} people found this helpful`}
         </p>
         <p className={styles.see_more}>See more 4 and 5 star reviews</p>
       </div>
@@ -65,39 +33,25 @@ const MostHelpful = (props) => {
       <div className={styles.inline_block}>
         <p>Most Helpful Critical Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
+        <p>{renderStars(`${criticalObject.starRating}`)}</p>
+        <span className={styles.tab}>{criticalObject.reviewUsername}</span>
+        <span>{`${criticalObject.reviewDate} months ago`}</span>
+        <p>{criticalObject.reviewTitle}</p>
+        <p>{criticalObject.reviewContent}</p>
         <p>
-          {renderStars(`${criticalObject.starRating}`)}
-        </p>
-        <span>
-          {criticalObject.reviewUsername}
-          &nbsp;&nbsp;
-        </span>
-        <span>
-          {criticalObject.reviewDate}
-          months ago
-        </span>
-        <p>
-          {criticalObject.reviewTitle}
-        </p>
-        <p>
-          {criticalObject.reviewContent}
-        </p>
-        <p>
-          {`${criticalObject.helpfulYes}
-             of
-              ${criticalObject.helpfulYes + criticalObject.helpfulNo}
-               people found this helpful`
-          }
+          {`${criticalObject.helpfulYes} of
+            ${criticalObject.helpfulYes + criticalObject.helpfulNo} people found this helpful`}
         </p>
         <p className={styles.see_more}>See more 1, 2, and 3 star reviews</p>
       </div>
-
     </div>
   );
 };
+
 MostHelpful.propTypes = {
   mostHelpfulFavorable: PropTypes.number,
   mostHelpfulCritical: PropTypes.number,
+  renderStars: PropTypes.func,
   reviewList: PropTypes.arrayOf(
     PropTypes.shape({
       reviewId: PropTypes.number,
@@ -120,6 +74,7 @@ MostHelpful.propTypes = {
 MostHelpful.defaultProps = {
   mostHelpfulFavorable: 2,
   mostHelpfulCritical: 2,
+  renderStars: () => '★★★★★',
   reviewList: [{
     reviewId: 2,
     reviewUsername: 'default',

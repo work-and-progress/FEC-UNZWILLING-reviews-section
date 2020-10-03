@@ -19,18 +19,15 @@ const database = require('./index.js');
   for (let i = 1; i < 101; i += 1) {
     const seedling = {
       productId: i,
-      totalNumberReviews: null,
-
-      averageStarRating: null,
-      averageQualityRating: null,
-      averageValueRating: null,
-
-      aggregateOneStarReview: null,
-      aggregateTwoStarReview: null,
-      aggregateThreeStarReview: null,
-      aggregateFourStarReview: null,
-      aggregateFiveStarReview: null,
-
+      totalNumberReviews: 0,
+      averageStarRating: 1,
+      averageQualityRating: 1,
+      averageValueRating: 1,
+      aggregateOneStarReview: 1,
+      aggregateTwoStarReview: 1,
+      aggregateThreeStarReview: 1,
+      aggregateFourStarReview: 1,
+      aggregateFiveStarReview: 1,
       mostHelpfulFavorable: 0,
       mostHelpfulCritical: 0,
       reviews: [],
@@ -129,24 +126,12 @@ const database = require('./index.js');
       reviewID: 0,
     };
 
-    // console.log('mostHelpfulFavorable: ', mostHelpfulFavorable);
-    // console.log('mostHelpfulCritical: ', mostHelpfulCritical);
-    // console.log('---------------')
+    // Going to save the Most helpful favorable + critical based on the Review ID!
     seedling.mostHelpfulFavorable = mostHelpfulFavorable.reviewID;
     seedling.mostHelpfulCritical = mostHelpfulCritical.reviewID;
 
-    // console.log('most favorable ', arrayForMostFavorable);
-    // eslint-disable-next-line max-len
-    // console.log(' winner most favorable: ', arrayForMostFavorable[arrayForMostFavorable.length - 1])
-    // console.log(' id of WINNER IS: ', mostHelpfulFavorable.reviewID || 0);
-    // console.log('--------------------')
-    // console.log('most critical ', arrayForMostCritical);
-    // console.log(' winner most critical: ', arrayForMostCritical[arrayForMostCritical.length - 1])
-
     /*--------------------------------*/
     // total one star reviews
-
-    // MAKE THIS A PERCENTAGE
     const percentageForOneStar = Math.round((oneStarReview / randomNumberOfReviewsPerProduct) * 100);
     seedling.aggregateOneStarReview = percentageForOneStar;
     // total two star reviews
@@ -165,7 +150,7 @@ const database = require('./index.js');
     // Average Star rating
     const unroundedAverageStar = totalStarsForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.averageStarRating = Math.round(unroundedAverageStar * 10) / 10;
-    console.log('seedling.averageStarRating', seedling.averageStarRating)
+
     // Average Quality rating
     const unroundedAverageQuality = totalQualityForOneProduct / randomNumberOfReviewsPerProduct;
     seedling.averageQualityRating = Math.round(unroundedAverageQuality * 10) / 10;
