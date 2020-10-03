@@ -5,9 +5,6 @@ import axios from 'axios';
 import Overview from './ReviewSummary/Overview';
 import MostHelpful from './ReviewSummary/MostHelpful';
 
-// Pagination folder
-import NextPage from './ReviewPagination/NextPage';
-
 // Review Content folder
 import Review from './ReviewContent/Review';
 
@@ -88,20 +85,6 @@ const App = class extends React.Component {
     });
   }
 
-  // nextButton() {
-  //   const { currentPage } = this.state;
-  //   this.setState({
-  //     currentPage: (currentPage === pageNumbers.length) ? currentPage : currentPage + 1,
-  //   });
-  // }
-
-  // backButton() {
-  //   const { currentPage } = this.state;
-  //   this.setState({
-  //     currentPage: currentPage - 1,
-  //   });
-  // }
-
   /*--------------------------------*/
   // eslint-disable-next-line class-methods-use-this
   renderStars(num) {
@@ -177,7 +160,9 @@ const App = class extends React.Component {
 
               <div className={styles.pagination}>
                 <span>
-                  {`${indexOfFirstReview + 1}-${indexOfLastReview} of ${totalNumberReviews} reviews`}
+                  {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
+                    of ${totalNumberReviews} reviews`
+                  }
                 </span>
                 <div className={styles.pagination_buttons}>
                   <button
@@ -217,17 +202,10 @@ const App = class extends React.Component {
 
               <div className={styles.pagination}>
                 <span>
-                  {`${indexOfFirstReview + 1}-${indexOfLastReview} of ${totalNumberReviews} reviews`}
+                  {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
+                    of ${totalNumberReviews} reviews`
+                  }
                 </span>
-
-                {/* {pageNumbers.map((pageNumber) => (
-                  <NextPage
-                    totalNumberReviews={totalNumberReviews}
-                    id={pageNumber}
-                    pageNumber={pageNumber}
-                    handleClick={this.handleClick}
-                  />
-                ))} */}
 
                 <div className={styles.pagination_buttons}>
                   <button
