@@ -12,8 +12,10 @@ import NextPage from './ReviewPagination/NextPage';
 // Review Content folder
 import Review from './ReviewContent/Review';
 
+// css
 import styles from './App.css';
 
+// images
 import STAR_IMAGE from './img/filled-star.jpg';
 import EMPTY_STAR_IMAGE from './img/empty-star.png';
 /*--------------------------------*/
@@ -64,19 +66,18 @@ const App = class extends React.Component {
   getReviews() {
     axios.get('http://localhost:3000/review/1')
       .then((response) => {
-        this.setState(
-          // () => ({oneItem: response.data})
-          {
+        this.setState({
           oneItem: response.data,
-        }
-        );
+        });
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.log(error);
       });
   }
 
   /*--------------------------------*/
+  // eslint-disable-next-line class-methods-use-this
   renderStars(num) {
     const stars = Array(5).fill(5);
     return stars.map((star, index) => (

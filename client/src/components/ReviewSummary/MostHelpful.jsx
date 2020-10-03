@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
-import STAR_IMAGE from '../img/filled-star.jpg';
-import EMPTY_STAR_IMAGE from '../img/empty-star.png';
 import LOGO from '../img/unzwilling-logo.png';
 
 const MostHelpful = (props) => {
