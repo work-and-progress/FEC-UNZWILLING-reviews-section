@@ -21,7 +21,7 @@ const Overview = (props) => {
         <span className={styles.writeAReview}> WRITE A REVIEW </span>
       </h4>
 
-      <div className={styles.block}>
+      <div className={styles.wrapper}>
         <div className={styles.ratings_snapshot}>
           <p>Ratings Snapshot</p>
 

@@ -1,4 +1,4 @@
-.block {
+.wrapper {
   display: flex;
 }
 
@@ -31,6 +31,7 @@
 }
 
 .ratings_snapshot {
+  border: 1px pink solid;
   flex: 50%;
   padding-top: 0px;
   padding-right: 20px;
@@ -45,6 +46,7 @@
 
 
 .average_customer_ratings {
+  border: 1px blue solid;
   flex: 50%;
   padding-top: 0px;
   padding-right: 20px;
@@ -54,6 +56,15 @@
   color: #27221d;
   font-size: 1em;
   line-height: 1.5em;
+}
+
+.ratings {
+  border: 1px orange solid;
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: #b1b1b1;
+  overflow: hidden;
 }
 
 .ratings_heading {
@@ -116,13 +127,7 @@
 }
 
 /*----------------------------------------------------*/
-.ratings {
-  position: relative;
-  vertical-align: middle;
-  display: inline-block;
-  color: #b1b1b1;
-  overflow: hidden;
-}
+
 
 /*-------------------- Average Customer Ratings: Overall --------------------*/
 .fullUnit {

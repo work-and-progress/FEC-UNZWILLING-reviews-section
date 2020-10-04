@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewSummary.module.css';
-import LOGO from '../img/unzwilling-logo.png';
 
 const MostHelpful = (props) => {
   const {
@@ -12,10 +11,11 @@ const MostHelpful = (props) => {
   } = props;
   const favorableObject = reviewList[(mostHelpfulFavorable - 1)];
   const criticalObject = reviewList[(mostHelpfulCritical - 1)];
+  const LOGO = 'https://unzwilling-reviews.s3-us-west-1.amazonaws.com/unzwilling-logo.png';
 
   return (
-    <div className={styles.block}>
-      <div className={styles.most_helpful_inline_block}>
+    <div className={styles.wrapper}>
+      <div className={styles.most_helpful_half}>
         <p>Most Helpful Favorable Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
         <p>{renderStars(`${favorableObject.starRating}`)}</p>
@@ -30,7 +30,7 @@ const MostHelpful = (props) => {
         <p className={styles.see_more}>See more 4 and 5 star reviews</p>
       </div>
 
-      <div className={styles.most_helpful_inline_block}>
+      <div className={styles.most_helpful_half}>
         <p>Most Helpful Critical Review</p>
         <img className={styles.logo} src={LOGO} alt="logo" />
         <p>{renderStars(`${criticalObject.starRating}`)}</p>

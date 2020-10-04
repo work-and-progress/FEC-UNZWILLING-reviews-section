@@ -27,7 +27,7 @@ body {
   line-height: 20px;
 }
 
-.reviews_questions_block {
+.reviews_questions_section {
   display: flex;
   letter-spacing: 2px;
 }

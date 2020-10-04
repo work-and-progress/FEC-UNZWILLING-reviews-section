@@ -37,7 +37,7 @@ const App = class extends React.Component {
         mostHelpfulCritical: 1, // id number of review
         reviews: [
           {
-            reviewId: 1, // how to make this into an Id
+            reviewId: 1,
             reviewUsername: 'karin',
             reviewContent: 'loves seedlings of change',
             reviewTitle: 'hrsjo1',
@@ -135,7 +135,7 @@ const App = class extends React.Component {
       <div className={styles.big_grey_container}>
         <div className={styles.main_white_container}>
           <div className={styles.white_container_with_text}>
-            <div className={styles.reviews_questions_block}>
+            <div className={styles.reviews_questions_section}>
               <div className={styles.horizontal_line}>
                 <span className={styles.reviewHeading}>REVIEWS</span>
                 <span className={styles.questionsHeading}>QUESTIONS</span>

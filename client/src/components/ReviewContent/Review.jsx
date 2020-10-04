@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ReviewContent.css';
-import LOGO from '../img/unzwilling-logo.png';
+
+const LOGO = 'https://unzwilling-reviews.s3-us-west-1.amazonaws.com/unzwilling-logo.png';
 
 const Review = ({ review, renderStars }) => (
   <div>
-    <img className={styles.logo} src={LOGO} alt="logo"/>
-    <div className={styles.block}>
+    <img className={styles.logo} src={LOGO} alt="logo" />
+    <div className={styles.review_wrapper}>
 
-      <div className={styles.inline_block_bigger}>
+      <div className={styles.review_left_side}>
         <span>{renderStars(`${review.starRating}`)}</span>
         <span className={styles.username}>{review.reviewUsername}</span>
         <span>{`${review.reviewDate} months ago`}</span>
@@ -23,7 +24,7 @@ const Review = ({ review, renderStars }) => (
         <span className={styles.button}>Report</span>
       </div>
 
-      <div className={styles.inline_block_smaller}>
+      <div className={styles.review_right_side}>
         <span className={styles.quality_value}>QUALITY OF PRODUCT:</span>
         {renderStars(`${review.qualityRating}`)}
         <span className={styles.quality_value}>VALUE OF PRODUCT:</span>
