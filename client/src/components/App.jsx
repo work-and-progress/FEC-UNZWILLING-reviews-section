@@ -9,7 +9,9 @@ import MostHelpful from './ReviewSummary/MostHelpful';
 // Review Content folder
 import Review from './ReviewContent/Review';
 
-import Pagination from './Pagination/Pagination';
+// Review Pagination folder
+import Pagination from './ReviewPagination/Pagination';
+
 // css
 import styles from './App.css';
 

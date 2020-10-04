@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Pagination.css';
+import styles from './ReviewPagination.css';
 
 const Pagination = (props) => {
   const {
