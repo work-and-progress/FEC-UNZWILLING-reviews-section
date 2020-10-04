@@ -1,7 +1,10 @@
 # FEC-UNZWILLING-reviews-section
 
-## UI update: Slight tweaks, now working on pagination
-<img src='design-and-docs/progress5.png'>
+## UI update
+<img src='design-and-docs/finprogress1.png'>
+<img src='design-and-docs/finprogress2.png'>
+<img src='design-and-docs/finprogress3.png'>
+
 
 <!-- ## File Structure (updated)
 <img src='design-and-docs/files.png'>
