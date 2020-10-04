@@ -26,20 +26,17 @@ const Overview = (props) => {
           <p>Ratings Snapshot</p>
           <p className={styles.tab}>Select a row below to filter reviews.</p>
 
+          <div className={styles.ratings_snapshot}>
+            <div className={styles.ratings_snapshot_key}>
+              <p>5 ★</p>
+              <p>4 ★</p>
+              <p>3 ★</p>
+              <p>2 ★</p>
+              <p>1 ★</p>
+            </div>
 
-        <div className={styles.ratings_snapshot}>
-          <div className={styles.ratings_snapshot_key}>
-            <p className={styles.tab}>5 ★</p>
-            <p className={styles.tab}>4 ★</p>
-            <p className={styles.tab}>3 ★</p>
-            <p className={styles.tab}>2 ★</p>
-            <p className={styles.tab}>1 ★</p>
-          </div>
-
-
-
-          <div className={styles.ratings_content}>
-            <div className={styles.new_rating}>
+            <div className={styles.ratings_content}>
+              <div className={styles.new_rating}>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -47,8 +44,8 @@ const Overview = (props) => {
                     style={{ width: `${numberOfFiveStarReviews}%` }}
                   />
                 </div>
-            </div>
-            <div className={styles.new_rating}>
+              </div>
+              <div className={styles.new_rating}>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -56,8 +53,8 @@ const Overview = (props) => {
                     style={{ width: `${numberOfFourStarReviews}%` }}
                   />
                 </div>
-            </div>
-            <div className={styles.new_rating}>
+              </div>
+              <div className={styles.new_rating}>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -65,8 +62,8 @@ const Overview = (props) => {
                     style={{ width: `${numberOfThreeStarReviews}%` }}
                   />
                 </div>
-            </div>
-            <div className={styles.new_rating}>
+              </div>
+              <div className={styles.new_rating}>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -74,8 +71,8 @@ const Overview = (props) => {
                     style={{ width: `${numberOfTwoStarReviews}%` }}
                   />
                 </div>
-            </div>
-            <div className={styles.new_rating}>
+              </div>
+              <div className={styles.new_rating}>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -83,18 +80,17 @@ const Overview = (props) => {
                     style={{ width: `${numberOfOneStarReviews}%` }}
                   />
                 </div>
+              </div>
+            </div>
+
+            <div className={styles.ratings_snapshot_percentages}>
+              <p>{` ${numberOfFiveStarReviews}%`}</p>
+              <p>{` ${numberOfFourStarReviews}%`}</p>
+              <p>{` ${numberOfThreeStarReviews}%`}</p>
+              <p>{` ${numberOfTwoStarReviews}%`}</p>
+              <p>{` ${numberOfOneStarReviews}%`}</p>
             </div>
           </div>
-
-          <div className={styles.ratings_snapshot_percentages}>
-            <p>{` ${numberOfFiveStarReviews}%`}</p>
-            <p>{` ${numberOfFourStarReviews}%`}</p>
-            <p>{` ${numberOfThreeStarReviews}%`}</p>
-            <p>{` ${numberOfTwoStarReviews}%`}</p>
-            <p>{` ${numberOfOneStarReviews}%`}</p>
-          </div>
-
-        </div>
         </div>
 
         {/* ---------------------------------------------- */}
@@ -103,12 +99,10 @@ const Overview = (props) => {
           <div className={styles.average_customer_ratings}>
 
             <div className={styles.average_ratings_key}>
-              <p className={styles.tab}>Overall </p>
-              <p className={styles.tab}>Quality of Product </p>
-              <p className={styles.tab}>Value of Product </p>
+              <p>Overall </p>
+              <p>Quality of Product </p>
+              <p>Value of Product </p>
             </div>
-
-
 
             <div className={styles.average_ratings_content}>
               <div className={styles.new_rating_bars}>
@@ -145,14 +139,8 @@ const Overview = (props) => {
               <p>{averageQualityRating}</p>
               <p>{averageValueRating}</p>
             </div>
-
-
+          </div>
         </div>
-
-        </div>
-
-
-
       </div>
     </div>
 

@@ -28,7 +28,7 @@
   word-wrap: break-word;
   color: #27221d;
   font-size: 1em;
-  line-height: 1.5em;
+  line-height: 1.1em;
 }
 
 .ratings_wrapper {
@@ -37,21 +37,21 @@
 
 .ratings_snapshot_key {
   margin-left: 20px;
+  flex: 10%;
 }
 
 .ratings_content {
-  margin-top: 10px;
-  flex: 30%;
+  margin-top: 12px;
+  flex: 40%;
   margin-left: 0px;
 }
 
 .ratings_snapshot_percentages {
-  flex: 20%;
-  margin-right: 70px;
+  flex: 30%;
 }
 
 .new_rating {
-  padding-bottom: 15px;
+  padding-bottom: 14px;
 }
 
 /* ------------------ Average Customer Ratings half ----------------- */
@@ -61,7 +61,7 @@
   word-wrap: break-word;
   color: #27221d;
   font-size: 1em;
-  line-height: 1.5em;
+  line-height: 1.1em;
 }
 
 .average_wrapper {
@@ -84,7 +84,7 @@
 }
 
 .new_rating_bars {
-  padding-bottom: 15px;
+  padding-bottom: 14px;
 }
 /* ----------------------------------- */
 .sub_heading {
@@ -114,7 +114,7 @@
 }
 
 .tab {
-  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .username {
@@ -123,14 +123,9 @@
 
 }
 
-
-
-
-
 .select_header {
   margin-left: 10px;
 }
-
 
 .most_helpful_half {
   width: 50%;
@@ -145,8 +140,6 @@
   font-size: 1em;
   line-height: 1.5em;
 }
-
-
 
 /*-------------------- Average Customer Ratings: Overall --------------------*/
 .fullUnit {
@@ -198,7 +191,7 @@
   color: #fde16d;
 }
 .emptyFiveBar:before, .fullFiveBar:before {
-  content:"▇▇▇▇▇";
+  content:"▄▄▄▄▄";
   font-size: 15px;
 }
 .emptyFiveBar:before {

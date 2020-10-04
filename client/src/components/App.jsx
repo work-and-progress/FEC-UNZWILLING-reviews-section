@@ -21,6 +21,21 @@ const App = class extends React.Component {
     this.state = {
       currentPage: 1,
       reviewsPerPage: 5,
+      currentReviews: [{
+        reviewId: 1,
+        reviewUsername: 'karin',
+        reviewContent: 'loves seedlings of change',
+        reviewTitle: 'hrsjo1',
+        userId: 1,
+        reviewDate: 1,
+        qualityRating: 1,
+        valueRating: 1,
+        frequencyOfUse: 'everyday',
+        starRating: 5,
+        reviewRecommended: false,
+        helpfulYes: 1,
+        helpfulNo: 1,
+      }],
 
       oneItem: {
         productId: 2,
@@ -56,6 +71,32 @@ const App = class extends React.Component {
     };
     this.renderStars = this.renderStars.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.nextButton = this.nextButton.bind(this);
+    this.backButton = this.backButton.bind(this);
+
+    const {
+      currentPage,
+      reviewsPerPage,
+      oneItem: {
+        reviews,
+      },
+    } = this.state;
+    /* -------------------- Pagination Logic -------------------- */
+    // determining what should be the first and last review on a certain page
+    const indexOfLastReview = currentPage * reviewsPerPage;
+    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
+    // creating a new array of current reviews for each page
+    const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
+
+    this.state = {
+      currentReviews: reviews.slice(indexOfFirstReview, indexOfLastReview)
+    };
+
+    // creating a page numbers array, doing some fancy math stuff
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i += 1) {
+      pageNumbers.push(i);
+    }
   }
 
   /*--------------------------------*/
@@ -83,8 +124,21 @@ const App = class extends React.Component {
     });
   }
 
+  backButton() {
+    this.setState({
+      currentPage: (this.currentPage === 1) ? this.currentPage : this.currentPage - 1,
+    });
+  }
+
+  nextButton() {
+    this.setState({
+      // eslint-disable-next-line max-len
+      currentPage: (this.currentPage === this.pageNumbers.length) ? this.currentPage : this.currentPage + 1,
+    });
+  }
   /*--------------------------------*/
   // eslint-disable-next-line class-methods-use-this
+
   renderStars(num) {
     const stars = Array(5).fill(5);
     return stars.map((star, index) => (
@@ -101,6 +155,7 @@ const App = class extends React.Component {
     const {
       currentPage,
       reviewsPerPage,
+      currentReviews,
 
       oneItem: {
         aggregateFiveStarReview,
@@ -117,19 +172,6 @@ const App = class extends React.Component {
         reviews,
       },
     } = this.state;
-
-    /* -------------------- Pagination Logic -------------------- */
-    // determining what should be the first and last review on a certain page
-    const indexOfLastReview = currentPage * reviewsPerPage;
-    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-    // creating a new array of current reviews for each page
-    const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
-
-    // creating a page numbers array, doing some fancy math stuff
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i += 1) {
-      pageNumbers.push(i);
-    }
 
     return (
       <div className={styles.big_grey_container}>
@@ -161,16 +203,12 @@ const App = class extends React.Component {
 
               <div className={styles.pagination}>
                 <span>
-                  {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
-                    of ${totalNumberReviews} reviews`}
+                  {`${this.indexOfFirstReview + 1}-${(this.indexOfLastReview > this.totalNumberReviews) ? this.totalNumberReviews : this.indexOfLastReview}
+                    of ${this.totalNumberReviews} reviews`}
                 </span>
                 <div className={styles.pagination_buttons}>
                   <button
-                    onClick={() => {
-                      this.setState({
-                        currentPage: (currentPage === 1) ? currentPage : currentPage - 1,
-                      });
-                    }}
+                    onClick={this.backButton}
                     className={styles.back_button}
                     type="button"
                     disabled={currentPage === 1}
@@ -179,22 +217,17 @@ const App = class extends React.Component {
                   </button>
 
                   <button
-                    onClick={() => {
-                      this.setState({
-                        // eslint-disable-next-line max-len
-                        currentPage: (currentPage === pageNumbers.length) ? currentPage : currentPage + 1,
-                      });
-                    }}
+                    onClick={this.nextButton}
                     className={styles.next_button}
                     type="button"
-                    disabled={currentPage === pageNumbers.length}
+                    // disabled={this.currentPage === this.pageNumbers.length}
                   >
                     ►
                   </button>
                 </div>
               </div>
 
-              {currentReviews.map((review) => (
+              {this.currentReviews.map((review) => (
                 <Review
                   review={review}
                   key={review.reviewId}
@@ -204,34 +237,25 @@ const App = class extends React.Component {
 
               <div className={styles.pagination}>
                 <span>
-                  {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
-                    of ${totalNumberReviews} reviews`}
+                  {`${this.indexOfFirstReview + 1}-${(this.indexOfLastReview > this.totalNumberReviews) ? this.totalNumberReviews : this.indexOfLastReview}
+                    of ${this.totalNumberReviews} reviews`}
                 </span>
 
                 <div className={styles.pagination_buttons}>
                   <button
-                    onClick={() => {
-                      this.setState({
-                        currentPage: (currentPage === 1) ? currentPage : currentPage - 1,
-                      });
-                    }}
+                    onClick={this.backButton}
                     className={styles.back_button}
                     type="button"
-                    disabled={currentPage === 1}
+                    disabled={this.currentPage === 1}
                   >
                     ◄
                   </button>
 
                   <button
-                    onClick={() => {
-                      this.setState({
-                        // eslint-disable-next-line max-len
-                        currentPage: (currentPage === pageNumbers.length) ? currentPage : currentPage + 1,
-                      });
-                    }}
+                    onClick={this.nextButton}
                     className={styles.next_button}
                     type="button"
-                    disabled={currentPage === pageNumbers.length}
+                    disabled={this.currentPage === this.pageNumbers.length}
                   >
                     ►
                   </button>
