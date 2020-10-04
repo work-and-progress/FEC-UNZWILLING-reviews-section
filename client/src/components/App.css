@@ -58,30 +58,3 @@ body {
 .questionsHeading:hover {
   font-family: Futura,Trebuchet MS,Arial,sans-serif;
 }
-
-.pagination {
-  align-items: center;
-  display: flex;
-  border-style: solid;
-  border-color: lightgrey;
-  background-color: lightgrey;
-  width: 100%;
-  height: 40px;
-  padding-left: 10px;
-  margin-bottom: 30px;
-  margin-top: 30px;
-}
-
-.pagination_buttons {
-  margin-left: auto;
-  order: 2;
-}
-
-.back_button {
-  display: inline-block;
-  cursor: pointer;
-}
-.next_button {
-  display: inline-block;
-  cursor: pointer;
-}

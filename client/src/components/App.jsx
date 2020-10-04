@@ -9,6 +9,7 @@ import MostHelpful from './ReviewSummary/MostHelpful';
 // Review Content folder
 import Review from './ReviewContent/Review';
 
+import Pagination from './Pagination/Pagination';
 // css
 import styles from './App.css';
 
@@ -89,55 +90,59 @@ const App = class extends React.Component {
     axios.get('http://localhost:3000/review/12')
       .then((response) => {
         const responseArray = response.data.reviews;
-
-        const indexOfLastReview = this.state.currentPage * this.state.reviewsPerPage;
-        const indexOfFirstReview = indexOfLastReview - this.state.reviewsPerPage;
+        const { currentPage, reviewsPerPage } = this.state;
+        const indexOfLastReviewInitial = currentPage * reviewsPerPage;
+        const indexOfFirstReviewInitial = indexOfLastReviewInitial - reviewsPerPage;
         const pageNumbers = [];
-        // eslint-disable-next-line max-len
-        for (let i = 1; i <= Math.ceil(responseArray.length / this.state.reviewsPerPage); i += 1) {
+
+        for (let i = 1; i <= Math.ceil(responseArray.length / reviewsPerPage); i += 1) {
           pageNumbers.push(i);
         }
 
         this.setState({
-          indexOfLastReview: indexOfLastReview,
-          indexOfFirstReview: indexOfFirstReview,
-          pageNumbers: pageNumbers,
+          pageNumbers,
+          indexOfLastReview: indexOfLastReviewInitial,
+          indexOfFirstReview: indexOfFirstReviewInitial,
           oneItem: response.data,
-          currentReviews: responseArray.slice(indexOfFirstReview, indexOfLastReview),
+          currentReviews: responseArray.slice(indexOfFirstReviewInitial, indexOfLastReviewInitial),
         });
       })
       .catch((error) => {
-        // eslint-disable-next-line no-console
         console.log(error);
       });
   }
 
   /*--------------------------------*/
   nextButton() {
+    const { currentPage, pageNumbers } = this.state;
     this.setState({
-      currentPage: (this.state.currentPage === this.state.pageNumbers.length) ? this.state.currentPage : this.state.currentPage + 1,
-    }, this.updateCurrentReviews);
+      currentPage: (currentPage === pageNumbers.length) ? currentPage : currentPage + 1,
+    }, this.updateCurrentReviews); // callback here to avoid putting setState inside render()
   }
 
   backButton() {
+    const { currentPage } = this.state;
     this.setState({
-      currentPage: (this.state.currentPage === 1) ? this.state.currentPage : this.state.currentPage - 1,
-    }, this.updateCurrentReviews);
+      currentPage: (currentPage === 1) ? currentPage : currentPage - 1,
+    }, this.updateCurrentReviews); // callback here to avoid putting setState inside render()
   }
 
+  // state of indexOfLastReview, indexOfFirstReview, currentReviews depend on page number.
+  // one option would be to put setState inside of the render function, but that's bad practice.
+  // instead, setState takes a callback function https://reactjs.org/docs/react-component.html#setstate
   updateCurrentReviews() {
-    const indexOfLastReviewNext = this.state.currentPage * this.state.reviewsPerPage;
-    const indexOfFirstReviewNext = indexOfLastReviewNext - this.state.reviewsPerPage;
+    const { currentPage, reviewsPerPage, oneItem } = this.state;
+    const indexOfLastReviewNext = currentPage * reviewsPerPage;
+    const indexOfFirstReviewNext = indexOfLastReviewNext - reviewsPerPage;
     this.setState({
       indexOfLastReview: indexOfLastReviewNext,
       indexOfFirstReview: indexOfFirstReviewNext,
-      currentReviews: this.state.oneItem.reviews.slice(indexOfFirstReviewNext, indexOfLastReviewNext),
-    })
+      currentReviews: oneItem.reviews.slice(indexOfFirstReviewNext, indexOfLastReviewNext),
+    });
   }
 
   /*--------------------------------*/
   // eslint-disable-next-line class-methods-use-this
-
   renderStars(num) {
     const stars = Array(5).fill(5);
     return stars.map((star, index) => (
@@ -202,31 +207,16 @@ const App = class extends React.Component {
                 renderStars={this.renderStars}
               />
 
-              <div className={styles.pagination}>
-                <span>
-                  {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
-                    of ${totalNumberReviews} reviews`}
-                </span>
-                <div className={styles.pagination_buttons}>
-                  <button
-                    onClick={this.backButton}
-                    className={styles.back_button}
-                    type="button"
-                    disabled={currentPage === 1}
-                  >
-                    ◄
-                  </button>
-
-                  <button
-                    onClick={this.nextButton}
-                    className={styles.next_button}
-                    type="button"
-                    disabled={currentPage === pageNumbers.length}
-                  >
-                    ►
-                  </button>
-                </div>
-              </div>
+              <Pagination
+                backButton={this.backButton}
+                nextButton={this.nextButton}
+                currentPage={currentPage}
+                currentReviews={currentReviews}
+                indexOfLastReview={indexOfLastReview}
+                indexOfFirstReview={indexOfFirstReview}
+                pageNumbers={pageNumbers}
+                totalNumberReviews={totalNumberReviews}
+              />
 
               {currentReviews.map((review) => (
                 <Review
@@ -236,31 +226,16 @@ const App = class extends React.Component {
                 />
               ))}
 
-              <div className={styles.pagination}>
-                <span>
-                  {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
-                    of ${totalNumberReviews} reviews`}
-                </span>
-                <div className={styles.pagination_buttons}>
-                  <button
-                    onClick={this.backButton}
-                    className={styles.back_button}
-                    type="button"
-                    disabled={currentPage === 1}
-                  >
-                    ◄
-                  </button>
-
-                  <button
-                    onClick={this.nextButton}
-                    className={styles.next_button}
-                    type="button"
-                    disabled={currentPage === pageNumbers.length}
-                  >
-                    ►
-                  </button>
-                </div>
-              </div>
+              <Pagination
+                backButton={this.backButton}
+                nextButton={this.nextButton}
+                currentPage={currentPage}
+                currentReviews={currentReviews}
+                indexOfLastReview={indexOfLastReview}
+                indexOfFirstReview={indexOfFirstReview}
+                pageNumbers={pageNumbers}
+                totalNumberReviews={totalNumberReviews}
+              />
             </div>
           </div>
         </div>
