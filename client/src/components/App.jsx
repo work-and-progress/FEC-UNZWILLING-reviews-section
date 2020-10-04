@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import React from 'react';
 import axios from 'axios';
 
@@ -21,22 +22,26 @@ const App = class extends React.Component {
     this.state = {
       currentPage: 1,
       reviewsPerPage: 5,
-      currentReviews: [{
-        reviewId: 1,
-        reviewUsername: 'karin',
-        reviewContent: 'loves seedlings of change',
-        reviewTitle: 'hrsjo1',
-        userId: 1,
-        reviewDate: 1,
-        qualityRating: 1,
-        valueRating: 1,
-        frequencyOfUse: 'everyday',
-        starRating: 5,
-        reviewRecommended: false,
-        helpfulYes: 1,
-        helpfulNo: 1,
-      }],
-
+      indexOfLastReview: 1,
+      indexOfFirstReview: 0,
+      pageNumbers: [1],
+      currentReviews: [
+        {
+          reviewId: 1,
+          reviewUsername: 'karin',
+          reviewContent: 'loves seedlings of change',
+          reviewTitle: 'hrsjo1',
+          userId: 1,
+          reviewDate: 1,
+          qualityRating: 1,
+          valueRating: 1,
+          frequencyOfUse: 'everyday',
+          starRating: 5,
+          reviewRecommended: false,
+          helpfulYes: 1,
+          helpfulNo: 1,
+        },
+      ],
       oneItem: {
         productId: 2,
         totalNumberReviews: 1,
@@ -70,33 +75,9 @@ const App = class extends React.Component {
       },
     };
     this.renderStars = this.renderStars.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.nextButton = this.nextButton.bind(this);
     this.backButton = this.backButton.bind(this);
-
-    const {
-      currentPage,
-      reviewsPerPage,
-      oneItem: {
-        reviews,
-      },
-    } = this.state;
-    /* -------------------- Pagination Logic -------------------- */
-    // determining what should be the first and last review on a certain page
-    const indexOfLastReview = currentPage * reviewsPerPage;
-    const indexOfFirstReview = indexOfLastReview - reviewsPerPage;
-    // creating a new array of current reviews for each page
-    const currentReviews = reviews.slice(indexOfFirstReview, indexOfLastReview);
-
-    this.state = {
-      currentReviews: reviews.slice(indexOfFirstReview, indexOfLastReview)
-    };
-
-    // creating a page numbers array, doing some fancy math stuff
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i += 1) {
-      pageNumbers.push(i);
-    }
+    this.updateCurrentReviews = this.updateCurrentReviews.bind(this);
   }
 
   /*--------------------------------*/
@@ -105,10 +86,24 @@ const App = class extends React.Component {
   }
 
   getReviews() {
-    axios.get('http://localhost:3000/review/1')
+    axios.get('http://localhost:3000/review/12')
       .then((response) => {
+        const responseArray = response.data.reviews;
+
+        const indexOfLastReview = this.state.currentPage * this.state.reviewsPerPage;
+        const indexOfFirstReview = indexOfLastReview - this.state.reviewsPerPage;
+        const pageNumbers = [];
+        // eslint-disable-next-line max-len
+        for (let i = 1; i <= Math.ceil(responseArray.length / this.state.reviewsPerPage); i += 1) {
+          pageNumbers.push(i);
+        }
+
         this.setState({
+          indexOfLastReview: indexOfLastReview,
+          indexOfFirstReview: indexOfFirstReview,
+          pageNumbers: pageNumbers,
           oneItem: response.data,
+          currentReviews: responseArray.slice(indexOfFirstReview, indexOfLastReview),
         });
       })
       .catch((error) => {
@@ -118,24 +113,28 @@ const App = class extends React.Component {
   }
 
   /*--------------------------------*/
-  handleClick(event) {
+  nextButton() {
     this.setState({
-      currentPage: Number(event.target.id),
-    });
+      currentPage: (this.state.currentPage === this.state.pageNumbers.length) ? this.state.currentPage : this.state.currentPage + 1,
+    }, this.updateCurrentReviews);
   }
 
   backButton() {
     this.setState({
-      currentPage: (this.currentPage === 1) ? this.currentPage : this.currentPage - 1,
-    });
+      currentPage: (this.state.currentPage === 1) ? this.state.currentPage : this.state.currentPage - 1,
+    }, this.updateCurrentReviews);
   }
 
-  nextButton() {
+  updateCurrentReviews() {
+    const indexOfLastReviewNext = this.state.currentPage * this.state.reviewsPerPage;
+    const indexOfFirstReviewNext = indexOfLastReviewNext - this.state.reviewsPerPage;
     this.setState({
-      // eslint-disable-next-line max-len
-      currentPage: (this.currentPage === this.pageNumbers.length) ? this.currentPage : this.currentPage + 1,
-    });
+      indexOfLastReview: indexOfLastReviewNext,
+      indexOfFirstReview: indexOfFirstReviewNext,
+      currentReviews: this.state.oneItem.reviews.slice(indexOfFirstReviewNext, indexOfLastReviewNext),
+    })
   }
+
   /*--------------------------------*/
   // eslint-disable-next-line class-methods-use-this
 
@@ -154,8 +153,10 @@ const App = class extends React.Component {
   render() {
     const {
       currentPage,
-      reviewsPerPage,
       currentReviews,
+      indexOfLastReview,
+      indexOfFirstReview,
+      pageNumbers,
 
       oneItem: {
         aggregateFiveStarReview,
@@ -203,8 +204,8 @@ const App = class extends React.Component {
 
               <div className={styles.pagination}>
                 <span>
-                  {`${this.indexOfFirstReview + 1}-${(this.indexOfLastReview > this.totalNumberReviews) ? this.totalNumberReviews : this.indexOfLastReview}
-                    of ${this.totalNumberReviews} reviews`}
+                  {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
+                    of ${totalNumberReviews} reviews`}
                 </span>
                 <div className={styles.pagination_buttons}>
                   <button
@@ -220,14 +221,14 @@ const App = class extends React.Component {
                     onClick={this.nextButton}
                     className={styles.next_button}
                     type="button"
-                    // disabled={this.currentPage === this.pageNumbers.length}
+                    disabled={currentPage === pageNumbers.length}
                   >
                     ►
                   </button>
                 </div>
               </div>
 
-              {this.currentReviews.map((review) => (
+              {currentReviews.map((review) => (
                 <Review
                   review={review}
                   key={review.reviewId}
@@ -237,16 +238,15 @@ const App = class extends React.Component {
 
               <div className={styles.pagination}>
                 <span>
-                  {`${this.indexOfFirstReview + 1}-${(this.indexOfLastReview > this.totalNumberReviews) ? this.totalNumberReviews : this.indexOfLastReview}
-                    of ${this.totalNumberReviews} reviews`}
+                  {`${indexOfFirstReview + 1}-${(indexOfLastReview > totalNumberReviews) ? totalNumberReviews : indexOfLastReview}
+                    of ${totalNumberReviews} reviews`}
                 </span>
-
                 <div className={styles.pagination_buttons}>
                   <button
                     onClick={this.backButton}
                     className={styles.back_button}
                     type="button"
-                    disabled={this.currentPage === 1}
+                    disabled={currentPage === 1}
                   >
                     ◄
                   </button>
@@ -255,13 +255,12 @@ const App = class extends React.Component {
                     onClick={this.nextButton}
                     className={styles.next_button}
                     type="button"
-                    disabled={this.currentPage === this.pageNumbers.length}
+                    disabled={currentPage === pageNumbers.length}
                   >
                     ►
                   </button>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
