@@ -24,7 +24,7 @@ const Overview = (props) => {
       <div className={styles.wrapper}>
         <div className={styles.ratings_wrapper}>
           <p>Ratings Snapshot</p>
-          <p>Select a row below to filter reviews.</p>
+          <p className={styles.tab}>Select a row below to filter reviews.</p>
 
 
         <div className={styles.ratings_snapshot}>
@@ -111,7 +111,7 @@ const Overview = (props) => {
 
 
             <div className={styles.average_ratings_content}>
-              <div className={styles.new_rating}>
+              <div className={styles.new_rating_bars}>
                 <div className={styles.ratings}>
                   <div className={styles.emptyStars}/>
                   <div
@@ -120,7 +120,7 @@ const Overview = (props) => {
                   />
                 </div>
               </div>
-              <div className={styles.new_rating}>
+              <div className={styles.new_rating_bars}>
                 <div className={styles.ratings}>
                   <div className={styles.emptyFiveBar} />
                   <div
@@ -129,7 +129,7 @@ const Overview = (props) => {
                   />
                 </div>
               </div>
-              <div className={styles.new_rating}>
+              <div className={styles.new_rating_bars}>
                 <div className={styles.ratings}>
                   <div className={styles.emptyFiveBar}/>
                   <div

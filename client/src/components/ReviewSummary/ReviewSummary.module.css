@@ -23,15 +23,8 @@
 }
 /* ------------------ Ratings Snapshot half ----------------- */
 .ratings_snapshot {
-  border: 1px pink solid;
-
   display: flex;
   flex-direction: row;
-
-  /* padding-top: 0px;
-  padding-right: 20px;
-  padding-bottom: 0px;
-  padding-left: 10px; */
   word-wrap: break-word;
   color: #27221d;
   font-size: 1em;
@@ -43,38 +36,28 @@
 }
 
 .ratings_snapshot_key {
-  border: 1px red solid;
-  flex: 10%;
+  margin-left: 20px;
 }
 
 .ratings_content {
-  border: 1px purple solid;
-  flex: 50%;
+  margin-top: 10px;
+  flex: 30%;
+  margin-left: 0px;
 }
 
 .ratings_snapshot_percentages {
-  border: 1px green solid;
   flex: 20%;
+  margin-right: 70px;
 }
 
-
-/* SHARED
 .new_rating {
-  padding-bottom: 10px;
-  padding-left: 10px;
-} */
+  padding-bottom: 15px;
+}
 
 /* ------------------ Average Customer Ratings half ----------------- */
 .average_customer_ratings {
-  border: 1px blue solid;
-
   display: flex;
   flex-direction: row;
-
-  /* padding-top: 0px;
-  padding-right: 20px;
-  padding-bottom: 0px;
-  padding-left: 10px; */
   word-wrap: break-word;
   color: #27221d;
   font-size: 1em;
@@ -82,22 +65,26 @@
 }
 
 .average_wrapper {
-  width: 50%
+  width: 50%;
 }
 
 .average_ratings_key {
-  border: 1px red solid;
-  flex: 50%;
+  flex: 30%;
+  margin-left: 10px;
 }
 
 .average_ratings_content {
-  border: 1px purple solid;
-  flex: 50%;
+  flex: 25%;
+  margin-top: 13px;
 }
 
 .average_ratings_decimal {
-  border: 1px green solid;
   flex: 20%;
+  margin-right: 60px;
+}
+
+.new_rating_bars {
+  padding-bottom: 15px;
 }
 /* ----------------------------------- */
 .sub_heading {
@@ -110,7 +97,6 @@
 }
 
 .ratings {
-  border: 1px orange solid;
   position: relative;
   vertical-align: middle;
   display: inline-block;
