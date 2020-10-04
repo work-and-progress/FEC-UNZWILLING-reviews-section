@@ -1,4 +1,4 @@
-.block {
+.wrapper {
   display: flex;
 }
 
@@ -17,9 +17,10 @@
   font-family: Futura,Trebuchet MS,Arial,sans-serif;
   margin-top: 50;
 }
+
 .writeAReview {
   margin-left: auto;
-
+  cursor: pointer;
   background-color: rgb(237,32,42);
   color:white;
   padding-right:15px; /*button size*/
@@ -29,8 +30,8 @@
   font-family: Futura,Trebuchet MS,Arial,sans-serif;
 }
 
-/* https://www.w3schools.com/css/css_padding.asp */
-.inline_block {
+.ratings_snapshot {
+  border: 1px pink solid;
   flex: 50%;
   padding-top: 0px;
   padding-right: 20px;
@@ -43,16 +44,55 @@
 }
 
 
-.hover-hand {
-  cursor: pointer;
+
+.average_customer_ratings {
+  border: 1px blue solid;
+  flex: 50%;
+  padding-top: 0px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  word-wrap: break-word;
+  color: #27221d;
+  font-size: 1em;
+  line-height: 1.5em;
 }
+
+.ratings {
+  border: 1px orange solid;
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: #b1b1b1;
+  overflow: hidden;
+}
+
+.ratings_heading {
+  margin-bottom: 45px;
+}
+/*
+.av_customer_rating_heading {
+  grid-area:left;
+}
+
+.av_customer_rating_content {
+  grid-area:right;
+
+} */
 
 .see_more {
   font-size: 11px;
+  cursor: pointer;
 }
 
 .tab {
   padding-right: 10px;
+}
+
+.username {
+  cursor: pointer;
+  padding-right: 10px;
+
 }
 
 .new_rating {
@@ -60,9 +100,7 @@
   padding-left: 10px;
 }
 
-.av_customer_rating {
-  padding-bottom: 20px;
-}
+
 
 .select_header {
   margin-left: 10px;
@@ -73,14 +111,23 @@
 }
 
 
-/*----------------------------------------------------*/
-.ratings {
-  position: relative;
-  vertical-align: middle;
-  display: inline-block;
-  color: #b1b1b1;
-  overflow: hidden;
+
+.most_helpful_inline_block {
+  width: 50%;
+  flex-direction: row;
+  flex: 1;
+  padding-top: 0px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  word-wrap: break-word;
+  color: #27221d;
+  font-size: 1em;
+  line-height: 1.5em;
 }
+
+/*----------------------------------------------------*/
+
 
 /*-------------------- Average Customer Ratings: Overall --------------------*/
 .fullUnit {
@@ -132,14 +179,14 @@
   color: #fde16d;
 }
 .emptyFiveBar:before, .fullFiveBar:before {
-  content:"█████";
+  content:"▇▇▇▇▇";
   font-size: 15px;
 }
 .emptyFiveBar:before {
-  /* -webkit-text-stroke: 1px #b1b1b1; */
-  -webkit-text-stroke: 1px #848484;
+  -webkit-text-stroke: 1px #b1b1b1;
+  /* -webkit-text-stroke: 1px #848484; */
 }
 .fullFiveBar:before {
-  /* -webkit-text-stroke: 1px #fde16d; */
-  -webkit-text-stroke: 1px orange;
+  -webkit-text-stroke: 1px #fde16d;
+  /* -webkit-text-stroke: 1px orange; */
 }

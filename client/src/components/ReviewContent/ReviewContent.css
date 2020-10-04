@@ -1,5 +1,27 @@
-.block {
+.review_wrapper {
   display: flex;
+}
+
+.review_left_side {
+  flex: 70%;
+  margin-left: auto;
+  white-space: normal;
+  vertical-align: middle;
+  padding-top: 0px;
+  padding-right: 20px;
+  padding-bottom: 50px;
+  padding-left: 0px;
+}
+
+.review_right_side {
+  flex: 30%;
+  padding-top:40px;
+  padding-right: 20px;
+  white-space: normal;
+  font-size: 14px;
+  font-style: normal;
+  text-transform: none;
+  line-height: 20px;
 }
 
 .tabs {
@@ -11,16 +33,7 @@
   width: 28px;
 }
 
-.inline_block_bigger {
-  flex: 70%;
-  margin-left: auto;
-  white-space: normal;
-  vertical-align: middle;
-  padding-top: 0px;
-  padding-right: 20px;
-  padding-bottom: 50px;
-  padding-left: 0px;
-}
+
 
 .quality_value {
   display: block;
@@ -28,16 +41,7 @@
   padding-top: 15px;
 }
 
-.inline_block_smaller {
-  flex: 30%;
-  padding-top:40px;
-  padding-right: 20px;
-  white-space: normal;
-  font-size: 14px;
-  font-style: normal;
-  text-transform: none;
-  line-height: 20px;
-}
+
 
 .button {
   transition-duration: 0.4s;
@@ -54,5 +58,13 @@
   padding-right:7px;
 }
 
+.button:hover {
+  cursor: pointer;
+  background-color: red;
+}
 
-
+.username {
+  cursor: pointer;
+  padding-right:10px;
+  padding-left:10px;
+}
