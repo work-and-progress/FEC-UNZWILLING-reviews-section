@@ -22,16 +22,24 @@ const Overview = (props) => {
       </h4>
 
       <div className={styles.wrapper}>
-        <div className={styles.ratings_snapshot}>
+        <div className={styles.ratings_wrapper}>
           <p>Ratings Snapshot</p>
+          <p>Select a row below to filter reviews.</p>
 
-          <p className={styles.select_header}>
-            Select a row below to filter reviews.
-          </p>
+
+        <div className={styles.ratings_snapshot}>
+          <div className={styles.ratings_snapshot_key}>
+            <p className={styles.tab}>5 ★</p>
+            <p className={styles.tab}>4 ★</p>
+            <p className={styles.tab}>3 ★</p>
+            <p className={styles.tab}>2 ★</p>
+            <p className={styles.tab}>1 ★</p>
+          </div>
+
+
 
           <div className={styles.ratings_content}>
             <div className={styles.new_rating}>
-              <span className={styles.tab}>5 ★</span>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -39,11 +47,8 @@ const Overview = (props) => {
                     style={{ width: `${numberOfFiveStarReviews}%` }}
                   />
                 </div>
-              {` ${numberOfFiveStarReviews}%`}
             </div>
-
             <div className={styles.new_rating}>
-              <span className={styles.tab}>4 ★</span>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -51,11 +56,8 @@ const Overview = (props) => {
                     style={{ width: `${numberOfFourStarReviews}%` }}
                   />
                 </div>
-              {` ${numberOfFourStarReviews}%`}
             </div>
-
             <div className={styles.new_rating}>
-              <span className={styles.tab}>3 ★</span>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -63,11 +65,8 @@ const Overview = (props) => {
                     style={{ width: `${numberOfThreeStarReviews}%` }}
                   />
                 </div>
-              {` ${numberOfThreeStarReviews}%`}
             </div>
-
             <div className={styles.new_rating}>
-              <span className={styles.tab}>2 ★</span>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -75,11 +74,8 @@ const Overview = (props) => {
                     style={{ width: `${numberOfTwoStarReviews}%` }}
                   />
                 </div>
-              {` ${numberOfTwoStarReviews}%`}
             </div>
-
             <div className={styles.new_rating}>
-              <span className={styles.tab}>1 ★</span>
                 <div className={styles.ratings}>
                   <div className={styles.emptyBar}/>
                   <div
@@ -87,53 +83,76 @@ const Overview = (props) => {
                     style={{ width: `${numberOfOneStarReviews}%` }}
                   />
                 </div>
-              {` ${numberOfOneStarReviews}%`}
             </div>
-
           </div>
 
+          <div className={styles.ratings_snapshot_percentages}>
+            <p>{` ${numberOfFiveStarReviews}%`}</p>
+            <p>{` ${numberOfFourStarReviews}%`}</p>
+            <p>{` ${numberOfThreeStarReviews}%`}</p>
+            <p>{` ${numberOfTwoStarReviews}%`}</p>
+            <p>{` ${numberOfOneStarReviews}%`}</p>
+          </div>
+
+        </div>
         </div>
 
         {/* ---------------------------------------------- */}
-        <div className={styles.average_customer_ratings}>
-
+        <div className={styles.average_wrapper}>
           <p className={styles.ratings_heading}>Average Customer Ratings</p>
-          <div className={styles.new_rating}>
-            <span className={styles.tab}>Overall </span>
-            <div className={styles.ratings}>
-              <div className={styles.emptyStars}/>
-              <div
-                className={styles.fullUnit}
-                style={{ width: `${((averageStarRating * 100) / 5)}%` }}
-              />
-            </div>
-            {` ${(averageStarRating)}`}
-          </div>
+          <div className={styles.average_customer_ratings}>
 
-          <div className={styles.new_rating}>
-            <span className={styles.tab}>Quality of Product </span>
-            <div className={styles.ratings}>
-              <div className={styles.emptyFiveBar}/>
-              <div
-                className={styles.fullFiveBar}
-                style={{ width: `${((averageQualityRating / 5) * 100)}%` }}
-              />
+            <div className={styles.average_ratings_key}>
+              <p className={styles.tab}>Overall </p>
+              <p className={styles.tab}>Quality of Product </p>
+              <p className={styles.tab}>Value of Product </p>
             </div>
-            {` ${averageQualityRating}`}
-          </div>
 
-          <div className={styles.new_rating}>
-            <span className={styles.tab}>Value of Product </span>
-            <div className={styles.ratings}>
-              <div className={styles.emptyFiveBar}/>
-              <div
-                className={styles.fullFiveBar}
-                style={{ width: `${((averageValueRating / 5) * 100)}%` }}
-              />
+
+
+            <div className={styles.average_ratings_content}>
+              <div className={styles.new_rating}>
+                <div className={styles.ratings}>
+                  <div className={styles.emptyStars}/>
+                  <div
+                    className={styles.fullUnit}
+                    style={{ width: `${((averageStarRating * 100) / 5)}%` }}
+                  />
+                </div>
+              </div>
+              <div className={styles.new_rating}>
+                <div className={styles.ratings}>
+                  <div className={styles.emptyFiveBar} />
+                  <div
+                    className={styles.fullFiveBar}
+                    style={{ width: `${((averageQualityRating / 5) * 100)}%` }}
+                  />
+                </div>
+              </div>
+              <div className={styles.new_rating}>
+                <div className={styles.ratings}>
+                  <div className={styles.emptyFiveBar}/>
+                  <div
+                    className={styles.fullFiveBar}
+                    style={{ width: `${((averageValueRating / 5) * 100)}%` }}
+                  />
+                </div>
+              </div>
             </div>
-            {` ${averageValueRating}`}
-          </div>
+
+            <div className={styles.average_ratings_decimal}>
+              <p>{averageStarRating}</p>
+              <p>{averageQualityRating}</p>
+              <p>{averageValueRating}</p>
+            </div>
+
+
         </div>
+
+        </div>
+
+
+
       </div>
     </div>
 
