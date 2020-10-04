@@ -14,8 +14,8 @@ import Pagination from './Pagination/Pagination';
 import styles from './App.css';
 
 // images
-import STAR_IMAGE from './img/filled-star.jpg';
-import EMPTY_STAR_IMAGE from './img/empty-star.png';
+const STAR_IMAGE = 'https://unzwilling-reviews.s3-us-west-1.amazonaws.com/filled-star.jpg';
+const EMPTY_STAR_IMAGE = 'https://unzwilling-reviews.s3-us-west-1.amazonaws.com/empty-star.png';
 /*--------------------------------*/
 const App = class extends React.Component {
   constructor(props) {
@@ -87,7 +87,7 @@ const App = class extends React.Component {
   }
 
   getReviews() {
-    axios.get('http://localhost:3000/review/12')
+    axios.get('http://localhost:3000/review/6')
       .then((response) => {
         const responseArray = response.data.reviews;
         const { currentPage, reviewsPerPage } = this.state;
