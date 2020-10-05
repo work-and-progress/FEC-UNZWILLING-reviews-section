@@ -1,5 +1,6 @@
 node_modules/
 client/dist/main.bundle.js
+client/dist/main.bundle.js.map
 client/dist/bundle.js
 config.js
 node_modules
