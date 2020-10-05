@@ -1,21 +1,6 @@
+/* ------------------  For both files ------------------ */
 .wrapper {
   display: flex;
-}
-
-.sub_heading {
-  padding-left: 5px;
-}
-
-.logo {
-  float: right;
-  width: 28px;
-}
-
-.header {
-  display: flex;
-  margin-left: auto;
-  font-family: Futura,Trebuchet MS,Arial,sans-serif;
-  margin-top: 50;
 }
 
 .writeAReview {
@@ -30,36 +15,88 @@
   font-family: Futura,Trebuchet MS,Arial,sans-serif;
 }
 
+.header {
+  display: flex;
+  margin-left: auto;
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+  margin-top: 50;
+}
+/* ------------------ Ratings Snapshot half ----------------- */
 .ratings_snapshot {
-  border: 1px pink solid;
-  flex: 50%;
-  padding-top: 0px;
-  padding-right: 20px;
-  padding-bottom: 0px;
-  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
   word-wrap: break-word;
   color: #27221d;
   font-size: 1em;
-  line-height: 1.5em;
+  line-height: 1.1em;
 }
 
+.ratings_wrapper {
+  width: 50%
+}
 
+.ratings_snapshot_key {
+  margin-left: 20px;
+  flex: 10%;
+}
 
+.ratings_content {
+  margin-top: 12px;
+  flex: 40%;
+  margin-left: 0px;
+}
+
+.ratings_snapshot_percentages {
+  flex: 30%;
+}
+
+.new_rating {
+  padding-bottom: 14px;
+}
+
+/* ------------------ Average Customer Ratings half ----------------- */
 .average_customer_ratings {
-  border: 1px blue solid;
-  flex: 50%;
-  padding-top: 0px;
-  padding-right: 20px;
-  padding-bottom: 0px;
-  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
   word-wrap: break-word;
   color: #27221d;
   font-size: 1em;
-  line-height: 1.5em;
+  line-height: 1.1em;
+}
+
+.average_wrapper {
+  width: 50%;
+}
+
+.average_ratings_key {
+  flex: 30%;
+  margin-left: 10px;
+}
+
+.average_ratings_content {
+  flex: 25%;
+  margin-top: 13px;
+}
+
+.average_ratings_decimal {
+  flex: 20%;
+  margin-right: 60px;
+}
+
+.new_rating_bars {
+  padding-bottom: 14px;
+}
+/* ----------------------------------- */
+.sub_heading {
+  padding-left: 5px;
+}
+
+.logo {
+  float: right;
+  width: 28px;
 }
 
 .ratings {
-  border: 1px orange solid;
   position: relative;
   vertical-align: middle;
   display: inline-block;
@@ -70,15 +107,6 @@
 .ratings_heading {
   margin-bottom: 45px;
 }
-/*
-.av_customer_rating_heading {
-  grid-area:left;
-}
-
-.av_customer_rating_content {
-  grid-area:right;
-
-} */
 
 .see_more {
   font-size: 11px;
@@ -86,7 +114,7 @@
 }
 
 .tab {
-  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .username {
@@ -95,24 +123,11 @@
 
 }
 
-.new_rating {
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-
-
-
 .select_header {
   margin-left: 10px;
 }
 
-.ratings_content {
-  margin-left: 10px;
-}
-
-
-
-.most_helpful_inline_block {
+.most_helpful_half {
   width: 50%;
   flex-direction: row;
   flex: 1;
@@ -125,9 +140,6 @@
   font-size: 1em;
   line-height: 1.5em;
 }
-
-/*----------------------------------------------------*/
-
 
 /*-------------------- Average Customer Ratings: Overall --------------------*/
 .fullUnit {
@@ -179,7 +191,7 @@
   color: #fde16d;
 }
 .emptyFiveBar:before, .fullFiveBar:before {
-  content:"▇▇▇▇▇";
+  content:"▄▄▄▄▄";
   font-size: 15px;
 }
 .emptyFiveBar:before {
