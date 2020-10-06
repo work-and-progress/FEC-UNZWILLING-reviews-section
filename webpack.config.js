@@ -60,7 +60,7 @@ module.exports = {
     // Send API requests on localhost to API server get around CORS.
     proxy: {
       '/': {
-        target: 'http://localhost:3000/',
+        target: 'http://localhost:7777/',
       },
     },
   },
