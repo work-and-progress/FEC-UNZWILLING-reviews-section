@@ -89,7 +89,7 @@ const App = class extends React.Component {
   }
 
   getReviews() {
-    axios.get('http://localhost:3000/review/6')
+    axios.get('http://localhost:7777/review/8')
       .then((response) => {
         const responseArray = response.data.reviews;
         const { currentPage, reviewsPerPage } = this.state;
