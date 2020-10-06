@@ -89,6 +89,21 @@ const App = class extends React.Component {
   }
 
   getReviews() {
+    // axios.get('http://localhost:7777/review', {
+    //   params: {
+    //     ID: 12345
+    //   }
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // })
+    // .then(function () {
+    //   // always executed
+    // });
+
     axios.get('http://localhost:7777/review/8')
       .then((response) => {
         const responseArray = response.data.reviews;
