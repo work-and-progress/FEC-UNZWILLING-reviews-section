@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/UNZWILLING-reviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect('mongodb://database/UNZWILLING-reviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 const db = mongoose.connection;
 /*----------------------------------------------------*/
 db.on('error',
