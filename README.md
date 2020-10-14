@@ -2,7 +2,7 @@
 
 ## REST API for Reviews Section
 
-**#REST API**
+###REST API
 
 | **CRUD** | **Method** | **URL** | **Key Parameter** | **Purpose** |
 | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@
 | **sort** | **string** | **Sort criteria by &#39;highest&#39; or &#39;lowest&#39;  ratings or most &#39;recent&#39;** |
 | **offset** | **integer** | **Allows &#39;skipping&#39; over data. Useful for retrieving additional pages of data** |
 
-**Data Schema (WIP)**
+## Data Schema
 
 **Review Schema**
 
