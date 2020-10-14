@@ -29,38 +29,38 @@
 
 ```
 const **Review** = mongoose.Schema({
-  **reviewId:** Number,
-  **reviewUsername:** String,
-  **reviewContent:** String,
-  **reviewTitle:** String,
-  **userId:** Number,
-  **reviewDate:** Number,
-  **qualityRating:** Number,
-  **valueRating:** Number,
-  **frequencyOfUse:** String,
-  **starRating:** Number,
-  **reviewRecommended:** Boolean,
-  **helpfulYes:** Number,
-  **helpfulNo:** Number,
+  reviewId: Number,
+  reviewUsername: String,
+  reviewContent: String,
+  reviewTitle: String,
+  userId: Number,
+  reviewDate: Number,
+  qualityRating: Number,
+  valueRating: Number,
+  frequencyOfUse: String,
+  starRating: Number,
+  reviewRecommended: Boolean,
+  helpfulYes: Number,
+  helpfulNo: Number,
 });
 ```
 #### Review Summary Schema
 
 ```
 const **ReviewSummarySchema** = mongoose.Schema({
-  **productId:** Number,
-  **totalNumberReviews:** Number,
-  **averageStarRating:** Number,
-  **averageQualityRating** : Number,
-  **averageValueRating** : Number,
-  **aggregateOneStarReview** : Number,
-  **aggregateTwoStarReview** : Number,
-  **aggregateThreeStarReview** : Number,
-  **aggregateFourStarReview** : Number,
-  **aggregateFiveStarReview** : Number,
-  **mostHelpfulFavorable** : Number,
-  **mostHelpfulCritical** : Number,
-  **reviews** : [Review],
+  productId: Number,
+  totalNumberReviews: Number,
+  averageStarRating: Number,
+  averageQualityRating : Number,
+  averageValueRating : Number,
+  aggregateOneStarReview : Number,
+  aggregateTwoStarReview : Number,
+  aggregateThreeStarReview : Number,
+  aggregateFourStarReview : Number,
+  aggregateFiveStarReview : Number,
+  mostHelpfulFavorable : Number,
+  mostHelpfulCritical : Number,
+  reviews** : [Review],
 });
 ```
 
@@ -82,13 +82,13 @@ As user, I want to:
   - Generate 10 million products with 0-100 reviews each?
   - Or just create 10 million products with 1 review?
   - Or just 10 million reviews?
+  
 - For schema should I:
   - Use the existing Review Summary schema which stores pre-computed summaries of reviews?
   - Or generate Review Summary on the fly?
   - Or do both and compare results?
   
   :octocat:   :octocat:   :octocat:
-  
   
 <!--
 ## UI update
