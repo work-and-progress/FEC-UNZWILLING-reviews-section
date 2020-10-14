@@ -1,14 +1,10 @@
 # FEC-UNZWILLING-reviews-section
 
-# RESTFul API for Reviews Section
-
-Owner: Rick Allen
-
-![](RackMultipart20201014-4-1szgs5o_html_8fb9b4a740f74fb3.png)
+## REST API for Reviews Section
 
 Define all the API endpoints that will be used to consume and publish data. What is the shape of the data (i.e. list all the properties and types) for each API endpoint and/or message?
 
-**REST API**
+**#REST API**
 
 | **CRUD** | **Method** | **URL** | **Key Parameter** | **Purpose** |
 | --- | --- | --- | --- | --- |
@@ -30,65 +26,37 @@ Define all the API endpoints that will be used to consume and publish data. What
 **Review Schema**
 
 const **Review** = mongoose.Schema({
-
    **reviewId:** Number,
-
    **reviewUsername:** String,
-
    **reviewContent:** String,
-
    **reviewTitle:** String,
-
    **userId:** Number,
-
    **reviewDate:** Number,
-
    **qualityRating:** Number,
-
    **valueRating:** Number,
-
    **frequencyOfUse:** String,
-
    **starRating:** Number,
-
    **reviewRecommended:** Boolean,
-
    **helpfulYes:** Number,
-
    **helpfulNo:** Number,
-
 });
 
 **Review Summary Schema**
 
 const **ReviewSummarySchema** = mongoose.Schema({
-
    **productId:** Number,
-
    **totalNumberReviews:** Number,
-
    **averageStarRating:** Number,
-
    **averageQualityRating** : Number,
-
    **averageValueRating** : Number,
-
    **aggregateOneStarReview** : Number,
-
    **aggregateTwoStarReview** : Number,
-
    **aggregateThreeStarReview** : Number,
-
    **aggregateFourStarReview** : Number,
-
    **aggregateFiveStarReview** : Number,
-
    **mostHelpfulFavorable** : Number,
-
    **mostHelpfulCritical** : Number,
-
    **reviews** : [Review],
-
 });
 
 **User stories:**
