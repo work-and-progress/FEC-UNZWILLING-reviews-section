@@ -5,7 +5,7 @@
 
 ### REST API
 
-| **CRUD** | **Method** | **URL** | **Key Parameter** | **Purpose** |
+| **CRUD** :space_invader:	| **Method** | **URL** | **Key Parameter** | **Purpose** |
 | --- | --- | --- | --- | --- |
 | Create | POST | /review | **review\_id** | Add a specific review |
 | Read | GET | /review | **product\_id** | Retrieve reviews for a product |
@@ -89,9 +89,6 @@ As user, I want to:
   :octocat:   :octocat:   :octocat:
   
 :poop:
-:clown_face:
-:japanese_ogre:	
-:japanese_goblin:
 :ghost:	
 :alien:
 :space_invader:	
