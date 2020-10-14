@@ -25,38 +25,38 @@
 
 ```
 const **Review** = mongoose.Schema({
-**reviewId:** Number,
-**reviewUsername:** String,
-**reviewContent:** String,
-**reviewTitle:** String,
-**userId:** Number,
-**reviewDate:** Number,
-**qualityRating:** Number,
-**valueRating:** Number,
-**frequencyOfUse:** String,
-**starRating:** Number,
-**reviewRecommended:** Boolean,
-**helpfulYes:** Number,
-**helpfulNo:** Number,
+  **reviewId:** Number,
+  **reviewUsername:** String,
+  **reviewContent:** String,
+  **reviewTitle:** String,
+  **userId:** Number,
+  **reviewDate:** Number,
+  **qualityRating:** Number,
+  **valueRating:** Number,
+  **frequencyOfUse:** String,
+  **starRating:** Number,
+  **reviewRecommended:** Boolean,
+  **helpfulYes:** Number,
+  **helpfulNo:** Number,
 });
 ```
 #### Review Summary Schema
 
 ```
 const **ReviewSummarySchema** = mongoose.Schema({
-   **productId:** Number,
-   **totalNumberReviews:** Number,
-   **averageStarRating:** Number,
-   **averageQualityRating** : Number,
-   **averageValueRating** : Number,
-   **aggregateOneStarReview** : Number,
-   **aggregateTwoStarReview** : Number,
-   **aggregateThreeStarReview** : Number,
-   **aggregateFourStarReview** : Number,
-   **aggregateFiveStarReview** : Number,
-   **mostHelpfulFavorable** : Number,
-   **mostHelpfulCritical** : Number,
-   **reviews** : [Review],
+  **productId:** Number,
+  **totalNumberReviews:** Number,
+  **averageStarRating:** Number,
+  **averageQualityRating** : Number,
+  **averageValueRating** : Number,
+  **aggregateOneStarReview** : Number,
+  **aggregateTwoStarReview** : Number,
+  **aggregateThreeStarReview** : Number,
+  **aggregateFourStarReview** : Number,
+  **aggregateFiveStarReview** : Number,
+  **mostHelpfulFavorable** : Number,
+  **mostHelpfulCritical** : Number,
+  **reviews** : [Review],
 });
 ```
 
