@@ -2,7 +2,7 @@
 
 ## REST API for Reviews
 
-[WAP logo from: https://www.designevo.com/logo-maker](https://imgur.com/ycG7WcZ)
+![WAP logo from: https://www.designevo.com/logo-maker](https://imgur.com/ycG7WcZ)
 
 :octocat: :computer: 
 
