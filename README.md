@@ -25,19 +25,33 @@
 
 <code>
 const **Review** = mongoose.Schema({
-   **reviewId:** Number,
-   **reviewUsername:** String,
-   **reviewContent:** String,
-   **reviewTitle:** String,
-   **userId:** Number,
-   **reviewDate:** Number,
-   **qualityRating:** Number,
-   **valueRating:** Number,
-   **frequencyOfUse:** String,
-   **starRating:** Number,
-   **reviewRecommended:** Boolean,
-   **helpfulYes:** Number,
-   **helpfulNo:** Number,
+  
+**reviewId:** Number,
+
+**reviewUsername:** String,
+
+**reviewContent:** String,
+
+**reviewTitle:** String,
+
+**userId:** Number,
+
+**reviewDate:** Number,
+
+**qualityRating:** Number,
+
+**valueRating:** Number,
+
+**frequencyOfUse:** String,
+
+**starRating:** Number,
+
+**reviewRecommended:** Boolean,
+
+**helpfulYes:** Number,
+
+**helpfulNo:** Number,
+
 });
 
 **Review Summary Schema**
