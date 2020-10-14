@@ -18,9 +18,9 @@
 
 | **Parameter** | **Type** | **Description** |
 | --- | --- | --- |
-| **qty** | **integer** | **Specify quantity of results to return** |
-| **sort** | **string** | **Sort criteria by &#39;highest&#39; or &#39;lowest&#39;  ratings or most &#39;recent&#39;** |
-| **offset** | **integer** | **Allows &#39;skipping&#39; over data. Useful for retrieving additional pages of data** |
+| qty | integer | Specify quantity of results to return |
+| sort | string | Sort criteria by &#39;highest&#39; or &#39;lowest&#39;  ratings or most &#39;recent&#39; |
+| offset | integer | Allows &#39;skipping&#39; over data. Useful for retrieving additional pages of data |
 
 
 ### Data Schema (WIP)
