@@ -81,6 +81,8 @@ As user, I want to:
   - Use the existing Review Summary schema which stores pre-computed summaries of reviews?
   - Or generate Review Summary on the fly?
   - Or do both and compare results?
+  
+  :octocat:
 
 <!--
 ## UI update
