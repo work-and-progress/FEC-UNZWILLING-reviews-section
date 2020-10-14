@@ -7,7 +7,7 @@
 ### REST API
 
 | **CRUD** | **Method** 	| **URL** | **Key Parameter** | **Purpose** | **Response** |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | Create | POST | /review | review\_id | Add a specific review | 201 |
 | Read | GET | /review | product\_id | Retrieve reviews for a product | 200 + x ‘qty’ reviews (JSON) |
 | Update | PUT | /review | product\_id | Update a review for a product | 201 |
