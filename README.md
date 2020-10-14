@@ -4,8 +4,6 @@
 
 <img src="https://i.postimg.cc/MpC39X9Q/Screen-Shot-2020-10-14-at-12-40-05-AM.png" width="200">>
 
-:octocat: :computer: 
-
 ### REST API
 
 | **CRUD** | **Method** 	| **URL** | **Key Parameter** | **Purpose** |
@@ -90,7 +88,7 @@ As user, I want to:
   - Or generate Review Summary on the fly?
   - Or do both and compare results?
   
-  :octocat:   :octocat:   :octocat:
+  :octocat:   :computer:
   
 <!--
 ## UI update
