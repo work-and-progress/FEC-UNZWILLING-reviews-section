@@ -11,7 +11,7 @@
 | Update | PUT | /review | **product\_id** | Update a review for a product |
 | Delete | DELETE | /review | **review\_id** | Delete a specific review |
 
-**Additional Parameters**
+### Additional Parameters
 
 | **Parameter** | **Type** | **Description** |
 | --- | --- | --- |
@@ -19,9 +19,9 @@
 | **sort** | **string** | **Sort criteria by &#39;highest&#39; or &#39;lowest&#39;  ratings or most &#39;recent&#39;** |
 | **offset** | **integer** | **Allows &#39;skipping&#39; over data. Useful for retrieving additional pages of data** |
 
-**Data Schema (WIP)**
+### Data Schema (WIP)
 
-**Review Schema**
+#### Review Schema
 
 ```
 const **Review** = mongoose.Schema({
