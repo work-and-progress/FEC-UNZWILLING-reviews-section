@@ -2,7 +2,7 @@
 
 ## REST API for Reviews
 
-:octocat: :space_invader: 	:ghost:  :alien: 
+:octocat::space_invader::ghost::alien: 
 
 ### REST API
 
