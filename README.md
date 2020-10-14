@@ -8,9 +8,9 @@
 
 | **CRUD** | **Method** 	| **URL** | **Key Parameter** | **Purpose** | **Response** |
 | --- | --- | --- | --- | --- | --- |
-| Create | POST | /review | review\_id | Add a specific review | 201 |
+| Create | POST | /review | product\_id | Add review for a product | 201 |
 | Read | GET | /review | product\_id | Retrieve reviews for a product | 200 + x ‘qty’ reviews (JSON) |
-| Update | PUT | /review | product\_id | Update a review for a product | 201 |
+| Update | PUT | /review | review\_id | Update a review for a product | 201 |
 | Delete | DELETE | /review | review\_id | Delete a specific review | 200 |
 
 
