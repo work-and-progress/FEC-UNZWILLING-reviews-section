@@ -2,7 +2,7 @@
 
 ## REST API for Reviews
 
-<img src="https://postimg.cc/PCMMxfsX">
+<img src="https://i.postimg.cc/MpC39X9Q/Screen-Shot-2020-10-14-at-12-40-05-AM.png">
 
 :octocat: :computer: 
 
