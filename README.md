@@ -2,6 +2,7 @@
 
 ## REST API for Reviews Section
 
+
 ### REST API
 
 | **CRUD** | **Method** | **URL** | **Key Parameter** | **Purpose** |
@@ -11,6 +12,7 @@
 | Update | PUT | /review | **product\_id** | Update a review for a product |
 | Delete | DELETE | /review | **review\_id** | Delete a specific review |
 
+
 ### Additional Parameters
 
 | **Parameter** | **Type** | **Description** |
@@ -18,6 +20,7 @@
 | **qty** | **integer** | **Specify quantity of results to return** |
 | **sort** | **string** | **Sort criteria by &#39;highest&#39; or &#39;lowest&#39;  ratings or most &#39;recent&#39;** |
 | **offset** | **integer** | **Allows &#39;skipping&#39; over data. Useful for retrieving additional pages of data** |
+
 
 ### Data Schema (WIP)
 
@@ -83,7 +86,7 @@ As user, I want to:
   - Or generate Review Summary on the fly?
   - Or do both and compare results?
   
-  :octocat:
+  :octocat:   :octocat:   :octocat:
 
 <!--
 ## UI update
