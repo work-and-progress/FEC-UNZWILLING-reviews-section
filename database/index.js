@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://database/UNZWILLING-reviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+// mongoose.connect('mongodb://database/UNZWILLING-reviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+
+mongoose.connect('mongodb://localhost/UNZWILLING-reviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+
 const db = mongoose.connection;
 /*----------------------------------------------------*/
 db.on('error',
@@ -83,7 +86,6 @@ const fetchReviews = (callback) => {
 
 const fetchByProductId = (productID) => Review.findOne({ productId: productID });
 // console.log('fetchByProductId invoked! Param is ', productID);
-
 /*----------------------------------------------------*/
 module.exports = {
   save,
@@ -91,7 +93,6 @@ module.exports = {
   fetchByProductId,
   db,
 };
-
 
 // // get review by product id
 // app.get('/review/:productId', (req, res) => {

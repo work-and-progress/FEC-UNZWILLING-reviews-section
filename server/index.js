@@ -27,7 +27,7 @@ app.get('/reviews', (req, res) => {
   });
 });
 
-// get review by product id
+// READ review by product id
 app.get('/review/:productId', (req, res) => {
   // eslint-disable-next-line no-console
   // console.log('Got your request! Query is ', req.params);
@@ -42,7 +42,7 @@ app.get('/review/:productId', (req, res) => {
     });
 });
 
-// add a review by product_id
+// CREATE a review by product_id
 app.post('/review/:productId', (req, res) => {
   const { productId } = req.params;
   database.addReviewByProductId(productId)
@@ -55,7 +55,7 @@ app.post('/review/:productId', (req, res) => {
     });
 });
 
-// update a review by review_id
+// UPDATE a review by review_id
 app.put('/review/:reviewId', (req, res) => {
   const { reviewId } = req.params;
   database.updateReviewByReviewId(reviewId)
@@ -68,7 +68,7 @@ app.put('/review/:reviewId', (req, res) => {
     });
 });
 
-// add a review by review_id
+// DELETE a review by review_id
 app.delete('/review/:reviewId', (req, res) => {
   const { reviewId } = req.params;
   database.deleteReviewByReviewId(reviewId)
