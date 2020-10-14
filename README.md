@@ -39,9 +39,10 @@ const **Review** = mongoose.Schema({
 **helpfulYes:** Number,
 **helpfulNo:** Number,
 });
+```
+#### Review Summary Schema
 
-**Review Summary Schema**
-
+```
 const **ReviewSummarySchema** = mongoose.Schema({
    **productId:** Number,
    **totalNumberReviews:** Number,
@@ -59,7 +60,7 @@ const **ReviewSummarySchema** = mongoose.Schema({
 });
 ```
 
-**User stories:**
+#### User stories:
 
 As user, I want to:
 
@@ -70,7 +71,7 @@ As user, I want to:
 - update a review
 - delete a review
 
-**Questions For SDC:**
+#### Questions For SDC:
 
 - For 10 million records should I:
 
