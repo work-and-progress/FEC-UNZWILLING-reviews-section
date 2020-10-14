@@ -63,7 +63,7 @@ const **ReviewSummarySchema** = mongoose.Schema({
 });
 ```
 
-#### User stories:
+#### User stories
 
 As user, I want to:
 
@@ -87,6 +87,19 @@ As user, I want to:
   - Or do both and compare results?
   
   :octocat:   :octocat:   :octocat:
+  
+:hankey:
+:poop:
+:shit:	
+:clown_face:
+:japanese_ogre:	
+:japanese_goblin:
+:ghost:	
+:alien:
+:space_invader:	
+:robot:
+  
+  
 
 <!--
 ## UI update
