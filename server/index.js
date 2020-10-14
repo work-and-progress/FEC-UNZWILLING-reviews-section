@@ -41,3 +41,42 @@ app.get('/review/:productId', (req, res) => {
       }
     });
 });
+
+// add a review by product_id
+app.post('/review/:productId', (req, res) => {
+  const { productId } = req.params;
+  database.addReviewByProductId(productId)
+    .then((result) => {
+      if (!result) {
+        res.status(400).send(`error adding review for Product ID: ${productId}`);
+      } else {
+        res.status(201);
+      }
+    });
+});
+
+// update a review by review_id
+app.put('/review/:reviewId', (req, res) => {
+  const { reviewId } = req.params;
+  database.updateReviewByReviewId(reviewId)
+    .then((result) => {
+      if (!result) {
+        res.status(400).send(`error updaing review: ${reviewId}`);
+      } else {
+        res.status(201);
+      }
+    });
+});
+
+// add a review by review_id
+app.delete('/review/:reviewId', (req, res) => {
+  const { reviewId } = req.params;
+  database.deleteReviewByReviewId(reviewId)
+    .then((result) => {
+      if (!result) {
+        res.status(400).send(`error deleting review: ${reviewId}`);
+      } else {
+        res.status(200);
+      }
+    });
+});
