@@ -6,12 +6,12 @@
 
 ### REST API
 
-| **CRUD** | **Method** 	| **URL** | **Key Parameter** | **Purpose** |
+| **CRUD** | **Method** 	| **URL** | **Key Parameter** | **Purpose** | **Response** |
 | --- | --- | --- | --- | --- |
-| Create | POST | /review | **review\_id** | Add a specific review |
-| Read | GET | /review | **product\_id** | Retrieve reviews for a product |
-| Update | PUT | /review | **product\_id** | Update a review for a product |
-| Delete | DELETE | /review | **review\_id** | Delete a specific review |
+| Create | POST | /review | review\_id | Add a specific review | 201 |
+| Read | GET | /review | product\_id | Retrieve reviews for a product | 200 + x ‘qty’ reviews (JSON) |
+| Update | PUT | /review | product\_id | Update a review for a product | 201 |
+| Delete | DELETE | /review | review\_id | Delete a specific review | 200 |
 
 
 ### Additional Parameters
