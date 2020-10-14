@@ -5,7 +5,7 @@
 
 ### REST API
 
-| **CRUD** :space_invader:	| **Method** | **URL** | **Key Parameter** | **Purpose** |
+| **CRUD** :space_invader:	| **Method** :ghost:	| **URL** :alien: | **Key Parameter** :robot: | **Purpose**  :octocat: |
 | --- | --- | --- | --- | --- |
 | Create | POST | /review | **review\_id** | Add a specific review |
 | Read | GET | /review | **product\_id** | Retrieve reviews for a product |
@@ -88,14 +88,7 @@ As user, I want to:
   
   :octocat:   :octocat:   :octocat:
   
-:poop:
-:ghost:	
-:alien:
-:space_invader:	
-:robot:
   
-  
-
 <!--
 ## UI update
 <img src='design-and-docs/finprogress1.png'>
