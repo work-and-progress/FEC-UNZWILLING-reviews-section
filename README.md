@@ -3,7 +3,6 @@
 ## REST API for Reviews
 
 :octocat: :computer: 
-:shipit:
 
 ### REST API
 
