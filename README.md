@@ -2,8 +2,6 @@
 
 ## REST API for Reviews Section
 
-Define all the API endpoints that will be used to consume and publish data. What is the shape of the data (i.e. list all the properties and types) for each API endpoint and/or message?
-
 **#REST API**
 
 | **CRUD** | **Method** | **URL** | **Key Parameter** | **Purpose** |
