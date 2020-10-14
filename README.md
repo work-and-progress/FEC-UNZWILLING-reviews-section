@@ -23,7 +23,7 @@
 
 **Review Schema**
 
-<code>
+```
 const **Review** = mongoose.Schema({
   
 **reviewId:** Number,
@@ -71,8 +71,7 @@ const **ReviewSummarySchema** = mongoose.Schema({
    **mostHelpfulCritical** : Number,
    **reviews** : [Review],
 });
-
-</code>
+```
 
 **User stories:**
 
