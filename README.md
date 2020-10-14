@@ -88,9 +88,7 @@ As user, I want to:
   
   :octocat:   :octocat:   :octocat:
   
-:hankey:
 :poop:
-:shit:	
 :clown_face:
 :japanese_ogre:	
 :japanese_goblin:
