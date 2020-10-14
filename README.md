@@ -2,7 +2,7 @@
 
 ## REST API for Reviews
 
-## :octocat: ## :computer:
+# :octocat: :computer:
 
 ### REST API
 
