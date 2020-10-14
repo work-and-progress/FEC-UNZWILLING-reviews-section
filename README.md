@@ -2,7 +2,7 @@
 
 ## REST API for Reviews
 
-<img href="https://imgur.com/ycG7WcZ">
+<img src="https://imgur.com/ycG7WcZ">
 
 :octocat: :computer: 
 
