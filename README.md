@@ -1,11 +1,12 @@
 # FEC-UNZWILLING-reviews-section
 
-## REST API for Reviews Section
+## REST API for Reviews
 
+:octocat: :space_invader:	:ghost: :alien: 
 
 ### REST API
 
-| **CRUD** :space_invader:	| **Method** :ghost:	| **URL** :alien: | **Key Parameter** :robot: | **Purpose**  :octocat: |
+| **CRUD** | **Method** 	| **URL** | **Key Parameter** | **Purpose** |
 | --- | --- | --- | --- | --- |
 | Create | POST | /review | **review\_id** | Add a specific review |
 | Read | GET | /review | **product\_id** | Retrieve reviews for a product |
