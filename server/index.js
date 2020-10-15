@@ -1,14 +1,17 @@
+// New ordering per eslint // SDC - RIKU
 const express = require('express');
+const cors = require('cors');
+const path = require('path');
 const database = require('../database/index.js');
 
 const app = express();
 const port = 7777;
 
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
-const path = require("path");
-app.use(express.static(path.join(__dirname, "../client/dist")));
+// Middleware to make req.body return JSON // SDC - RIKU
+app.use(express.json());
 
-const cors = require('cors');
 app.use(cors());
 
 app.listen(port, () => {
@@ -42,41 +45,26 @@ app.get('/review/:productId', (req, res) => {
     });
 });
 
-// CREATE a review by product_id
+// CREATE a review by product_id // SDC - RIKU
 app.post('/review/:productId', (req, res) => {
   const { productId } = req.params;
-  database.addReviewByProductId(productId)
-    .then((result) => {
-      if (!result) {
-        res.status(400).send(`error adding review for Product ID: ${productId}`);
-      } else {
-        res.status(201);
-      }
-    });
+  return database.addReviewByProductId(productId, req.body)
+    .then((result) => res.status(201).send(result))
+    .catch(() => res.status(400));
 });
 
-// UPDATE a review by review_id
+// UPDATE a review by review_id // SDC - RIKU
 app.put('/review/:reviewId', (req, res) => {
   const { reviewId } = req.params;
-  database.updateReviewByReviewId(reviewId)
-    .then((result) => {
-      if (!result) {
-        res.status(400).send(`error updaing review: ${reviewId}`);
-      } else {
-        res.status(201);
-      }
-    });
+  return database.updateReviewByReviewId(reviewId)
+    .then((result) => res.status(201).send(result))
+    .catch(() => res.status(400));
 });
 
-// DELETE a review by review_id
+// DELETE a review by review_id // SDC - RIKU
 app.delete('/review/:reviewId', (req, res) => {
   const { reviewId } = req.params;
-  database.deleteReviewByReviewId(reviewId)
-    .then((result) => {
-      if (!result) {
-        res.status(400).send(`error deleting review: ${reviewId}`);
-      } else {
-        res.status(200);
-      }
-    });
+  return database.deleteReviewByReviewId(reviewId)
+    .then((result) => res.status(200).send(result))
+    .catch(() => res.status(404));
 });

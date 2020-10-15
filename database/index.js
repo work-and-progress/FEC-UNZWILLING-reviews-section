@@ -74,7 +74,6 @@ const fetchReviews = (callback) => {
   // console.log('fetchReviews invoked! Serving you 10 reviews 😀');
   Review.find(null, null, {
     limit: 10,
-
   }, (error, docs) => {
     if (error) {
       callback(error);
@@ -86,64 +85,43 @@ const fetchReviews = (callback) => {
 
 const fetchByProductId = (productID) => Review.findOne({ productId: productID });
 // console.log('fetchByProductId invoked! Param is ', productID);
+
+// SDC - RIKU
+const addReviewByProductId = (productId, review) => {
+  const query = { productId };
+  const insert = {
+    $push: { reviews: review },
+  };
+  console.log('addReviewByProductId: ', query, insert);
+  return Review.findOneAndUpdate(query, insert).populate('reviews');
+};
+
+// SDC - RIKU
+// NOTE: Uses the Mongo ObjectId, not the current reviewId of the schema
+const updateReviewByReviewId = (reviewId, review) => {
+  const query = { reviewId };
+  const insert = {
+    $push: { reviews: review },
+  };
+  console.log('updateReviewByReviewId: ', query, insert);
+  return Review.findOneAndUpdate(query, insert);
+};
+
+// SDC - RIKU
+// NOTE: Uses the Mongo ObjectId, not the current reviewId of the schema
+const deleteReviewByReviewId = (reviewId) => {
+  const filter = { _id: reviewId };
+  console.log('deleteReviewByReviewId: ', filter);
+  return Review.deleteOne(filter);
+};
+
 /*----------------------------------------------------*/
 module.exports = {
   save,
   fetchReviews,
   fetchByProductId,
+  addReviewByProductId,
+  updateReviewByReviewId,
+  deleteReviewByReviewId,
   db,
 };
-
-// // get review by product id
-// app.get('/review/:productId', (req, res) => {
-//   // eslint-disable-next-line no-console
-//   // console.log('Got your request! Query is ', req.params);
-//   const { productId } = req.params;
-//   database.fetchByProductId(productId)
-//     .then((product) => {
-//       if (!product) {
-//         res.status(400).send(`error finding product with Product ID: ${productId}`);
-//       } else {
-//         res.status(200).send(product);
-//       }
-//     });
-// });
-
-// // add a review by product_id
-// app.post('/review/:productId', (req, res) => {
-//   const { productId } = req.params;
-//   database.addReviewByProductId(productId)
-//     .then((result) => {
-//       if (!result) {
-//         res.status(400).send(`error adding review for Product ID: ${productId}`);
-//       } else {
-//         res.status(201);
-//       }
-//     });
-// });
-
-// // update a review by review_id
-// app.put('/review/:reviewId', (req, res) => {
-//   const { reviewId } = req.params;
-//   database.updateReviewByReviewId(reviewId)
-//     .then((result) => {
-//       if (!result) {
-//         res.status(400).send(`error updaing review: ${reviewId}`);
-//       } else {
-//         res.status(201);
-//       }
-//     });
-// });
-
-// // add a review by review_id
-// app.delete('/review/:reviewId', (req, res) => {
-//   const { reviewId } = req.params;
-//   database.deleteReviewByReviewId(reviewId)
-//     .then((result) => {
-//       if (!result) {
-//         res.status(400).send(`error deleting review: ${reviewId}`);
-//       } else {
-//         res.status(200);
-//       }
-//     });
-// });
