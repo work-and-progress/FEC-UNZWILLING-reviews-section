@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://database/UNZWILLING-reviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+// mongoose.connect('mongodb://database/UNZWILLING-reviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+
+mongoose.connect('mongodb://localhost/UNZWILLING-reviews', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+
 const db = mongoose.connection;
 /*----------------------------------------------------*/
 db.on('error',
@@ -71,7 +74,6 @@ const fetchReviews = (callback) => {
   // console.log('fetchReviews invoked! Serving you 10 reviews 😀');
   Review.find(null, null, {
     limit: 10,
-
   }, (error, docs) => {
     if (error) {
       callback(error);
@@ -84,10 +86,42 @@ const fetchReviews = (callback) => {
 const fetchByProductId = (productID) => Review.findOne({ productId: productID });
 // console.log('fetchByProductId invoked! Param is ', productID);
 
+// SDC - RIKU
+const addReviewByProductId = (productId, review) => {
+  const query = { productId };
+  const insert = {
+    $push: { reviews: review },
+  };
+  console.log('addReviewByProductId: ', query, insert);
+  return Review.findOneAndUpdate(query, insert).populate('reviews');
+};
+
+// SDC - RIKU
+// NOTE: Uses the Mongo ObjectId, not the current reviewId of the schema
+const updateReviewByReviewId = (reviewId, review) => {
+  const query = { reviewId };
+  const insert = {
+    $push: { reviews: review },
+  };
+  console.log('updateReviewByReviewId: ', query, insert);
+  return Review.findOneAndUpdate(query, insert);
+};
+
+// SDC - RIKU
+// NOTE: Uses the Mongo ObjectId, not the current reviewId of the schema
+const deleteReviewByReviewId = (reviewId) => {
+  const filter = { _id: reviewId };
+  console.log('deleteReviewByReviewId: ', filter);
+  return Review.deleteOne(filter);
+};
+
 /*----------------------------------------------------*/
 module.exports = {
   save,
   fetchReviews,
   fetchByProductId,
+  addReviewByProductId,
+  updateReviewByReviewId,
+  deleteReviewByReviewId,
   db,
 };
