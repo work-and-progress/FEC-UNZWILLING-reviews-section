@@ -23,7 +23,7 @@
 
 ### Data Schema (WIP)
 
-(https://dbdiagram.io/d/5f88b85d3a78976d7b77d685)
+<a href="https://ibb.co/sb5Ps26"><img src="https://i.ibb.co/VJHNMtQ/Screen-Shot-2020-10-15-at-8-43-29-PM.png" alt="Screen-Shot-2020-10-15-at-8-43-29-PM" border="0"></a>
 
 <!--
 #### Review Schema
