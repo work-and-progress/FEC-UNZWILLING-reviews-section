@@ -2,7 +2,7 @@
 
 ## REST API for Reviews
 
-<img src="https://i.postimg.cc/MpC39X9Q/Screen-Shot-2020-10-14-at-12-40-05-AM.png" width="200">
+<a href="https://ibb.co/C9Vf4bC"><img src="https://i.ibb.co/DMwZm9c/Screen-Shot-2020-10-15-at-3-15-09-PM.png" alt="Screen-Shot-2020-10-15-at-3-15-09-PM" border="0" /></a>
 
 ### REST API
 
