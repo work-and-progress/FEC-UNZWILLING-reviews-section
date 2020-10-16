@@ -23,7 +23,7 @@
 
 ### Data Schema (SQL)
 
-<a width="1000px" href="https://ibb.co/GC0B1QS"><img src="https://i.ibb.co/9yNzfH5/Screen-Shot-2020-10-16-at-1-13-53-AM.png" alt="Screen-Shot-2020-10-16-at-1-13-53-AM" border="0"></a>
+<a href="https://ibb.co/GC0B1QS"><img width="1000px" src="https://i.ibb.co/9yNzfH5/Screen-Shot-2020-10-16-at-1-13-53-AM.png" alt="Screen-Shot-2020-10-16-at-1-13-53-AM" border="0"></a>
 
 <!--
 #### Review Schema
