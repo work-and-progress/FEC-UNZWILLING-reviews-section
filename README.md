@@ -2,8 +2,6 @@
 
 ## REST API for Reviews
 
-<a href="https://ibb.co/C9Vf4bC"><img src="https://i.ibb.co/DMwZm9c/Screen-Shot-2020-10-15-at-3-15-09-PM.png" alt="Screen-Shot-2020-10-15-at-3-15-09-PM" border="0" /></a>
-
 ### REST API
 
 | **CRUD** | **Method** 	| **URL** | **Key Parameter** | **Purpose** | **Response** |
@@ -25,7 +23,7 @@
 
 ### Data Schema (WIP)
 
-<img src='https://ibb.co/C9Vf4bC'>
+<a href="https://ibb.co/C9Vf4bC"><img src="https://i.ibb.co/DMwZm9c/Screen-Shot-2020-10-15-at-3-15-09-PM.png" alt="Screen-Shot-2020-10-15-at-3-15-09-PM" border="0" /></a>
 
 <!--
 #### Review Schema
