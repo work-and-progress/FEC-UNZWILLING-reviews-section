@@ -23,7 +23,7 @@
 
 ### Data Schema (WIP)
 
-[](https://dbdiagram.io/d/5f88b85d3a78976d7b77d685)
+(https://dbdiagram.io/d/5f88b85d3a78976d7b77d685)
 
 <!--
 #### Review Schema
