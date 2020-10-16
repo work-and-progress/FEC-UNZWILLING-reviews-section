@@ -25,6 +25,7 @@
 
 ### Data Schema (WIP)
 
+<!--
 #### Review Schema
 
 ```
@@ -63,6 +64,7 @@ const **ReviewSummarySchema** = mongoose.Schema({
   reviews** : [Review],
 });
 ```
+-->
 
 #### User stories
 
