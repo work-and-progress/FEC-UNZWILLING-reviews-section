@@ -25,7 +25,7 @@
 
 ### Data Schema (WIP)
 
-<img width="560" height="315" src='https://dbdiagram.io/embed/5f88b85d3a78976d7b77d685'>
+<img src='https://ibb.co/C9Vf4bC'>
 
 <!--
 #### Review Schema
