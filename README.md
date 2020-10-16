@@ -21,7 +21,7 @@
 | offset | integer | Allows &#39;skipping&#39; over data. Useful for retrieving additional pages of data |
 
 
-### Data Schema (WIP)
+### Data Schema (SQL)
 
 <a href="https://ibb.co/sq7bVMn"><img src="https://i.ibb.co/5LZGRfm/Screen-Shot-2020-10-15-at-8-45-59-PM.png" alt="Screen-Shot-2020-10-15-at-8-45-59-PM" border="0"></a>
 
@@ -66,7 +66,19 @@ const **ReviewSummarySchema** = mongoose.Schema({
 ```
 -->
 
-#### User stories
+
+### Data Schema (Cassandra)
+Coming soon!
+
+### Seeding strategy
+
+#### Postgres
+* Generate 3 CSV files for:
+  * Product (review summary) - 10 million records
+  * Review - 200x the number of product records
+  * User - 0.5x the number of review records
+
+### User stories
 
 As user, I want to:
 
@@ -77,18 +89,7 @@ As user, I want to:
 - update a review
 - delete a review
 
-#### Questions For SDC:
 
-- For 10 million records should I:
-
-  - Generate 10 million products with 0-100 reviews each?
-  - Or just create 10 million products with 1 review?
-  - Or just 10 million reviews?
-  
-- For schema should I:
-  - Use the existing Review Summary schema which stores pre-computed summaries of reviews?
-  - Or generate Review Summary on the fly?
-  - Or do both and compare results?
   
   :octocat:   :computer:
   
