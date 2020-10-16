@@ -84,8 +84,8 @@ As user, I want to:
 
 - write a review
 - read x qty most recent reviews to find out 1) how the product holds up over time, 2) find out about recent production products
-- read highest rated reviews to see why the product is good
-- read lowest rated reviews to see weaknesses of product
+- read highest-rated reviews to see why the product is good
+- read lowest-rated reviews to see weaknesses of product
 - update a review
 - delete a review
 
