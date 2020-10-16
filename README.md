@@ -23,7 +23,7 @@
 
 ### Data Schema (WIP)
 
-<a href="https://ibb.co/sq7bVMn"><img src="https://i.ibb.co/5LZGRfm/Screen-Shot-2020-10-15-at-8-45-59-PM.png" alt="Screen-Shot-2020-10-15-at-8-45-59-PM" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>upload</a><br />
+<a href="https://ibb.co/sq7bVMn"><img src="https://i.ibb.co/5LZGRfm/Screen-Shot-2020-10-15-at-8-45-59-PM.png" alt="Screen-Shot-2020-10-15-at-8-45-59-PM" border="0"></a>
 
 <!--
 #### Review Schema
