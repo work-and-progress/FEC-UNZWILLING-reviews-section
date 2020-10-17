@@ -1,20 +1,28 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeUsers = fs.createWriteStream('users.csv');
-writeUsers.write('id,username,avatar\n', 'utf8');
+const writeUsers = fs.createWriteStream('users_sql.csv');
+writeUsers.write('id,username\n', 'utf8');
+
+const totalProducts = 100;
+const totalReviews = totalProducts * 100;
+const totalUsers = totalReviews * 0.5;
 
 function writeTenMillionUsers(writer, encoding, callback) {
-  let i = 10000000;
-  let id = 0;
+  let i = totalUsers;
+
   function write() {
     let ok = true;
+
     do {
       i -= 1;
-      id += 1;
+
+      // REVIEWS
+      const id = i + 1;
       const username = faker.internet.userName();
-      const avatar = faker.image.avatar();
-      const data = `${id},${username},${avatar}\n`;
+
+      const data = `${id},${username}\n`;
+
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
@@ -23,6 +31,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
+
     if (i > 0) {
       // had to stop early!
       // write some more once it drains
