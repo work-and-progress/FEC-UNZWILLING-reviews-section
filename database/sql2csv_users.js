@@ -1,14 +1,15 @@
+/* eslint-disable */
 const faker = require('faker');
 const fs = require('fs');
 
-const writeUsers = fs.createWriteStream('users_sql.csv');
-writeUsers.write('id,username\n', 'utf8');
+const writeData = fs.createWriteStream('users_sql.csv');
+writeData.write('id,username,email,location,total_reviews,total_questions,total_votes\n', 'utf8');
 
-const totalProducts = 100;
+const totalProducts = 10000000;
 const totalReviews = totalProducts * 100;
 const totalUsers = totalReviews * 0.5;
 
-function writeTenMillionUsers(writer, encoding, callback) {
+function bulkWrite(writer, encoding, callback) {
   let i = totalUsers;
 
   function write() {
@@ -20,8 +21,15 @@ function writeTenMillionUsers(writer, encoding, callback) {
       // REVIEWS
       const id = i + 1;
       const username = faker.internet.userName();
+      const email = faker.internet.email();
+      const location = `${faker.address.city()}"," ${faker.address.stateAbbr()}`;
+      const total_reviews = faker.random.number({ min: 1, max: 10 });
+      const total_questions = faker.random.number({ min: 1, max: 10 });
+      const total_votes = faker.random.number({ min: 1, max: 50 });
 
-      const data = `${id},${username}\n`;
+      let data = `${id},${username},${email},${location},${total_reviews},${total_questions},${total_votes}\n`;
+
+      if (!(i % 10000)) console.log(i);
 
       if (i === 0) {
         writer.write(data, encoding, callback);
@@ -41,6 +49,6 @@ function writeTenMillionUsers(writer, encoding, callback) {
   write();
 }
 
-writeTenMillionUsers(writeUsers, 'utf-8', () => {
-  writeUsers.end();
+bulkWrite(writeData, 'utf-8', () => {
+  writeData.end();
 });
