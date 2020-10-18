@@ -1,10 +1,11 @@
+/* eslint-disable */
 const faker = require('faker');
 const fs = require('fs');
 
 const writeUsers = fs.createWriteStream('products_sql.csv');
 writeUsers.write('id,total_reviews,average_rating,average_quality_rating,average_value_rating,aggregate_one_star_review,aggregate_two_star_review,aggregate_three_star_review,aggregate_four_star_review,aggregate_five_star_review,most_helpful_favorable,most_helpful_critical\n', 'utf8');
 
-const totalProducts = 100;
+const totalProducts = 10000000; // 10,000,000
 const totalReviews = totalProducts * 100;
 const totalUsers = totalReviews * 0.5;
 
