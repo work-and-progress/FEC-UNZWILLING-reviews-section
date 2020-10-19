@@ -9,27 +9,30 @@ const totalProducts = 10000000;
 const totalReviews = totalProducts * 100;
 const totalUsers = totalReviews * 0.5;
 
-function bulkWrite(writer, encoding, callback) {
+function writeCSV(writer, encoding, callback) {
   let i = totalUsers;
+  var count = 0;
 
   function write() {
     let ok = true;
 
     do {
       i -= 1;
+      count += 1;
 
-      // REVIEWS
       const id = i + 1;
-      const username = faker.internet.userName();
-      const email = faker.internet.email();
-      const location = `${faker.address.city()}"," ${faker.address.stateAbbr()}`;
+      // const username = faker.commerce.product(); // SLOW
+      // const email = faker.internet.email(); // SLOW
+      const username = faker.name.firstName();
+      const email = username + '@gmail.com';
+      const location = faker.address.country().split(',')[0];
       const total_reviews = faker.random.number({ min: 1, max: 10 });
       const total_questions = faker.random.number({ min: 1, max: 10 });
       const total_votes = faker.random.number({ min: 1, max: 50 });
 
       let data = `${id},${username},${email},${location},${total_reviews},${total_questions},${total_votes}\n`;
 
-      if (!(i % 10000)) console.log(i);
+      if (!(count % 100000)) console.log(count);
 
       if (i === 0) {
         writer.write(data, encoding, callback);
@@ -49,6 +52,19 @@ function bulkWrite(writer, encoding, callback) {
   write();
 }
 
-bulkWrite(writeData, 'utf-8', () => {
-  writeData.end();
+function logTimeElapsed(ms) {
+  var minutes = Math.floor(ms / 60000);
+  var seconds = ((ms % 60000) / 1000).toFixed(0);
+  console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
+}
+
+const startTime = new Date();
+
+writeCSV(writeData, 'utf-8', () => {
+  writeData.end()
+  const timeElapsed = new Date() - startTime;
+  logTimeElapsed(timeElapsed);
 });
+
+
+

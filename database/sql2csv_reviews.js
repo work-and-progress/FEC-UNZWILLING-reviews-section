@@ -2,28 +2,29 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeUsers = fs.createWriteStream('reviews_sql.csv');
-writeUsers.write('id,title,content,date,recommended,quality_rating,value_rating,star_rating,helpful_yes,helpful_no,user_id,product_id\n', 'utf8');
+const writeData = fs.createWriteStream('reviews_sql.csv');
+writeData.write('id,title,content,date,recommended,quality_rating,value_rating,star_rating,helpful_yes,helpful_no,user_id,product_id\n', 'utf8');
 
-const totalProducts = 100;
+const totalProducts = 10000000;
 const totalReviews = totalProducts * 100;
 const totalUsers = totalReviews * 0.5;
 
-function writeTenMillionUsers(writer, encoding, callback) {
+function writeCSV(writer, encoding, callback) {
   let i = totalReviews;
+  let count = 0;
 
   function write() {
     let ok = true;
 
     do {
       i -= 1;
+      count += 1;
 
-      // REVIEWS
       const id = i + 1;
       // const user_name = faker.internet.userName();
       const title = faker.company.bsAdjective().toUpperCase();
-      const content = faker.lorem.paragraph();
-      const date = faker.date.between('2015-01-01', '2020-10-10');
+      const content = faker.lorem.words().repeat(10);
+      const date = faker.date.between('2015-01-01', '2020-10-10').toISOString().split("T")[0];
       const recommended = faker.random.boolean();
       const quality_rating = faker.random.number({ min: 1, max: 5 });
       const value_rating = faker.random.number({ min: 1, max: 5 });
@@ -34,6 +35,8 @@ function writeTenMillionUsers(writer, encoding, callback) {
       const product_id = faker.random.number({ min: 1, max: totalProducts });
 
       const data = `${id},${title},${content},${date},${recommended},${quality_rating},${value_rating},${star_rating},${helpful_yes},${helpful_no},${user_id},${product_id}\n`;
+
+      if (!(count % 100000)) console.log(count);
 
       if (i === 0) {
         writer.write(data, encoding, callback);
@@ -53,6 +56,18 @@ function writeTenMillionUsers(writer, encoding, callback) {
   write();
 }
 
-writeTenMillionUsers(writeUsers, 'utf-8', () => {
-  writeUsers.end();
+function logTimeElapsed(ms) {
+  var minutes = Math.floor(ms / 60000);
+  var seconds = ((ms % 60000) / 1000).toFixed(0);
+  console.log(minutes + ":" + (seconds < 10 ? '0' : '') + seconds);
+}
+
+const startTime = new Date();
+
+writeCSV(writeData, 'utf-8', () => {
+  writeData.end()
+  const timeElapsed = new Date() - startTime;
+  logTimeElapsed(timeElapsed);
 });
+
+
