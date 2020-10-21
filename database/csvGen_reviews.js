@@ -2,12 +2,12 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeData = fs.createWriteStream('reviews_sql.csv');
+const writeData = fs.createWriteStream('reviews_sql10k.csv');
 writeData.write('id,title,content,date,recommended,quality_rating,value_rating,star_rating,helpful_yes,helpful_no,user_id,product_id\n', 'utf8');
 
-const totalProducts = 10000000;
-const totalReviews = totalProducts * 100;
-const totalUsers = totalReviews * 0.5;
+const totalProducts = 10000;
+const totalReviews = totalProducts * 10;
+const totalUsers = totalReviews * 0.2;
 
 function writeCSV(writer, encoding, callback) {
   let i = totalReviews;
@@ -29,10 +29,15 @@ function writeCSV(writer, encoding, callback) {
       const quality_rating = faker.random.number({ min: 1, max: 5 });
       const value_rating = faker.random.number({ min: 1, max: 5 });
       const star_rating = faker.random.number({ min: 1, max: 5 });
-      const helpful_yes = faker.random.number({ min: 1, max: 50 });
-      const helpful_no = faker.random.number({ min: 1, max: 50 });
+      const helpful_yes = faker.random.number({ min: 0, max: 50 });
+      const helpful_no = faker.random.number({ min: 0, max: 50 });
       const user_id = faker.random.number({ min: 1, max: totalUsers });
-      const product_id = faker.random.number({ min: 1, max: totalProducts });
+      let product_id = faker.random.number({ min: 1, max: totalProducts });
+
+      // assign 1% of reviews to first 1% of products
+      if (i % 100 == 0) {
+        product_id = faker.random.number({ min: 1, max: totalProducts/100 });
+      }
 
       const data = `${id},${title},${content},${date},${recommended},${quality_rating},${value_rating},${star_rating},${helpful_yes},${helpful_no},${user_id},${product_id}\n`;
 

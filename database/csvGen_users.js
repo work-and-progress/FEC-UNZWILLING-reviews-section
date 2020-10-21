@@ -6,8 +6,8 @@ const writeData = fs.createWriteStream('users_sql.csv');
 writeData.write('id,username,email,location,total_reviews,total_questions,total_votes\n', 'utf8');
 
 const totalProducts = 10000000;
-const totalReviews = totalProducts * 100;
-const totalUsers = totalReviews * 0.5;
+const totalReviews = totalProducts * 10;
+const totalUsers = totalReviews * 0.2;
 
 function writeCSV(writer, encoding, callback) {
   let i = totalUsers;

@@ -5,9 +5,9 @@ const fs = require('fs');
 const writeData = fs.createWriteStream('products_sql.csv');
 writeData.write('id,total_reviews,average_rating,average_quality_rating,average_value_rating,aggregate_one_star_review,aggregate_two_star_review,aggregate_three_star_review,aggregate_four_star_review,aggregate_five_star_review,most_helpful_favorable,most_helpful_critical\n', 'utf8');
 
-const totalProducts = 10000000;
-const totalReviews = totalProducts * 100;
-const totalUsers = totalReviews * 0.5;
+const totalProducts = 1000000;
+const totalReviews = totalProducts * 10;
+const totalUsers = totalReviews * 0.2;
 
 function writeCSV(writer, encoding, callback) {
   let i = totalProducts;
