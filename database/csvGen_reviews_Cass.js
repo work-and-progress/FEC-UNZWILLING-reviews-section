@@ -2,8 +2,8 @@
 const faker = require('faker');
 const fs = require('fs');
 
-const writeData = fs.createWriteStream('reviews_sql10k.csv');
-writeData.write('id,title,content,date,recommended,quality_rating,value_rating,star_rating,helpful_yes,helpful_no,user_id,product_id\n', 'utf8');
+const writeData = fs.createWriteStream('/Volumes/VoyagerAir/reviews_cass.csv');
+writeData.write('id,title,content,date,recommended,quality_rating,value_rating,star_rating,helpful_yes,helpful_no,user,product_id\n', 'utf8');
 
 const totalProducts = 10000000;
 const totalReviews = totalProducts * 10;
@@ -31,34 +31,58 @@ function writeCSV(writer, encoding, callback) {
       const star_rating = faker.random.number({ min: 1, max: 5 });
       const helpful_yes = faker.random.number({ min: 0, max: 50 });
       const helpful_no = faker.random.number({ min: 0, max: 50 });
-      const user_id = faker.random.number({ min: 1, max: totalUsers });
       let product_id = faker.random.number({ min: 1, max: totalProducts });
+      const user = {
+        user_id: faker.random.uuid(),
+        username: faker.name.firstName(),
+        email: faker.internet.email(),
+        location: faker.address.country().split(',')[0],
+        total_reviews: faker.random.number({ min: 1, max: 10 }),
+        total_questions: faker.random.number({ min: 1, max: 10 }),
+        total_votes: faker.random.number({ min: 1, max: 50 }),
+      }
 
       // assign 1% of reviews to first 1% of products
       if (i % 100 == 0) {
         product_id = faker.random.number({ min: 1, max: totalProducts/100 });
       }
 
-      const data = `${id},${title},${content},${date},${recommended},${quality_rating},${value_rating},${star_rating},${helpful_yes},${helpful_no},${user_id},${product_id}\n`;
+      const data = `${id},${title},${content},${date},${recommended},${quality_rating},${value_rating},${star_rating},${helpful_yes},${helpful_no},${objToString(user)},${product_id}\n`;
 
       if (!(count % 100000)) console.log(count);
 
       if (i === 0) {
         writer.write(data, encoding, callback);
       } else {
-        // see if we should continue, or wait
-        // don't pass the callback, because we're not done yet.
         ok = writer.write(data, encoding);
       }
     } while (i > 0 && ok);
 
     if (i > 0) {
-      // had to stop early!
-      // write some more once it drains
       writer.once('drain', write);
     }
   }
   write();
+}
+
+// Why, oh why, doesn't JS toString work for objects?
+function objToString (obj) {
+  var str = '';
+  for (var p in obj) {
+      if (obj.hasOwnProperty(p)) {
+        // add quotes if a string (and not the user_id UUID)
+        if (typeof obj[p] === 'string' && p !== 'user_id') {
+          str += p + ':' + "'" + obj[p] + "'";
+        } else {
+          str += p + ':' + obj[p];
+        }
+      }
+      str += ',';
+  }
+  // strip last comma and wrap in curlies and qoutes
+  str = str.substring(0, str.length-1);
+  str = '"' + '{' + str + '}' + '"';
+  return str;
 }
 
 function logTimeElapsed(ms) {
