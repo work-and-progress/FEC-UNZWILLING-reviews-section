@@ -5,8 +5,8 @@ const fs = require('fs');
 const writeData = fs.createWriteStream('/Volumes/VoyagerAir/reviews_cass.csv');
 writeData.write('id,title,content,date,recommended,quality_rating,value_rating,star_rating,helpful_yes,helpful_no,user,product_id\n', 'utf8');
 
-const totalProducts = 10000000;
-const totalReviews = totalProducts * 10;
+const totalProducts = 1000000;
+const totalReviews = totalProducts * 10; // 10 million
 const totalUsers = totalReviews * 0.2;
 
 function writeCSV(writer, encoding, callback) {
