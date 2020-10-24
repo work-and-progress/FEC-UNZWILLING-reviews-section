@@ -1,0 +1,63 @@
+// CASSANDRA ================================================
+
+// CREATE A KEYSPACE (DATABASE)
+CREATE KEYSPACE reviews WITH REPLICATION = {
+  'class': 'SimpleStrategy',
+  'replication_factor': 1
+};
+
+// TO cqlsh TO USE YOUR KEYPSACE (DATABASE)
+USE reviews;
+
+// CREATE USER UDT
+CREATE TYPE user(
+  user_id UUID,
+  username TEXT,
+  email TEXT,
+  location TEXT,
+  total_reviews INT,
+  total_questions INT,
+  total_votes INT
+);
+
+// CREATE REVIEW TABLE
+CREATE TABLE review_by_product_id_helpful(
+  id INT,
+  title TEXT,
+  content TEXT,
+  date DATE,
+  recommended BOOLEAN,
+  quality_rating INT,
+  value_rating INT,
+  star_rating INT,
+  helpful_yes INT,
+  helpful_no INT,
+  product_id INT,
+  user FROZEN < user >,
+  PRIMARY KEY((product_id), helpful_yes, date)
+);
+
+// CREATE PRODUCT TABLE
+CREATE TABLE product(
+  id INT,
+  total_reviews INT,
+  average_rating INT,
+  average_quality_rating INT,
+  average_value_rating INT,
+  aggregate_star_review INT,
+  aggregate_one_star_review INT,
+  aggregate_two_star_review INT,
+  aggregate_three_star_review INT,
+  aggregate_four_star_review INT,
+  aggregate_five_star_review INT,
+  most_helpful_favorable INT,
+  most_helpful_critical INT,
+  PRIMARY KEY(id)
+);
+
+// IMPORT DATA FOR TABLE 'REVIEW' FROM CSV
+COPY review_by_product_id_helpful(id, title, content, date, recommended, quality_rating, value_rating, star_rating, helpful_yes, helpful_no, user, product_id) FROM 'reviews_cass.csv' WITH HEADER = true;
+
+// IMPORT DATA FOR TABLE 'PRODUCT' FROM CSV
+COPY product(id, total_reviews, average_rating, average_quality_rating, average_value_rating, aggregate_one_star_review, aggregate_two_star_review, aggregate_three_star_review, aggregate_four_star_review, aggregate_five_star_review, most_helpful_favorable, most_helpful_critical) FROM 'products_sql.csv' WITH HEADER = true;
+

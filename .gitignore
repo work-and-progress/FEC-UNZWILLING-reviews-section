@@ -6,6 +6,6 @@ config.js
 node_modules
 coverage/
 **/.DS_Store
-database/*.csv
-database/*.err
+*.csv
+*.err
 
