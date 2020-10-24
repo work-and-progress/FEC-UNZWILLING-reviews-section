@@ -1,0 +1,59 @@
+// CREATE TABLE SCHEMA
+
+CREATE TABLE review (
+  id INTEGER,
+  title VARCHAR(60),
+  content VARCHAR(500),
+  date DATE,
+  recommended BOOLEAN,
+  quality_rating INTEGER,
+  value_rating INTEGER,
+  star_rating INTEGER,
+  helpful_yes INTEGER,
+  helpful_no INTEGER,
+  user_id INTEGER,
+  product_id INTEGER,
+  PRIMARY KEY (id),
+  FOREIGN KEY (user_id)
+      REFERENCES user_account (id),
+  FOREIGN KEY (product_id)
+      REFERENCES product (id)
+);
+
+CREATE TABLE user_account (
+  id INTEGER,
+  username VARCHAR(60),
+  email VARCHAR(60),
+  location VARCHAR(60),
+  total_reviews INTEGER,
+  total_questions INTEGER,
+  total_votes INTEGER,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE product (
+  id INTEGER,
+  total_reviews INTEGER,
+  average_rating INTEGER,
+  average_quality_rating INTEGER,
+  average_value_rating INTEGER,
+  aggregate_one_star_review INTEGER,
+  aggregate_two_star_review INTEGER,
+  aggregate_three_star_review INTEGER,
+  aggregate_four_star_review INTEGER,
+  aggregate_five_star_review INTEGER,
+  most_helpful_favorable INTEGER,
+  most_helpful_critical INTEGER,
+  PRIMARY KEY (id)
+);
+
+// IMPORT COMMANDS
+\COPY product FROM 'products_sql.csv' CSV HEADER;
+\COPY review FROM 'reviews_sql.csv' CSV HEADER;
+\COPY user FROM 'users_sql.csv' CSV HEADER;
+
+// CREATE INDEXES TO REDUCE QUERY TIME
+CREATE INDEX ON review(product_id);
+
+// Query for FEC
+select * from review  where product_id = 1000000 ORDER BY helpful_yes DESC;

@@ -15,6 +15,7 @@ db.once('open', () => {
   console.log('database/index.js: Mongoose is connected to server!');
 });
 /*----------------------------------------------------*/
+// childReview is an individual review for a product
 const childReview = mongoose.Schema({
   reviewId: Number, // how to make this into an Id
   reviewUsername: String,
@@ -50,6 +51,7 @@ const reviewSchema = mongoose.Schema({
   reviews: [childReview],
 });
 
+// 'Review' is a summary of review for a product
 const Review = mongoose.model('Review', reviewSchema);
 /*----------------------------------------------------*/
 const save = (reviews) => {
@@ -70,49 +72,29 @@ const save = (reviews) => {
   return Promise.all(savePromises);
 };
 
-const fetchReviews = (callback) => {
-  // console.log('fetchReviews invoked! Serving you 10 reviews 😀');
-  Review.find(null, null, {
-    limit: 10,
-  }, (error, docs) => {
-    if (error) {
-      callback(error);
-    } else {
-      callback(null, docs);
-    }
-  });
-};
+// Get ALL review - SDC - RIKU
+const fetchReviews = () => Review.find({}).limit(10);
 
+// Get one review
 const fetchByProductId = (productID) => Review.findOne({ productId: productID });
-// console.log('fetchByProductId invoked! Param is ', productID);
 
-// SDC - RIKU
-const addReviewByProductId = (productId, review) => {
-  const query = { productId };
-  const insert = {
-    $push: { reviews: review },
-  };
-  console.log('addReviewByProductId: ', query, insert);
-  return Review.findOneAndUpdate(query, insert).populate('reviews');
+// Add a 'childReview' - SDC - RIKU
+const addReview = (productId, review) => {
+  const insert = { $push: { reviews: review } };
+  const options = { returnOriginal: false };
+  return Review.findOneAndUpdate({ productId }, insert, options);
 };
 
-// SDC - RIKU
-// NOTE: Uses the Mongo ObjectId, not the current reviewId of the schema
-const updateReviewByReviewId = (reviewId, review) => {
-  const query = { reviewId };
-  const insert = {
-    $push: { reviews: review },
-  };
-  console.log('updateReviewByReviewId: ', query, insert);
-  return Review.findOneAndUpdate(query, insert);
+// Update the Review Summary - SDC - RIKU
+const updateReviewSummary = (productId, reviewSummary) => {
+  const options = { returnOriginal: false };
+  return Review.findOneAndUpdate({ productId }, reviewSummary, options);
 };
 
-// SDC - RIKU
-// NOTE: Uses the Mongo ObjectId, not the current reviewId of the schema
-const deleteReviewByReviewId = (reviewId) => {
-  const filter = { _id: reviewId };
-  console.log('deleteReviewByReviewId: ', filter);
-  return Review.deleteOne(filter);
+// Delete reviewId by productId - SDC Riku
+const deleteReview = (productId, reviewId) => {
+  const toDelete = { $pull: { reviews: { reviewId } } };
+  return Review.findOneAndUpdate({ productId }, toDelete);
 };
 
 /*----------------------------------------------------*/
@@ -120,8 +102,8 @@ module.exports = {
   save,
   fetchReviews,
   fetchByProductId,
-  addReviewByProductId,
-  updateReviewByReviewId,
-  deleteReviewByReviewId,
+  addReview,
+  updateReviewSummary,
+  deleteReview,
   db,
 };
