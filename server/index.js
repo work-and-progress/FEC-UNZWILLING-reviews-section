@@ -20,16 +20,25 @@ app.listen(port, () => {
 /*----------------------------------------------*/
 
 // READ all reviews
-app.get('/reviews', (req, res) => {
-  database.fetchReviews()
+app.get('/review-summary/:productId', (req, res) => {
+  const { productId } = req.params;
+  database.fetchReviewSummary(productId)
     .then((result) => res.status(200).send(result))
+    .catch(() => res.status(400));
+});
+
+// UPDATE a review by review_id // SDC - RIKU
+app.put('/review-summary/:productId', (req, res) => {
+  const productId = JSON.parse(req.params.productId);
+  return database.updateReviewSummary(productId, req.body)
+    .then((result) => res.status(201).send(result))
     .catch(() => res.status(400));
 });
 
 // READ review by product id
 app.get('/review/:productId', (req, res) => {
   const { productId } = req.params;
-  database.fetchByProductId(productId)
+  database.fetchReviews(productId)
     .then((result) => res.status(200).send(result))
     .catch(() => res.status(400));
 });
@@ -42,19 +51,10 @@ app.post('/review/:productId', (req, res) => {
     .catch(() => res.status(400));
 });
 
-// UPDATE a review by review_id // SDC - RIKU
-app.put('/review/:productId', (req, res) => {
-  const productId = JSON.parse(req.params.productId);
-  return database.updateReviewSummary(productId, req.body)
-    .then((result) => res.status(201).send(result))
-    .catch(() => res.status(400));
-});
-
 // DELETE a review by review_id // SDC - RIKU
-app.delete('/review/:reviewId/product/:productId', (req, res) => {
-  const { productId, reviewId } = req.params;
-
-  return database.deleteReview(productId, reviewId)
+app.delete('/review/:reviewId', (req, res) => {
+  const { reviewId } = req.params;
+  return database.deleteReview(reviewId)
     .then((result) => res.status(200).send(result))
     .catch(() => res.status(404));
 });
