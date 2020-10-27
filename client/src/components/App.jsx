@@ -91,7 +91,10 @@ const App = class extends React.Component {
   getReviews() {
     axios.get('/review/8')
       .then((response) => {
-        const responseArray = response.data.reviews;
+        const responseArray = response.data;
+
+        console.log('===== reviews: ', response.data);
+
         const { currentPage, reviewsPerPage } = this.state;
         const indexOfLastReviewInitial = currentPage * reviewsPerPage;
         const indexOfFirstReviewInitial = indexOfLastReviewInitial - reviewsPerPage;

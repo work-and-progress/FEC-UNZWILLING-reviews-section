@@ -1,3 +1,5 @@
+require('newrelic');
+
 // New ordering per eslint // SDC - RIKU
 const express = require('express');
 const cors = require('cors');

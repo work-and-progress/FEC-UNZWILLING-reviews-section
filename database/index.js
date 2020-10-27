@@ -28,7 +28,8 @@ const updateReviewSummary = (productId, reviewSummary) => {
 };
 
 // Get reviews for one product
-const fetchReviews = (productId) => pool.query('SELECT * from review WHERE product_id = $1', [productId]);
+const fetchReviews = (productId) => pool.query('SELECT * from review WHERE product_id = $1', [productId])
+  .then((response) => response.rows);
 
 // Add a review for a product
 // 'id' auto-increments ('id' is defined as 'SERIAL' in schema)

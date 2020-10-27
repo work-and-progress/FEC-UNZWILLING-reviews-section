@@ -9,4 +9,6 @@ coverage/
 *.csv
 *.env
 *.err
+*.log
+newrelic.js
 
