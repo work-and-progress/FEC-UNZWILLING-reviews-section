@@ -1,7 +1,7 @@
 // CREATE TABLE SCHEMA
 
 CREATE TABLE review (
-  id INTEGER,
+  id INTEGER SERIAL,
   title VARCHAR(60),
   content VARCHAR(500),
   date DATE,
@@ -21,7 +21,7 @@ CREATE TABLE review (
 );
 
 CREATE TABLE user_account (
-  id INTEGER,
+  id INTEGER SERIAL,
   username VARCHAR(60),
   email VARCHAR(60),
   location VARCHAR(60),
@@ -32,7 +32,7 @@ CREATE TABLE user_account (
 );
 
 CREATE TABLE product (
-  id INTEGER,
+  id INTEGER SERIAL,
   total_reviews INTEGER,
   average_rating INTEGER,
   average_quality_rating INTEGER,
